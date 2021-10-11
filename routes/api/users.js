@@ -4,7 +4,7 @@ const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
-const validateRegisterInput = require("../../validation/register");
+const validateRegisterInput = require("../../validation/registerUser");
 const validateLoginInput = require("../../validation/login");
 
 router.get("/test", (req, res) => {
@@ -32,15 +32,15 @@ router.post("/register", (req, res) => {
       } else {
         // otherwise create the user and save it
         const newUser = new User({
-          handle: req.body.handle,
-          email: req.body.email,
+          firstName: req.body.firstName,
+          lastName: req.body.lastName,
           password: req.body.password,
+          email: req.body.email,
+          skills: req.body.skills,
+          jobHistory: req.body.jobHistory,
+          education: req.body.education,
+          location: req.body.location,
         });
-
-        // newUser
-        //   .save()
-        //   .then((user) => res.send(user))
-        //   .catch((err) => res.send(err));
 
         bcrypt.genSalt(10, (err, salt) => {
           // first arg is number of rounds we do to generate the salt, second arg is salt we get back
@@ -81,8 +81,13 @@ router.post("/login", (req, res) => {
           const payload = {
             // payload we send back upon successful login
             id: user.id, // id will be from mongodb
-            handle: user.handle,
-            email: user.email,
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            skills: req.body.skills,
+            jobHistory: req.body.jobHistory,
+            education: req.body.education,
+            location: req.body.location,
           };
           jwt.sign(
             payload,

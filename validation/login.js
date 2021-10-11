@@ -4,7 +4,6 @@ const validText = require("./valid-text");
 module.exports = function (data) {
   let errors = {};
 
-  // first check that email and password exists, if nonexistant, set to empty string
   data.email = validText(data.email) ? data.email : "";
   data.password = validText(data.password) ? data.password : "";
 
