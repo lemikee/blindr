@@ -1,13 +1,17 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
+const validArray = require("./valid-array");
 
 module.exports = function validateRegisterInput(data) {
   let errors = {};
 
-  data.handle = validText(data.handle) ? data.handle : "";
+  data.firstName = validText(data.firstName) ? data.firstName : "";
+  data.lastName = validText(data.lastName) ? data.lastName : "";
   data.email = validText(data.email) ? data.email : "";
   data.password = validText(data.password) ? data.password : "";
   data.password2 = validText(data.password2) ? data.password2 : ""; // for when user enters password a second time to confirm
+  data.location = validText(data.location) ? data.location : "";
+  data.skills = validArray(data.skills) ? data.skills : [];
 
   if (!Validator.isLength(data.handle, { min: 2, max: 30 })) {
     errors.handle = "Handle must be between 2 and 30 characters";
