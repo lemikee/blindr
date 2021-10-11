@@ -2,8 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  handle: {
-    // think of this as a column, we give it data type and specify if it is required
+  firstName: {
+    type: String,
+    required: true,
+  },
+  lastName: {
     type: String,
     required: true,
   },
@@ -12,6 +15,22 @@ const UserSchema = new Schema({
     required: true,
   },
   password: {
+    type: String,
+    required: true,
+  },
+  skills: {
+    type: Array,
+    required: true,
+  },
+  jobHistory: {
+    type: Object,
+    required: true,
+  },
+  education: {
+    type: Object,
+    required: true,
+  },
+  location: {
     type: String,
     required: true,
   },
