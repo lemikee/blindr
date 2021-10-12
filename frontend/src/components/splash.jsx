@@ -5,7 +5,8 @@ import { openModal } from '../actions/modal_actions';
 import { logout } from '../actions/session_actions';
 
 const mapStateToProps = state => ({
-    signedIn: Object.keys(state.session.user).length !== 0
+    signedIn: state.session.isAuthenticated,
+    modalType: state.ui.modal
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -19,12 +20,16 @@ const SplashPage = (props) => {
     return (
         <div>
             <ModalContainer />
-            <button onClick={() => props.openModal('login')}>Open Login</button>
-            <button onClick={() => props.openModal('signup')}>Open Sign Up</button>
-            Blindr === Tinder 4 Jobs
-            {props.signedIn ? 
-                <button onClick={props.logout}>Logout</button> :
-                null}
+            <div className='splash-nav'>
+                <div className='test'>Blindr === Tinder 4 Jobs</div>
+                <div className='splash-btns'>
+                    <button className={props.modalType === 'login'  ? 'splash-nav-btn-two clicked-two' : 'splash-nav-btn-two'} onClick={() => props.openModal('login')}>Log In</button>
+                    <button className={props.modalType === 'signup' ? 'splash-nav-btn clicked' : 'splash-nav-btn '} onClick={() => props.openModal('signup')}>Sign Up</button>
+                {props.signedIn ?
+                    <button onClick={props.logout}>Logout</button> :
+                    null}
+                </div>
+            </div>
         </div>
     );
 }
