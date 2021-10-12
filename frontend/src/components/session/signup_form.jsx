@@ -35,12 +35,6 @@ class SignupForm extends React.Component {
             email: this.state.email,
             password: this.state.password,
             password2: this.state.password2,
-            firstName: 'test',
-            lastName: 'test',
-            skills: [1],
-            jobHistory: {1: 1},
-            education: {1: 1},
-            location: 'test'
         }, this.props.history)
     }
     
