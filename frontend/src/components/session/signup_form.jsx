@@ -6,12 +6,12 @@ class SignupForm extends React.Component {
         super(props);
         this.state = {
             email: '',
-            handle: '',
             password: '',
             password2: '',
             errors: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.demoLogin = this.demoLogin.bind(this);
         this.clearedErrors = false;
     }
 
@@ -25,17 +25,16 @@ class SignupForm extends React.Component {
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value });
     }
-
+    
     handleSubmit(e) {
         e.preventDefault();
         this.props.signup({
             email: this.state.email,
-            handle: this.state.handle,
             password: this.state.password,
             password2: this.state.password2
-        }, this.props.history);
+        }).then(this.props.history.push('/profile/create'))
     }
-
+    
     renderErrors() {
         return (
             <ul>
@@ -47,10 +46,16 @@ class SignupForm extends React.Component {
             </ul>
         );
     }
-
+    
+    demoLogin(e) {
+      e.preventDefault();
+      console.log('demo-login-clicked');
+    }
+    
     render() {
         return (
             <div className="login-form-container">
+                <button onClick={this.demoLogin}>Demo Login</button>
                 <form onSubmit={this.handleSubmit}>
                     <div className="login-form">
                         {this.renderErrors()}
@@ -59,12 +64,6 @@ class SignupForm extends React.Component {
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder="Email"
-                        />
-                        <br />
-                        <input type="text"
-                            value={this.state.handle}
-                            onChange={this.update('handle')}
-                            placeholder="Handle"
                         />
                         <br />
                         <input type="password"
