@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Route, Redirect, withRouter } from 'react-router-dom';
+import ModalTriggerContainer from '../components/modal/modal_trigger_container';
+ 
 
 const Auth = ({ component: Component, path, loggedIn, exact }) => (
     <Route path={path} exact={exact} render={(props) => (
         !loggedIn ? (
             <Component {...props} />
         ) : (
-            <Redirect to="/tweets" />
+            <Redirect to="/" />
         )
     )} />
 );
@@ -19,7 +21,7 @@ const Protected = ({ component: Component, loggedIn, ...rest }) => (
             loggedIn ? (
                 <Component {...props} />
             ) : (
-                <Redirect to="/login" />
+                <ModalTriggerContainer />
             )
         }
     />
