@@ -6,46 +6,10 @@ const validArray = require("./valid-array");
 module.exports = function validateRegisterInput(data) {
   console.log(data);
   let errors = {};
-
-  data.firstName = validText(data.firstName) ? data.firstName : "";
-  data.lastName = validText(data.lastName) ? data.lastName : "";
+  
   data.email = validText(data.email) ? data.email : "";
   data.password = validText(data.password) ? data.password : "";
   data.password2 = validText(data.password2) ? data.password2 : ""; // a user will enter their password a second time to confirm it
-  data.location = validText(data.location) ? data.location : "";
-  data.skills = validArray(data.skills) ? data.skills : [];
-  data.education = validObject(data.education) ? data.education : {};
-  data.jobHistory = validObject(data.jobHistory) ? data.jobHistory : {};
-
-  // firstName
-  if (Validator.isEmpty(data.firstName)) {
-    errors.firstName = "First name is required.";
-  }
-
-  // lastName
-  if (Validator.isEmpty(data.firstName)) {
-    errors.lastName = "Last name is required.";
-  }
-
-  // location
-  if (Validator.isEmpty(data.location)) {
-    errors.location = "Last name is required.";
-  }
-
-  // skills
-  if (data.skills.length === 0) {
-    errors.skills = "Please select your skills.";
-  }
-
-  // education
-  if (Object.keys(data.education).length === 0) {
-    errors.education = "Education is required.";
-  }
-
-  // jobHistory
-  if (Object.keys(data.jobHistory).length === 0) {
-    errors.jobHistory = "Job history is required.";
-  }
 
   // email
   if (Validator.isEmpty(data.email)) {

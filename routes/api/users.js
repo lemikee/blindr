@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
 const validateRegisterInput = require("../../validation/registerUser");
+const validateUpdateProfileInput = require("../../validation/updateProfile");
 const validateLoginInput = require("../../validation/login");
 
 router.get("/test", (req, res) => {
@@ -32,16 +33,10 @@ router.post("/register", (req, res) => {
       } else {
         // otherwise create the user and save it
         const newUser = new User({
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
           password: req.body.password,
           email: req.body.email,
-          skills: req.body.skills,
-          jobHistory: req.body.jobHistory,
-          education: req.body.education,
-          location: req.body.location,
         });
-
+        
         bcrypt.genSalt(10, (err, salt) => {
           // first arg is number of rounds we do to generate the salt, second arg is salt we get back
           bcrypt.hash(newUser.password, salt, (err, hash) => {
@@ -56,6 +51,32 @@ router.post("/register", (req, res) => {
         });
       }
     });
+});
+
+router.patch("/updateProfile/:userId", (req, res) => {
+  
+  // check inputs are valid (i.e. not default value && not empty)
+  const { errors, isValid } = validateUpdateProfileInput(req.body);
+  
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  User.updateOne(
+    { id: req.body.id },
+    { $set: {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      skills: req.body.skills,
+      jobHistory: req.body.jobHistory,
+      education: req.body.education,
+      location: req.body.location,
+      canRelocate: req.body.canRelocate,
+      completeProfile: true,
+      }
+    })
+    .then(payload => console.log(payload))
+    .catch(error => console.log(error))
 });
 
 router.post("/login", (req, res) => {
