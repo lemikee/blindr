@@ -57,9 +57,11 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div>
+            {this.renderErrors()}
             <div className='modal-container'>
+                    <div className='modal-title'>{this.props.formType}</div>
                 <form onSubmit={this.handleSubmit}>
-                    <div className='modal-title login-title'>{this.props.formType}</div>
+                    
                     <div>
                         <br />
                         <input type="text"
@@ -76,12 +78,13 @@ class LoginForm extends React.Component {
                             className='modal-input input-btm'
                         />
                         <br />
-                        <button className='modal-input submit login-btn'>Login</button>
+                        <button type='submit' className='modal-input submit'>Login</button>
+                        <button type='button' className='demo-btn' onClick={() => this.props.loginDemo()}>Demo Login</button>
                     </div>
                 </form>
             </div>
            
-            {this.renderErrors()}
+            
             
             </div>
         );

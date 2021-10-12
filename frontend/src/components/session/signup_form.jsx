@@ -90,7 +90,7 @@ class SignupForm extends React.Component {
                         <br />
                         <button type='submit' className='modal-input submit'>Sign Up</button>
                         <br/>
-                        <button type='button' className='demo-btn submit' onClick={() => this.props.loginDemo()}>Demo</button>
+                        <button type='button' className='demo-btn' onClick={() => this.props.loginDemo()}>Demo Login</button>
                     </div>
                 </form>
             </div>

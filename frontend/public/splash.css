@@ -54,7 +54,7 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: right;
+  text-align: center;
   top: 200px;
   left: 50%;
   margin-left: -150px;
@@ -101,10 +101,21 @@ table {
 }
 
 .demo-btn {
-    height: 35px;
-    width: 60px;
+    height: 40px;
+    width: 200px;
     margin-top: 5px;
     border-radius: 3px;
+    background-color: white;
+    border: 1px solid rgb(0, 0, 255);
+    border-color: rgb(0, 0, 255);
+    color: rgb(0, 0, 255);
+}
+
+.demo-btn:hover {
+    background-color: rgb(0, 0, 171);
+    border: none;
+    color: white;
+    cursor: pointer;
 }
 
 .modal-title {
@@ -125,7 +136,7 @@ table {
 }
 
 .input-btm {
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 }
 
 .modal-errors {
@@ -138,7 +149,7 @@ table {
     margin-left: -150px;
     border-left: 3px solid red;
     border-radius: 5px;
-    top: 600px;
+    top: 100px;
     background-color: white;
     box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
     display: flex;
@@ -150,3 +161,57 @@ table {
     font-size: 13px;
     line-height: 18px;
 }
+
+.splash-nav {
+    width: 100%;
+    height: 60px;
+    background-color: white;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.338);
+    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.10);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+}
+
+.splash-nav-btn {
+    margin: 0 3px;
+    width: 65px;
+    height: 30px;
+    background-color: rgb(0, 0, 255);
+    color: white;
+    border: none;
+    border-radius: 3px;
+}
+
+.splash-nav-btn-two {
+    margin: 0 3px;
+    width: 65px;
+    height: 30px;
+    background-color: white;
+    color: rgb(155, 155, 155);
+    border: none;
+    border-bottom: 3px solid rgb(155, 155, 155);
+    border-radius: 3px;
+}
+
+.splash-nav-btn:hover {
+    background-color: rgb(1, 1, 171);
+    cursor: pointer;
+}
+
+.splash-nav-btn-two:hover {
+    color: rgb(1, 1, 171);
+    border-color: rgb(0, 0, 255);
+    cursor: pointer;
+}
+
+.clicked {
+    background-color: rgb(1, 1, 171);
+}
+
+.clicked-two {
+    color: rgb(1, 1, 171);
+    border-color: rgb(1, 1, 171);
+}
+
