@@ -1,0 +1,27 @@
+.profile-create-page {
+  background-color: gray;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profile-create-container {
+  background-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
+
+
+.create-form-section {
+  display: flex;
+  flex-direction: column;
+  margin: 30px 0;
+}
+
+.test {
+  color: red;
+}
