@@ -10,6 +10,7 @@ class LoginForm extends React.Component {
             errors: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        // this.demoLogin = this.demoLogin.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
     }
 
@@ -43,6 +44,8 @@ class LoginForm extends React.Component {
             </ul>
         );
     }
+    
+
 
     render() {
         return (
