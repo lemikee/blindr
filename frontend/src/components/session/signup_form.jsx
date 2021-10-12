@@ -11,16 +11,19 @@ class SignupForm extends React.Component {
             errors: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.demoLogin = this.demoLogin.bind(this);
         this.clearedErrors = false;
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.signedIn === true) {
-            this.props.history.push('/login');
-        }
-        this.setState({ errors: nextProps.errors })
+    componentDidMount(){
+        this.props.clearErrors();
     }
+
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.signedIn === true) {
+    //         this.props.history.push('/login');
+    //     }
+    //     this.setState({ errors: nextProps.errors })
+    // }
 
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value });
@@ -31,56 +34,67 @@ class SignupForm extends React.Component {
         this.props.signup({
             email: this.state.email,
             password: this.state.password,
-            password2: this.state.password2
-        }).then(this.props.history.push('/profile/create'))
+            password2: this.state.password2,
+            firstName: 'test',
+            lastName: 'test',
+            skills: [1],
+            jobHistory: {1: 1},
+            education: {1: 1},
+            location: 'test'
+        }, this.props.history)
     }
     
     renderErrors() {
+        if (!Object.keys(this.props.errors).length) {
+            return null;
+        }
         return (
-            <ul>
-                {Object.keys(this.state.errors).map((error, i) => (
+            <ul className='modal-errors'>
+                {Object.keys(this.props.errors).map((error, i) => (
                     <li key={`error-${i}`}>
-                        {this.state.errors[error]}
+                        {this.props.errors[error]}
                     </li>
                 ))}
             </ul>
         );
     }
     
-    demoLogin(e) {
-      e.preventDefault();
-      console.log('demo-login-clicked');
-    }
-    
     render() {
         return (
-            <div className="login-form-container">
-                <button onClick={this.demoLogin}>Demo Login</button>
+            <div>
+            <div className='modal-container'>
+                <div className='modal-title'>{this.props.formType}</div>
                 <form onSubmit={this.handleSubmit}>
-                    <div className="login-form">
-                        {this.renderErrors()}
+                    <div>
                         <br />
                         <input type="text"
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder="Email"
+                            className='modal-input'
                         />
                         <br />
                         <input type="password"
                             value={this.state.password}
                             onChange={this.update('password')}
                             placeholder="Password"
+                            className='modal-input'
                         />
                         <br />
                         <input type="password"
                             value={this.state.password2}
                             onChange={this.update('password2')}
                             placeholder="Confirm Password"
+                            className='modal-input'
                         />
                         <br />
-                        <button>Sign Up</button>
+                        <button type='submit' className='modal-input submit'>Sign Up</button>
+                        <br/>
+                        <button type='button' className='demo-btn submit' onClick={() => this.props.loginDemo()}>Demo</button>
                     </div>
                 </form>
+            </div>
+            {this.renderErrors()}
             </div>
         );
     }

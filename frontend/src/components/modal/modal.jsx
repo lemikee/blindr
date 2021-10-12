@@ -9,11 +9,14 @@ class Modal extends React.Component {
 
     render(){
         if (!this.props.showModal) return null;
+        
         return (
+            <div>
             <div className='modal-back' onClick={this.props.closeModal}>
-                <div className='modal-container'>
-                    {this.props.showModal === 'signup' ? <SignupFormContainer /> : <LoginFormContainer /> }
-                </div>
+            </div>
+            <div>
+                {this.props.showModal === 'signup' ? <SignupFormContainer /> : <LoginFormContainer /> }
+            </div>
             </div>
         );
     }
