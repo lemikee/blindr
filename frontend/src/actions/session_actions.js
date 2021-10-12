@@ -5,6 +5,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const receiveCurrentUser = user => ({
     type: RECEIVE_CURRENT_USER,
@@ -20,14 +21,21 @@ export const receiveErrors = errors => ({
     errors
 });
 
+export const clearErrors = () => {
+    return {
+        type: CLEAR_ERRORS
+    }
+}
+
 export const logoutUser = () => ({
     type: RECEIVE_USER_LOGOUT
 });
 
-export const signup = user => dispatch => (
-    APIUtil.signup(user).then(() => (
-        dispatch(receiveUserSignIn())
-    ), err => (
+export const signup = (user, history) => dispatch => (
+    APIUtil.signup(user).then(() => {
+        history.push('/profile/create');
+        return dispatch(receiveCurrentUser(user))
+    }, err => (
         dispatch(receiveErrors(err.response.data))
     ))
 );

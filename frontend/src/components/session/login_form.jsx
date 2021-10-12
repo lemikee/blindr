@@ -10,16 +10,19 @@ class LoginForm extends React.Component {
             errors: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.demoLogin = this.demoLogin.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
     }
 
-    componentWillReceiveProps(nextProps) {
-        // if (nextProps.currentUser === true) {
-        //     this.props.history.push('/profile');
-        // }
-        this.setState({ errors: nextProps.errors });
+    componentDidMount(){
+        this.props.clearErrors();
     }
+
+    // componentWillReceiveProps(nextProps) {
+    //     if (nextProps.currentUser === true) {
+    //         this.props.history.push('/profile');
+    //     }
+    //     this.setState({ errors: nextProps.errors });
+    // }
 
     update(field) {
         return e => this.setState({ [field]: e.currentTarget.value });
@@ -34,11 +37,15 @@ class LoginForm extends React.Component {
     }
 
     renderErrors() {
+        if (!Object.keys(this.props.errors).length){
+            
+            return null;
+        } 
         return (
-            <ul>
-                {Object.keys(this.state.errors).map((error, i) => (
+            <ul className='modal-errors'>
+                {Object.keys(this.props.errors).map((error, i) => (
                     <li key={`error-${i}`}>
-                        {this.state.errors[error]}
+                        {this.props.errors[error]}
                     </li>
                 ))}
             </ul>
@@ -50,25 +57,32 @@ class LoginForm extends React.Component {
     render() {
         return (
             <div>
+            <div className='modal-container'>
                 <form onSubmit={this.handleSubmit}>
-                    <div className='login-form'>
-                        {this.renderErrors()}
+                    <div className='modal-title login-title'>{this.props.formType}</div>
+                    <div>
                         <br />
                         <input type="text"
                             value={this.state.email}
                             onChange={this.update('email')}
                             placeholder="Email"
+                            className='modal-input'
                         />
                         <br />
                         <input type="password"
                             value={this.state.password}
                             onChange={this.update('password')}
                             placeholder="Password"
+                            className='modal-input input-btm'
                         />
                         <br />
-                        <button>Login</button>
+                        <button className='modal-input submit login-btn'>Login</button>
                     </div>
                 </form>
+            </div>
+           
+            {this.renderErrors()}
+            
             </div>
         );
     }
