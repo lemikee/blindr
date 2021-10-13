@@ -20,12 +20,12 @@ const JobSchema = new Schema({
     required: true,
   },
   comp: {
-    type: BigInt,
+    type: String,
     required: true,
   },
   date: {
     type: Date,
-    default: Data.now,
+    default: Date.now,
   },
 });
 
