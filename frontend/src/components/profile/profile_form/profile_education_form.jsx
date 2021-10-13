@@ -3,11 +3,12 @@ import React from 'react';
 class ProfileEducationForm extends React.Component {
   constructor(props) {
     super(props);
+    const {edu} = this.props;
     this.state = {  
-      institute: "",
-      from: "",
-      to: "",
-      field: ""
+      institute: edu.institute,
+      from: edu.from,
+      to: edu.to,
+      field: edu.field
     }
   }
   
@@ -26,7 +27,7 @@ class ProfileEducationForm extends React.Component {
     e.preventDefault();
     const missing = this.missingInput();
     if (missing.length === 0) {
-      this.props.addEducation(this.state);
+      this.processForm();
     } else {
       let alertString = "Information missing: ";
       missing.forEach(item => {
@@ -34,6 +35,17 @@ class ProfileEducationForm extends React.Component {
       })
       alert(alertString);
     }
+  }
+  
+
+  processForm = () => {
+    if (this.props.action === 'create') {
+      this.props.addEducation(this.state);
+    } else {
+      this.props.editEducation(this.props.idx, this.state);
+    }
+    this.props.removeEducationForm();
+    
   }
 
   update(field) {
@@ -53,11 +65,13 @@ class ProfileEducationForm extends React.Component {
         <div>
           <label>From:
             <input type="date"
+              value={this.state.from}
               onChange={e => this.setState({from: e.currentTarget.value})}
             />
           </label>
           <label>To:
             <input type="date"
+              value={this.state.to}
               onChange={e => this.setState({to: e.currentTarget.value})}
             />
           </label>
@@ -73,7 +87,7 @@ class ProfileEducationForm extends React.Component {
           </select>
         </label>
         
-        <button onClick={this.handleDone}>Done</button>
+        <button onClick={this.handleDone}>Save</button>
         <button onClick={this.props.removeEducationForm}>Cancel</button>
       </div>
     );

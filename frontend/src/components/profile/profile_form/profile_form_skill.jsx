@@ -5,10 +5,13 @@ class ProfileFormSkill extends React.Component {
     super(props);
     this.state = {  }
   }
+
   render() { 
+    const { skill, idx, deleteSkill } = this.props;
     return (  
-      <div>
-        
+      <div className="completed-display editable-display">
+        <li>{skill}</li>
+        <button onClick={() => deleteSkill(idx)}>Delete</button>     
       </div>
     );
   }

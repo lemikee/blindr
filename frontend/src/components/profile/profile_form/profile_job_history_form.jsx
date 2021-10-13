@@ -3,11 +3,12 @@ import React from 'react';
 class ProfileJobHistoryForm extends React.Component {
   constructor(props) {
     super(props);
+    const {job} = this.props;
     this.state = {  
-      company: "",
-      from: "",
-      to: "",
-      role: "",
+      company: job.company,
+      from: job.from,
+      to: job.to,
+      role: job.role
     }
   }
   
@@ -25,7 +26,7 @@ class ProfileJobHistoryForm extends React.Component {
     e.preventDefault();
     const missing = this.missingInput();
     if (missing.length === 0) {
-      this.props.addJobHistory(this.state);
+      this.processForm();
     } else {
       let alertString = "Information missing: ";
       missing.forEach(item => {
@@ -36,6 +37,15 @@ class ProfileJobHistoryForm extends React.Component {
     
   }
   
+  processForm = () => {
+    if (this.props.action === 'create') {
+      this.props.addJobHistory(this.state);
+    } else {
+      this.props.editJobHistory(this.props.idx, this.state);
+    }
+    this.props.removeJobHistoryForm();
+  }
+
   
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value });
@@ -54,17 +64,20 @@ class ProfileJobHistoryForm extends React.Component {
         <div>
           <label>From:
             <input type="date"
+              value={this.state.from}
               onChange={e => this.setState({from: e.currentTarget.value})}
             />
           </label>
           <label>To:
             <input type="date"
+              value={this.state.to}
               onChange={e => this.setState({to: e.currentTarget.value})}
             />
           </label>
         </div>
         <label>Role:
           <input type="text"
+            value={this.state.role}
             onChange={this.update('role')}
           />
         </label>
