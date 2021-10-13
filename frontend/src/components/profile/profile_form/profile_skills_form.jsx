@@ -31,7 +31,6 @@ class ProfileSkillsForm extends React.Component {
   }
 
   render() { 
-    console.log(this.state);
     return (  
       <div className="profile-inner-form">
         <label>Select Skill 

@@ -30,3 +30,7 @@
 .completed-display {
   margin: 5px;
 }
+
+.editable-display {
+  display: flex;
+}

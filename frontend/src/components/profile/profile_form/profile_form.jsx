@@ -3,7 +3,7 @@ import ProfileEducationForm from './profile_education_form';
 import ProfileJobHistoryForm from './profile_job_history_form';
 import ProfileSkillsForm from './profile_skills_form';
 
-class ProfileCreate extends React.Component {
+class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  
@@ -95,7 +95,7 @@ class ProfileCreate extends React.Component {
       skills={this.state.skills}/> :
       <div></div>
   )
-
+  
   displayEducation = () => {
     return this.state.education.map(item => (
       <div className="completed-display">
@@ -109,7 +109,7 @@ class ProfileCreate extends React.Component {
   
   displayJobHistory = () => {
     return this.state.jobHistory.map(item => (
-      <div>
+      <div className="completed-display">
         <li>Company: {item.company}</li>
         <li>From: {item.from}</li>
         <li>To: {item.to}</li>
@@ -120,7 +120,14 @@ class ProfileCreate extends React.Component {
   
   displaySkills = () => {
     return this.state.skills.map(skill => (
-      <li>{skill}</li>
+      <div className="completed-display editable-display">
+        <li>{skill}</li>
+        <div>
+          <button>Edit</button>
+          <button>Delete</button>
+        </div>
+      </div>
+      
     ))
   }
   
@@ -195,4 +202,4 @@ class ProfileCreate extends React.Component {
   }
 }
  
-export default ProfileCreate;
+export default ProfileForm;
