@@ -1,5 +1,80 @@
 .navbar {
     min-width: 350px;
+    height: 100vh;
+    background-color: white;
+    border-right: 1px solid rgba(198, 198, 198, 0.468);
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
+    overflow-y: scroll;
+}
+
+.navbar::-webkit-scrollbar { 
+    width: 0 !important 
+}
+
+.navbar-header {
+    width: 100%;
+    height: 50px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    border-bottom: 1px solid rgba(206, 206, 206, 0.468);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.profile-btn {
+    color: rgb(199, 199, 199);
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+}
+
+.matches {
+    width: 34px;
+    height: 34px;
+}
+
+
+.profile-btn:hover {
+    color: rgb(0, 0, 255);
+    cursor: pointer;
+}
+
+.match-chat-container {
+    height: 80px;
+    border-bottom: 1px solid rgba(206, 206, 206, 0.324);
+    transition: height 0.3s ease-in-out;
+}
+
+.smooth {
+    height: 350px;
+}
+
+.match-chat {
+    width: 100%;
+    height: 80px;
+    border-bottom: 1px solid rgba(206, 206, 206, 0.324);
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    font-family: sans-serif;
+    color: gray;
+    justify-content: space-between;
+    cursor: default;
     position: relative;
-    background-color: blue;
+}
+
+.chevron {
+    width: 25px;
+    height: 25px;
+    color: rgb(177, 177, 177);
+}
+
+.chevron:hover{
+    color: rgb(0, 0, 255);
+    cursor: pointer;
 }

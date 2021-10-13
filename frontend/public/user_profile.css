@@ -1,24 +1,30 @@
 .user-profile {
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 
 .profile-container {
     width: 100%;
-    min-height: 1200px;
-    background-color: rgba(248, 246, 246, 0.201);
+    height: 100vh;
     padding: 80px 100px;
     padding-bottom: 300px;
     position: relative;
     display: flex;
     justify-content: center;
     min-width: 700px;
+    overflow-y: scroll;
+    
+}
+
+.profile-container::-webkit-scrollbar { 
+    width: 0 !important 
 }
 
 .profile-info-container {
     width: 100%;
     position: relative;
-    min-height: 700px;
+    min-height: 1200px;
     max-width: 700px;
     background-color: rgb(220, 220, 220);
     border-radius: 5px;
@@ -39,10 +45,12 @@
     margin-bottom: 25px;
     padding-top: 20px;
     padding-left: 30px;
+    border-left: 5px solid rgb(0, 0, 255);
 }
 
 .flex-column {
     display: flex;
+    justify-content: space-between;
 }
 
 .info-box header {
@@ -60,6 +68,10 @@
     margin-top: 30px;
     margin-bottom: 30px;
     cursor: default;
+}
+
+.info-box .sub-box {
+    margin-bottom: 20px;
 }
 
 .profile-info-container h1 {
@@ -123,4 +135,53 @@
     color: rgb(126, 126, 126);
 }
 
+.job-history-title {
+    font-family: sans-serif;
+    font-size: 18px;
+    color: rgb(97, 97, 97);
+    padding-left: 40px;
+    margin-top: 25px;
+}
 
+.job-history-role {
+    font-family: sans-serif;
+    font-size: 16px;
+    color: rgb(159, 159, 159);
+    padding-left: 60px;
+    margin-top: 10px;
+}
+
+.job-history-dates {
+    font-family: sans-serif;
+    font-size: 13px;
+    color: rgb(196, 196, 196);
+    padding-left: 75px;
+    margin-top: 5px;
+}
+
+.job-dates-icon {
+    margin-right: 5px;
+    width: 12px;
+    height: 12px;
+}
+
+.location {
+    font-size: 18px;
+    padding-left: 40px;
+    padding-top: 10px;
+    color: rgb(97, 97, 97);
+}
+
+.relocate {
+    margin-right: 40px;
+    padding-top: 10px;
+    text-align: right;
+    font-family: sans-serif;
+    color: rgb(97, 97, 97);
+}
+
+.relocate p {
+    color: rgb(167, 167, 167);
+    margin-top: 10px;
+    padding-right: 20px;
+}
