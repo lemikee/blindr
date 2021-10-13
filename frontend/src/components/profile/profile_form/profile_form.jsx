@@ -50,12 +50,12 @@ class ProfileForm extends React.Component {
       skills: this.state.skills,
       location: this.state.location,
       canRelocate: this.state.relocate,
+      id: this.props.userId
     }
   )
   
   handleSubmit(e) {
     e.preventDefault();
-
     this.props.updateProfile(this.filterState());
   }
   
