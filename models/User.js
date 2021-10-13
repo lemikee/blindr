@@ -26,13 +26,13 @@ const UserSchema = new Schema({
     required: true,
   },
   jobHistory: {
-    type: Object,
-    default: {},
+    type: Array,
+    default: [],
     required: true,
   },
   education: {
-    type: Object,
-    default: {},
+    type: Array,
+    default: [],
     required: true,
   },
   location: {

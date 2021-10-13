@@ -5,7 +5,7 @@ const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
 const validateRegisterInput = require("../../validation/registerUser");
-const validateUpdateProfileInput = require("../../validation/updateProfile");
+const validateUpdateProfileInput = require("../../validation/updateUserProfile");
 const validateLoginInput = require("../../validation/login");
 
 router.get("/test", (req, res) => {
