@@ -1,9 +1,14 @@
 import React from 'react';
+// sub forms
 import ProfileEducationForm from './profile_education_form';
 import ProfileJobHistoryForm from './profile_job_history_form';
 import ProfileSkillsForm from './profile_skills_form';
+// to display the current items
+import ProfileFormSkill from './profile_form_skill';
+import ProfileFormEducation from './profile_form_education';
+import ProfileFormJobHistory from './profile_form_job_history';
 
-class ProfileCreate extends React.Component {
+class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {  
@@ -16,7 +21,9 @@ class ProfileCreate extends React.Component {
       relocate: false,
       // for ui elements
       showEducationForm: false,
+      eduFormIdx: -1,
       showJobHistoryForm: false,
+      jobFormIdx: -1,
       showSkillsForm: false
     }
     
@@ -24,39 +31,8 @@ class ProfileCreate extends React.Component {
     this.handleLocationChanged = this.handleLocationChanged.bind(this);
   }
   
-  
-  removeEducationForm = () => {
-    this.setState({showEducationForm: false});
-  }
-  
-  removeJobHistoryForm = () => {
-    this.setState({showJobHistoryForm: false});
-  }
-  
-  removeSkillsForm = () => {
-    this.setState({showSkillsForm : false});
-  }
-
 
   
-  addEducation = education => {
-    const newEducation = [...this.state.education];
-    newEducation.push(education);
-    this.setState({education: newEducation}, () => this.removeEducationForm());
-  }
-  
-  addJobHistory = jobHistory => {
-    const newJobHistory = [...this.state.jobHistory];
-    newJobHistory.push(jobHistory);
-    this.setState({jobHistory: newJobHistory}, () => this.removeJobHistoryForm());
-  }
-  
-  addSkill = skill => {
-    const newSkills = [...this.state.skills];
-    newSkills.push(skill);
-    this.setState({skills: newSkills}, () => this.removeSkillsForm());
-  }
-
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value });
   }
@@ -69,23 +45,132 @@ class ProfileCreate extends React.Component {
     e.preventDefault();
     console.log('create profile submitted');
   }
-
-
-  educationForm = () => (
-    this.state.showEducationForm ?
+  
+  // HANDLE EDUCATION
+  educationForm = () => {
+    const idx = this.state.eduFormIdx;
+    let education;
+    let action;
+    if (idx > -1) {
+      education = this.state.education[idx];
+      action = 'edit';
+    } else {
+      education = {institute: "", from: "", to: "", field: ""};
+      action = 'create';
+    }
+    return this.state.showEducationForm ?
       <ProfileEducationForm 
         removeEducationForm={this.removeEducationForm}
-        addEducation={this.addEducation}/> :
+        addEducation={this.addEducation}
+        editEducation={this.editEducation}
+        edu={education}
+        idx={idx}
+        action={action}/> :
       <div></div>
-  )
+  }
+
+  displayEducation = () => {
+    return this.state.education.map((edu, idx) => (
+      <ProfileFormEducation 
+        edu={edu}
+        key={idx}
+        idx={idx}
+        deleteEducation={this.deleteEducation}
+        showEditEducationForm={this.showEditEducationForm}
+      />
+    ));
+  }
   
-  jobHistoryForm = () => (
-    this.state.showJobHistoryForm ?
-    <ProfileJobHistoryForm
-      removeJobHistoryForm={this.removeJobHistoryForm}
-      addJobHistory={this.addJobHistory}/> :
-      <div></div>
-  )
+  addEducation = education => {
+    const newEducation = [...this.state.education];
+    newEducation.push(education);
+    this.setState({education: newEducation}, () => this.removeEducationForm());
+  }
+
+  deleteEducation = idx => {
+    let newEducation = [...this.state.education];
+    newEducation.splice(idx, 1);
+    this.setState({education: newEducation});
+  }
+  
+  editEducation = (idx, edu) => {
+    let newEducation = [...this.state.education];
+    newEducation[idx] = edu;
+    this.setState({education: newEducation, eduFormIdx: -1});
+  }
+
+  showEditEducationForm = idx => {
+    this.setState({eduFormIdx: idx, showEducationForm: true});
+  }
+  
+  removeEducationForm = () => {
+    this.setState({showEducationForm: false, eduFormIdx: -1});
+  }
+  
+  // HANDLE JOB HISTORY
+
+  jobHistoryForm = () => {
+    const idx = this.state.jobFormIdx;
+    let jobHistory;
+    let action;
+    if (idx > -1) {
+      jobHistory = this.state.jobHistory[idx];
+      action = 'edit';
+    } else {
+      jobHistory = {company: "", from: "", to: "", role: ""};
+      action = 'create';
+    }
+    return this.state.showJobHistoryForm ?
+      <ProfileJobHistoryForm
+        removeJobHistoryForm={this.removeJobHistoryForm}
+        addJobHistory={this.addJobHistory}
+        editJobHistory={this.editJobHistory}
+        job={jobHistory}
+        idx={idx}
+        action={action}/> :
+        <div></div>
+  }
+  
+  displayJobHistory = () => {
+    return this.state.jobHistory.map((job, idx) => (
+      <ProfileFormJobHistory 
+        job={job}
+        key={idx}
+        idx={idx}
+        deleteJob={this.deleteJob}
+        showEditJobHistoryForm={this.showEditJobHistoryForm}
+      />
+    ));
+  }
+  
+  addJobHistory = jobHistory => {
+    const newJobHistory = [...this.state.jobHistory];
+    newJobHistory.push(jobHistory);
+    this.setState({jobHistory: newJobHistory}, () => this.removeJobHistoryForm());
+  }
+
+  deleteJob = idx => {
+    let newJobs = [...this.state.jobHistory];
+    newJobs.splice(idx, 1);
+    this.setState({jobHistory: newJobs});
+  }
+
+  editJobHistory = (idx, job) => {
+    let newJobs = [...this.state.jobHistory];
+    newJobs[idx] = job;
+    this.setState({jobHistory: newJobs, jobFormIdx: -1});
+  }
+
+  showEditJobHistoryForm = idx => {
+    this.setState({jobFormIdx: idx, showJobHistoryForm: true});
+
+  }
+
+  removeJobHistoryForm = () => {
+    this.setState({showJobHistoryForm: false, jobFormIdx: -1});
+  }
+
+  // HANDLE SKILLS
   
   skillsForm = () => (
     this.state.showSkillsForm ?
@@ -95,35 +180,35 @@ class ProfileCreate extends React.Component {
       skills={this.state.skills}/> :
       <div></div>
   )
-
-  displayEducation = () => {
-    return this.state.education.map(item => (
-      <div className="completed-display">
-        <li>Institute: {item.institute}</li>
-        <li>From: {item.from}</li>
-        <li>To: {item.to}</li>
-        <li>Field of Study: {item.field}</li>
-      </div>
-    ));
-  }
   
-  displayJobHistory = () => {
-    return this.state.jobHistory.map(item => (
-      <div>
-        <li>Company: {item.company}</li>
-        <li>From: {item.from}</li>
-        <li>To: {item.to}</li>
-        <li>Role: {item.role}</li>
-      </div>
-    ));
-  }
   
   displaySkills = () => {
-    return this.state.skills.map(skill => (
-      <li>{skill}</li>
+    return this.state.skills.map((skill, idx) => (
+      <ProfileFormSkill 
+        skill={skill}
+        key={idx}
+        idx={idx}
+        deleteSkill={this.deleteSkill}
+      /> 
     ))
   }
   
+  addSkill = skill => {
+    const newSkills = [...this.state.skills];
+    newSkills.push(skill);
+    this.setState({skills: newSkills}, () => this.removeSkillsForm());
+  }
+
+  deleteSkill = idx => {
+    let newSkills = [...this.state.skills];
+    newSkills.splice(idx, 1);
+    this.setState({skills: newSkills});
+  }
+
+  removeSkillsForm = () => {
+    this.setState({showSkillsForm : false});
+  }
+
   render() { 
 
     return (  
@@ -195,4 +280,4 @@ class ProfileCreate extends React.Component {
   }
 }
  
-export default ProfileCreate;
+export default ProfileForm;

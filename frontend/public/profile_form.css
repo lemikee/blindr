@@ -29,4 +29,10 @@
 
 .completed-display {
   margin: 5px;
+  display: flex;
 }
+
+.editable-display {
+  display: flex;
+}
+
