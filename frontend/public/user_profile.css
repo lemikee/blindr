@@ -1,0 +1,126 @@
+.user-profile {
+    display: flex;
+    flex-direction: row;
+}
+
+.profile-container {
+    width: 100%;
+    min-height: 1200px;
+    background-color: rgba(248, 246, 246, 0.201);
+    padding: 80px 100px;
+    padding-bottom: 300px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    min-width: 700px;
+}
+
+.profile-info-container {
+    width: 100%;
+    position: relative;
+    min-height: 700px;
+    max-width: 700px;
+    background-color: rgb(220, 220, 220);
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13);
+    padding: 60px 60px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-box {
+    width: 100%;
+    min-height: 80px;
+    background-color: white;
+    border-radius: 5px;
+    margin-bottom: 25px;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.flex-column {
+    display: flex;
+}
+
+.info-box header {
+    font-family: sans-serif;
+    font-size: 25px;
+    color: rgb(82, 82, 82);
+    cursor: default;
+}
+
+.info-box p {
+    color: gray;
+    font-family: sans-serif;
+    font-size: 15px;
+    padding-left: 30px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    cursor: default;
+}
+
+.profile-info-container h1 {
+    font-family: sans-serif;
+    font-size: 40px;
+    color: rgb(82, 82, 82);
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: default;
+}
+
+.edit-btn {
+    color: gray;
+    width: 35px;
+    height: 35px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.edit-btn:hover {
+    color: rgb(0, 0, 255);
+}
+
+.skills-container {
+    display: flex;
+    margin: 20px 0;
+    padding-left: 30px;
+    max-width: 550px;
+    flex-wrap: wrap;
+}
+
+.skill {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+    height: 30px;
+    background: white;
+    border: 2px solid rgb(150, 150, 150);
+    position: relative;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    padding: 0 10px;
+    border-radius: 15px;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: rgb(118, 118, 118);
+    cursor: default;
+}
+
+.close {
+    color: rgb(196, 196, 196);
+    border: none;
+    background-color: white;
+}
+
+.close:hover {
+    cursor: pointer;
+    color: rgb(126, 126, 126);
+}
+
+
