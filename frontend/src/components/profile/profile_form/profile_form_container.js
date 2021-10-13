@@ -6,7 +6,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-
+  updateProfile: data => dispatch()
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);

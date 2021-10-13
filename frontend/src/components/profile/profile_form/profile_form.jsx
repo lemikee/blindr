@@ -40,11 +40,23 @@ class ProfileForm extends React.Component {
   handleLocationChanged(e) {
     this.setState( {location: e.target.value});
   }
-
+  
+  filterState = () => (
+    {
+      firstName: this.state.firstName,
+      lastName: this.state.lastName,
+      education: this.state.education,
+      jobHistory: this.state.jobHistory,
+      skills: this.state.skills,
+      location: this.state.location,
+      canRelocate: this.state.relocate,
+    }
+  )
+  
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
-    console.log('create profile submitted');
+
+    this.props.updateProfile(this.filterState());
   }
   
   // HANDLE EDUCATION
@@ -255,8 +267,11 @@ class ProfileForm extends React.Component {
             <div className="create-form-section">
               <h2>Location</h2>
               <label>Which location is closest to you?
-                <select value={this.state.location} onChange={this.handleLocationChanged}>
-                  <option selected value="">Select a location</option>
+                <select 
+                  value={this.state.location} 
+                  onChange={this.handleLocationChanged}
+                  value="Select a location">
+                  {/* <option selected value="">Select a location</option> */}
                   <option value="San Francisco">San Francisco</option>
                   <option value="Los Angeles">Los Angeles</option>
                   <option value="Austin">Austin</option>
