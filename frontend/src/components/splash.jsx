@@ -18,7 +18,7 @@ const mapDispatchToProps = dispatch => ({
 const SplashPage = (props) => {
 
     return (
-        <div>
+        <div className='splash'>
             <ModalContainer />
             <div className='splash-nav'>
                 <div className='test'>Blindr === Tinder 4 Jobs</div>

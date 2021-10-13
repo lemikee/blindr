@@ -20,6 +20,7 @@ const App = () => (
             <Route exact path="/" component={SplashContainer} />
             <Route exact path="/recs" component={RecsContainer} />
             <Route exact path="/profile/create" component={ProfileCreateContainer} />
+            <Route exact path='/profile' component={ProfileContainer} />
             <Redirect to="/recs" />
         </Switch>
     </div>

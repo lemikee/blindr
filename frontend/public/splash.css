@@ -215,3 +215,7 @@ table {
     border-color: rgb(1, 1, 171);
 }
 
+.splash {
+    height: 1200px;
+    background-color: rgba(201, 201, 201, 0.201);
+}
