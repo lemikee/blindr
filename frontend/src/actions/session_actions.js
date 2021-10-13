@@ -7,7 +7,7 @@ export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_USER_SIGN_IN = "RECEIVE_USER_SIGN_IN";
 export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
-export const receiveCurrentUser = user => ({
+export const receiveCurrentUser = ({ user }) => ({
     type: RECEIVE_CURRENT_USER,
     user
 });
@@ -32,9 +32,9 @@ export const logoutUser = () => ({
 });
 
 export const signup = (user, history) => dispatch => (
-    APIUtil.signup(user).then(() => {
+    APIUtil.signup(user).then( payload => {
         history.push('/profile/create');
-        return dispatch(receiveCurrentUser(user))
+        return dispatch(receiveCurrentUser(payload.data))
     }, err => (
         dispatch(receiveErrors(err.response.data))
     ))
