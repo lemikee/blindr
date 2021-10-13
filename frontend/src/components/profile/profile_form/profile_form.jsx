@@ -43,6 +43,7 @@ class ProfileForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state);
     console.log('create profile submitted');
   }
   
