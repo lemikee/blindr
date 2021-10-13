@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
 const validateRegisterInput = require("../../validation/registerEmployer");
+const validateUpdateProfileInput = require("../../validation/updateEmployerProfile")
 const validateLoginInput = require("../../validation/login");
 
 router.get("/test", (req, res) => {
@@ -34,13 +35,8 @@ router.post("/register", (req, res) => {
       } else {
         // otherwise create the Employer and save it
         const newEmployer = new Employer({
-          firstName: req.body.firstName,
-          lastName: req.body.lastName,
           email: req.body.email,
           password: req.body.password,
-          company: req.body.company,
-          industry: req.body.industry,
-          size: req.body.size,
         });
 
         bcrypt.genSalt(10, (err, salt) => {
@@ -58,6 +54,30 @@ router.post("/register", (req, res) => {
       }
     });
 });
+
+router.patch("/updateProfile/:employerId", (req, res) => {
+
+  //check inputs are valid (i.e. not default value && not empty)
+  const { errors, isValid } = validateUpdateProfileInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  Employer.updateOne(
+    { id: req.body.id },
+    { $set: {
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      company: req.body.company,
+      industry: req.body.industry,
+      size: req.body.size
+      }
+    })
+    .then(payload => console.log(payload))
+    .catch(error => console.log(error));
+
+})
 
 router.post("/login", (req, res) => {
   const email = req.body.email; // extract email and password

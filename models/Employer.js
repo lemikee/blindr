@@ -4,10 +4,12 @@ const Schema = mongoose.Schema;
 const EmployerSchema = new Schema({
   firstName: {
     type: String,
+    default: "!@#$%^&*()",
     required: true,
   },
   lastName: {
     type: String,
+    default: "!@#$%^&*()",
     required: true,
   },
   email: {
@@ -20,14 +22,17 @@ const EmployerSchema = new Schema({
   },
   company: {
     type: String,
+    default: "!@#$%^&*()",
     required: true,
   },
   industry: {
     type: String,
+    default: "!@#$%^&*()",
     required: true,
   },
   size: {
     type: String,
+    default: "!@#$%^&*()",
     required: true,
   },
   date: {

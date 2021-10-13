@@ -1,7 +1,5 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
-const validObject = require("./valid-object");
-const validArray = require("./valid-array");
 
 module.exports = function validateRegisterInput(data) {
   console.log(data);
