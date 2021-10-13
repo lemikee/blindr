@@ -65,7 +65,7 @@ router.patch("/updateProfile/:employerId", (req, res) => {
   }
 
   Employer.updateOne(
-    { id: req.body.id },
+    { id: req.body.id }, // ! This may need to change to params instead of boy
     { $set: {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
@@ -125,9 +125,6 @@ router.post("/login", (req, res) => {
         }
       });
     });
-});
-
-router.post("/findMatches", (req, res) => {
 });
 
 module.exports = router;

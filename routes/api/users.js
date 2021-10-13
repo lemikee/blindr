@@ -1,12 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const User = require("../../models/User");
+const Job = require("../../models/Job");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
 const validateRegisterInput = require("../../validation/registerUser");
 const validateUpdateProfileInput = require("../../validation/updateUserProfile");
 const validateLoginInput = require("../../validation/login");
+const skillsOverlap = require("../../cardmatch/skillsOverlap");
 
 router.get("/test", (req, res) => {
   // this is one route
@@ -126,6 +128,31 @@ router.post("/login", (req, res) => {
         }
       });
     });
+});
+
+router.post("/findMatches", (req, res) => {
+
+  User.findOne({ id: req.body.id })
+    .then( (user) => {
+      if (!user) {
+        return res.status(404).json({ user: "This user does not exist" });
+      } else {
+        let matches = {};
+        let userSkillsArr = user.skills;
+
+        let jobs = Job.find({})
+
+        jobs.forEach( job => {
+          let jobData = tojson(job);
+          if (skillsOverlap(userSkillsArr, jobData.skills)) {
+            matches[jobData.id] = jobData
+          }
+        })
+
+        return res.json(matches);
+      }
+    })
+
 });
 
 module.exports = router;
