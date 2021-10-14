@@ -2,19 +2,19 @@
     display: flex;
     flex-direction: row;
     height: 100vh;
+    
 }
 
 .profile-container {
     width: 100%;
-    height: 100vh;
     padding: 80px 100px;
     padding-bottom: 300px;
-    position: relative;
     display: flex;
     justify-content: center;
     min-width: 700px;
     overflow-y: scroll;
-    
+    position: relative;
+    margin-left: 350px;
 }
 
 .profile-container::-webkit-scrollbar { 
