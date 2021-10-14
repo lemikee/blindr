@@ -9,7 +9,7 @@ function ChatScreen(props) {
   let defaultMessages;
 
   // if localStorage does not have key messages, set it to a default value
-  if (!localStorage.messages)  {
+  if (!localStorage.messages) {
     defaultMessages = [
       {
         name: "Josh", // grab from db
@@ -38,9 +38,7 @@ function ChatScreen(props) {
     // console.log("DNE")
   }
 
-  const [messages, setMessages] = useState(
-    JSON.parse(localStorage.messages)
-  );
+  const [messages, setMessages] = useState(JSON.parse(localStorage.messages));
 
   useEffect(() => {
     // uses localStorage for persistant messages upon refresh
@@ -53,13 +51,13 @@ function ChatScreen(props) {
     }
   });
 
-    const handleSend = (e) => {
-        e.preventDefault();
-        if (input !== ''){
-            setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
-            setInput(""); // clears input field
-        }
-    };
+  const handleSend = (e) => {
+    e.preventDefault();
+    if (input !== "") {
+      setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
+      setInput(""); // clears input field
+    }
+  };
 
   return (
     <div className="chat-container">
@@ -96,14 +94,10 @@ function ChatScreen(props) {
           Send
         </button>
       </form>
-
-      {/* <div>{dataParentToChild}</div> */}
     </div>
   );
 }
 
 export default ChatScreen;
-
-
 
 // testing

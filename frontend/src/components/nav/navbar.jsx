@@ -4,7 +4,7 @@ import MatchChat from "./match_chat";
 import Chat from "./chat"
 
 export default function NavBar(props) {
-  const [chats, setChats] = useState(["Facebook", "Yahoo", "Google", "Test"]);
+  const [chats, setChats] = useState(["Facebook", "Yahoo", "Google"]);
 
   return (
     <div className="navbar">
@@ -17,9 +17,9 @@ export default function NavBar(props) {
           return <MatchChat company={chat} />;
         })}
       </div>
-      <div>
+      {/* <div>
         <Chat dataParentToChild={chats} />
-      </div>
+      </div> */}
     </div>
   );
 }
