@@ -19,7 +19,6 @@ import UserRecCards from './recs/user_rec_cards';
 
 const App = () => (
     <div className="app">
-        <NavBarContainer />
         <Switch>
             <Route exact path="/" component={SplashContainer} />
             <Route exact path="/recs" component={RecsContainer} />
