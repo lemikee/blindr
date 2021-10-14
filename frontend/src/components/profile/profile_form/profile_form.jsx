@@ -52,13 +52,12 @@ class ProfileForm extends React.Component {
       skills: this.state.skills,
       location: this.state.location,
       canRelocate: this.state.relocate,
+      id: this.props.userId
     }
   )
   
   handleSubmit(e) {
     e.preventDefault();
-    this.state.email = this.props.currentUser.email;
-    console.log("submitting");
     this.props.updateProfile(this.filterState());
   }
   
@@ -220,81 +219,81 @@ class ProfileForm extends React.Component {
     newSkills.splice(idx, 1);
     this.setState({skills: newSkills});
   }
-
+  
   removeSkillsForm = () => {
     this.setState({showSkillsForm : false});
   }
-
+  
   render() { 
 
     return (  
-      <div className="profile-create-page">
-        <div className="profile-create-container">
-          <h1>Create your profile!</h1>
-          <div onSubmit={this.handleSubmit}>
-            <div className="create-form-section">
-              <h2>Basic Information</h2>
-              <label>First Name:
-                <input type="text"
-                  value={this.state.firstName}
-                  onChange={this.update('firstName')}
-                  placeholder="First Name"
-                />
-              </label>
-              <label>Last Name:
-                <input type="text"
-                  value={this.state.lastName}
-                  onChange={this.update('lastName')}
-                  placeholder="Last Name"
-                />
-              </label>
-            </div>
-            <div className="create-form-section">
-              <h2>Education</h2>
-              { this.displayEducation()}
-              { this.educationForm()}
-              <button onClick={() => this.setState({showEducationForm: true})}>Add Education</button>
-            </div>
-            <div className="create-form-section">
-              <h2>Work History</h2>
-              { this.displayJobHistory()}
-              { this.jobHistoryForm()}
-              <button onClick={() => this.setState({showJobHistoryForm: true})}>Add Work Experience</button>
-            </div>
-            <div className="create-form-section">
-              <h2>Skills</h2>
-              { this.displaySkills()}
-              { this.skillsForm()}
-              <button onClick={() => this.setState({showSkillsForm: true})}>Add Skill</button>
-            </div>
-            <div className="create-form-section">
-              <h2>Location</h2>
-              <label>Which location is closest to you?
-                <select 
-                  value={this.state.location} 
-                  onChange={this.handleLocationChanged}
-                  value="Select a location">
-                  {/* <option selected value="">Select a location</option> */}
-                  <option value="San Francisco">San Francisco</option>
-                  <option value="Los Angeles">Los Angeles</option>
-                  <option value="Austin">Austin</option>
-                  <option value="New York">New York</option>
-                </select>
-              </label>
-              <label>Willing to relocate?
-                <input type="checkbox"
-                  checked={this.state.relocate}
-                  onChange={() => this.setState({relocate: !this.state.relocate})}
-                 />
-              </label>
-            </div>
-          
-  
-            <button onClick={this.handleSubmit}>Submit!</button>
-          </div>
-        </div>
         
+      <div className="profile-create-container">
+        <h1>Create your profile!</h1>
+        <div onSubmit={this.handleSubmit}>
+          <div className="create-form-section">
+            <h2>Basic Information</h2>
+            <label>First Name:
+              <input type="text"
+                value={this.state.firstName}
+                onChange={this.update('firstName')}
+                placeholder="First Name"
+              />
+            </label>
+            <label>Last Name:
+              <input type="text"
+                value={this.state.lastName}
+                onChange={this.update('lastName')}
+                placeholder="Last Name"
+              />
+            </label>
+          </div>
+          <div className="create-form-section">
+            <h2>Education</h2>
+            { this.displayEducation()}
+            { this.educationForm()}
+            <button onClick={() => this.setState({showEducationForm: true})}>Add Education</button>
+          </div>
+          <div className="create-form-section">
+            <h2>Work History</h2>
+            { this.displayJobHistory()}
+            { this.jobHistoryForm()}
+            <button onClick={() => this.setState({showJobHistoryForm: true})}>Add Work Experience</button>
+          </div>
+          <div className="create-form-section">
+            <h2>Skills</h2>
+            { this.displaySkills()}
+            { this.skillsForm()}
+            <button onClick={() => this.setState({showSkillsForm: true})}>Add Skill</button>
+          </div>
+          <div className="create-form-section">
+            <h2>Location</h2>
+            <label>Which location is closest to you?
+              <select 
+                value={this.state.location} 
+                onChange={this.handleLocationChanged}
+                value="Select a location">
+                {/* <option selected value="">Select a location</option> */}
+                <option value="San Francisco">San Francisco</option>
+                <option value="Los Angeles">Los Angeles</option>
+                <option value="Austin">Austin</option>
+                <option value="New York">New York</option>
+              </select>
+            </label>
+            <label>Willing to relocate?
+              <input type="checkbox"
+                checked={this.state.relocate}
+                onChange={() => this.setState({relocate: !this.state.relocate})}
+                />
+            </label>
+          </div>
+        
+
+          <button onClick={this.handleSubmit}>Submit!</button>
+        </div>
       </div>
+        
+  
     );
   }
 }

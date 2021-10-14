@@ -1,0 +1,97 @@
+.chat-screen {
+    height: 220px;
+    width: 100%;
+    position: relative;
+    overflow-y: scroll;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: gray;
+    display: flex;
+    flex-direction: column;
+    padding-left: 22px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 15px;
+}
+
+.chat-screen p {
+    overflow-wrap: break-word;
+}
+
+.chat-screen::-webkit-scrollbar { 
+    width: 0 !important;
+}
+
+.chat-screen-input {
+    margin-left: 22px;
+    border: 1px solid gray;
+    background-color: white;
+    border-radius: 3px;
+    width: 250px;
+    height: 30px;
+}
+
+.chat-form {
+    display: flex;
+    height: 40px;
+}
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.chat-send-btn {
+    margin-left: 10px;
+    background-color: rgb(0, 0, 255);
+    border: none;
+    border-radius: 3px;
+    color: white;
+    font-family: sans-serif;
+    font-size: 12px;
+    height: 30px;
+    width: 50px;
+}
+
+.chat-send-btn:hover {
+    background-color: rgb(0, 0, 177);
+    cursor: pointer;
+}
+
+.chat-screen-message {
+  display: flex;
+  align-items: center;
+}
+
+.recruiter {
+    justify-content: flex-start;
+}
+
+.user {
+    justify-content: flex-end;
+}
+
+/* for recruiter - makes nice chat bubbles */
+.chat-screen-recruiter {
+  background-color: lightgray;
+  padding: 8px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  max-width: 240px;
+}
+
+/* for user - makes nice chat bubbles */
+.chat-screen-user {
+  background-color: rgb(0, 167, 223);
+  padding: 8px 12px;
+  border-radius: 20px;
+  color: white;
+  margin-bottom: 10px;
+  max-width: 240px;
+}
+
+.chat-messages {
+    display: flex;
+    flex-direction: column;
+}
