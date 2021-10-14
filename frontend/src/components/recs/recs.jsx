@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBarContainer from '../nav/navbar_container';
-import UserRecCards from './user_rec_cards';
+import UserRecCards from './rec_cards';
 
 class Recs extends React.Component {
   constructor(props) {

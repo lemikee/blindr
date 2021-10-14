@@ -6,66 +6,39 @@ function ChatScreen(props) {
   const [input, setInput] = useState("");
   const inputRef = useRef();
   const chatScreenRef = useRef();
+  let defaultMessages;
 
-  // sets default to localStorage messages or default value
-  let defaultMessages = JSON.parse(localStorage.messages) || [
-    {
-      name: "Josh", // grab from db
-      image:
-        "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
-      message: "Hey Joey, loved your MERN project! Let's connect!",
-    },
-    {
-      name: "Josh", // grab from db
-      image:
-        "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-      message: "Great styling!",
-    },
-    {
-      name: "Josh", // grab from db
-      image:
-        "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-      message: "Would you be free for a phone screening this week?",
-    },
-    {
-      message:
-        "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
-    },
-  ];
+  // if localStorage does not have key messages, set it to a default value
+  if (!localStorage.messages) {
+    defaultMessages = [
+      {
+        name: "Josh", // grab from db
+        image:
+          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
+        message: "Hey Joey, loved your MERN project! Let's connect!",
+      },
+      {
+        name: "Josh", // grab from db
+        image:
+          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
+        message: "Great styling!",
+      },
+      {
+        name: "Josh", // grab from db
+        image:
+          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
+        message: "Would you be free for a phone screening this week?",
+      },
+      {
+        message:
+          "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
+      },
+    ];
+    localStorage.messages = JSON.stringify(defaultMessages);
+    // console.log("DNE")
+  }
 
-  // sets messages in localStorage to default messsages on ln 11
-  localStorage.messages = JSON.stringify(defaultMessages);
-
-  const [messages, setMessages] = useState(
-    JSON.parse(localStorage.messages)
-    // ||
-    //   //each object is a seperate message
-    //   // messages from recruiters have name, image, message
-    //   // messages from user just have message, doesn't need name and image
-    //   [{
-    //     name: "Josh", // grab from db
-    //     image:
-    //       "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
-    //     message: "Hey Joey, loved your MERN project! Let's connect!",
-    //   },
-    //   {
-    //     name: "Josh", // grab from db
-    //     image:
-    //       "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-    //     message: "Great styling!",
-    //   },
-    //   {
-    //     name: "Josh", // grab from db
-    //     image:
-    //       "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-    //     message: "Would you be free for a phone screening this week?",
-    //   },
-    //   {
-    //     message:
-    //       "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
-    //   },
-    // ]
-  );
+  const [messages, setMessages] = useState(JSON.parse(localStorage.messages));
 
   useEffect(() => {
     // uses localStorage for persistant messages upon refresh
@@ -78,13 +51,13 @@ function ChatScreen(props) {
     }
   });
 
-    const handleSend = (e) => {
-        e.preventDefault();
-        if (input !== ''){
-            setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
-            setInput(""); // clears input field
-        }
-    };
+  const handleSend = (e) => {
+    e.preventDefault();
+    if (input !== "") {
+      setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
+      setInput(""); // clears input field
+    }
+  };
 
   return (
     <div className="chat-container">
@@ -126,7 +99,5 @@ function ChatScreen(props) {
 }
 
 export default ChatScreen;
-
-
 
 // testing

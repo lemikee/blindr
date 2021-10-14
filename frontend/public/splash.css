@@ -66,7 +66,7 @@ table {
 }
 
 .modal-back {
-    height: 1200px;
+    height: 100%;
     width: 100%;
     position: fixed;
     top: 0;
@@ -162,6 +162,11 @@ table {
     line-height: 18px;
 }
 
+.splash {
+  display: flex;
+  flex-direction: column;
+}
+
 .splash-nav {
     width: 100%;
     height: 60px;
@@ -172,6 +177,18 @@ table {
     justify-content: space-between;
     align-items: center;
     padding: 0 15px;
+}
+
+.logo {
+  margin-left: 40px;
+  padding: 5px;
+  padding-bottom: 0;
+  text-transform: uppercase;
+  font-family: 'proxima-nova', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color:rgb(0, 0, 255);
+  border: 3px solid rgb(0, 0, 255);
 }
 
 .splash-nav-btn {
@@ -218,4 +235,35 @@ table {
 .splash {
     height: 1200px;
     background-color: rgba(201, 201, 201, 0.201);
+}
+
+.hero-section {
+  position: absolute;
+  top: 60px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+.hero-image {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("./hero.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero-text {
+  color: white;
+  font-family: 'proxima-nova', sans-serif;
+  font-size: 120px;
+  font-weight: 700;
 }
