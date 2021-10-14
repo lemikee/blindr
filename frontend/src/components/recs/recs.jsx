@@ -10,6 +10,7 @@ class Recs extends React.Component {
   render() { 
     return (  
       <div className="recs">
+        <NavBarContainer />
         <UserRecCards />
       </div>
     );
