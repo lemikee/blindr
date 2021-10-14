@@ -30,6 +30,7 @@
     "mongoose": "^6.0.10",
     "passport": "^0.5.0",
     "passport-jwt": "^4.0.0",
+    "react-tinder-card": "^1.4.3",
     "validator": "^13.6.0"
   },
   "devDependencies": {
