@@ -24,11 +24,11 @@ const JobSchema = new Schema({
     required: true,
   },
   minComp: {
-    type: String,
+    type: Number,
     required: true,
   },
   maxComp: {
-    type: String,
+    type: Number,
     required: true,
   },
   date: {

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaUser, FaRegAddressCard } from "react-icons/fa";
 import MatchChat from "./match_chat";
+import { Link } from 'react-router-dom';
 import Chat from "./chat"
 
 export default function NavBar(props) {
@@ -9,8 +10,9 @@ export default function NavBar(props) {
   return (
     <div className="navbar">
       <div className="navbar-header">
-        <FaUser className="profile-btn" />
-        <FaRegAddressCard className="profile-btn matches" />
+        <Link to="/profile"><FaUser className="profile-btn" /></Link>
+        
+        <Link to="/recs"><FaRegAddressCard className="profile-btn matches" /></Link>
       </div>
       <div className="match-chats">
         {chats.map((chat) => {
