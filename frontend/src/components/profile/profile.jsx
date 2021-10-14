@@ -11,6 +11,12 @@ class Profile extends React.Component {
       relocate: true
     }
   }
+
+  componentDidMount() {
+    console.log(this.props.currentUser);
+    this.props.getProfile(this.props.currentUser.id)
+  }
+
   render() { 
     let skills = ['Archery', 'Flute', 'Ballet', 'Cooking', 'Jumping', 'Talking', 'Moving'];
     let job_history = {
