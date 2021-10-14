@@ -55,30 +55,32 @@ router.post("/register", (req, res) => {
     });
 });
 
-router.patch("/updateProfile/:userId", (req, res) => {
-  
+router.patch("/updateProfile", (req, res) => {
+
   // check inputs are valid (i.e. not default value && not empty)
   const { errors, isValid } = validateUpdateProfileInput(req.body);
   
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+  // if (!isValid) {
+  //   return res.status(400).json(errors);
+  // }
 
-  User.updateOne(
-    { id: req.body.id },
-    { $set: {
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      skills: req.body.skills,
-      jobHistory: req.body.jobHistory,
-      education: req.body.education,
-      location: req.body.location,
-      canRelocate: req.body.canRelocate,
-      completeProfile: true,
-      }
-    })
-    .then(payload => console.log(payload))
-    .catch(error => console.log(error))
+  // console.log("ALL PASSED")
+
+  // User.updateOne(
+  //   { email: req.body.email },
+  //   { $set: {
+  //       firstName: req.body.firstName,
+  //       lastName: req.body.lastName,
+  //       skills: req.body.skills,
+  //       jobHistory: req.body.jobHistory,
+  //       education: req.body.education,
+  //       location: req.body.location,
+  //       canRelocate: req.body.canRelocate,
+  //       completeProfile: true,
+  //     }
+  //   }
+  // ).then(payload => res.json({ success: "sucess"}))
+  // .catch(error => res.json({ error: "error"}))
 });
 
 router.post("/login", (req, res) => {
@@ -98,20 +100,23 @@ router.post("/login", (req, res) => {
         return res.status(404).json({ email: "This user does not exist." });
       }
 
+      console.log(user);
+
       // beyond the if statement, we do have a user, so let's check if pwd is the same
       bcrypt.compare(password, user.password).then((isMatch) => {
         if (isMatch) {
           const payload = {
             // payload we send back upon successful login
             id: user.id, // id will be from mongodb
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            skills: req.body.skills,
-            jobHistory: req.body.jobHistory,
-            education: req.body.education,
-            location: req.body.location,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
+            skills: user.skills,
+            jobHistory: user.jobHistory,
+            education: user.education,
+            location: user.location,
           };
+
           jwt.sign(
             payload,
             keys.secretOrKey,

@@ -5,42 +5,45 @@ const validArray = require("./valid-array");
 module.exports = function validateUpdateProfileInput(data) {
   let errors = {};
 
-  data.firstName = validText(data.firstName) ? data.firstName : "";
-  data.lastName = validText(data.lastName) ? data.lastName : "";
-  data.location = validText(data.location) ? data.location : "";
-  data.skills = validArray(data.skills) ? data.skills : [];
-  data.education = validArray(data.education) ? data.education : {};
-  data.jobHistory = validArray(data.jobHistory) ? data.jobHistory : {};
+  console.log(validText(data.lastName));
 
-  // firstName
-  if (Validator.isEmpty(data.firstName) || data.firstName === "!@#$%^&*()") {
-    errors.firstName = "First name is required.";
-  }
+  // data.lastName = validText(data.lastName) ? data.lastName : "";
+  // data.location = validText(data.location) ? data.location : "";
+  // data.skills = validArray(data.skills) ? data.skills : [];
+  // data.education = validArray(data.education) ? data.education : [];
+  // data.jobHistory = validArray(data.jobHistory) ? data.jobHistory : [];
 
-  // lastName
-  if (Validator.isEmpty(data.firstName) || data.lastName === "!@#$%^&*()") {
-    errors.lastName = "Last name is required.";
-  }
+  // // firstName
+  // if (Validator.isEmpty(data.firstName) || data.firstName === "!@#$%^&*()") {
+  //   errors.firstName = "First name is required.";
+  // }
 
-  // location
-  if (Validator.isEmpty(data.location) || data.location === "!@#$%^&*()") {
-    errors.location = "Location is required.";
-  }
+  // // lastName
+  // if (Validator.isEmpty(data.lastName) || data.lastName === "!@#$%^&*()") {
+  //   errors.lastName = "Last name is required.";
+  // }
 
-  // skills
-  if (data.skills.length === 0) {
-    errors.skills = "Please select your skills.";
-  }
+  // // location
+  // if (Validator.isEmpty(data.location) || data.location === "!@#$%^&*()") {
+  //   errors.location = "Location is required.";
+  // }
 
-  // education
-  if (data.education.length === 0) {
-    errors.education = "Education is required.";
-  }
+  // // skills
+  // if (data.skills.length === 0) {
+  //   errors.skills = "Please select your skills.";
+  // }
 
-  // jobHistory
-  if (data.jobHistory.length === 0) {
-    errors.jobHistory = "Job history is required.";
-  }
+  // // education
+  // if (data.education.length === 0) {
+  //   errors.education = "Education is required.";
+  // }
+
+  // // jobHistory
+  // if (data.jobHistory.length === 0) {
+  //   errors.jobHistory = "Job history is required.";
+  // }
+
+  // console.log(errors)
 
   return {
     errors,

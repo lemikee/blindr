@@ -11,7 +11,8 @@ import ProfileFormJobHistory from './profile_form_job_history';
 class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {  
+    this.state = {
+      email: this.props.currentUser.email,
       firstName: '',
       lastName: '',
       education: [],
@@ -43,6 +44,7 @@ class ProfileForm extends React.Component {
   
   filterState = () => (
     {
+      email: this.state.email,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       education: this.state.education,
@@ -55,7 +57,8 @@ class ProfileForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-
+    this.state.email = this.props.currentUser.email;
+    console.log("submitting");
     this.props.updateProfile(this.filterState());
   }
   

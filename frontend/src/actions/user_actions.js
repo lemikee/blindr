@@ -7,7 +7,7 @@ const receiveUserProfile = profile => ({
   profile
 });
 
-export const updateProfile = (userId, profile) => dispatch => (
-  UserApiUtil.patchProfile(userId, profile)
-    .then(payload => dispatch(receiveUserProfile(payload)))
+export const updateProfile = (profileData) => dispatch => (
+  UserApiUtil.patchProfile(profileData)
+    // .then(payload => dispatch(receiveUserProfile(payload)))
 )
