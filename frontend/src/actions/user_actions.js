@@ -1,4 +1,4 @@
-import * as APIUtil from '../util/session_api_util';
+import * as APIUtil from '../util/users_util';
 
 export const RECEIVE_USER_PROFILE = 'RECEIVE_USER_PROFILE';
 
@@ -7,9 +7,6 @@ const receiveUserProfile = profile => ({
   profile
 });
 
-export const updateProfile = (profile) => dispatch => (
-  APIUtil.updateProfile(profile)
-    .then(payload => {
-      // console.log(payload);
-      dispatch(receiveUserProfile(payload))})
+export const updateProfile = (userId, profileData) => dispatch => (
+  APIUtil.patchProfile(userId, profileData)
 )

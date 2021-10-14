@@ -110,10 +110,9 @@ router.post("/login", (req, res) => {
     });
 });
   
-router.patch("/updateProfile", (req, res) => {
-
-  // check inputs are valid (i.e. not default value && not empty)
-  const { errors, isValid } = validateUpdateProfileInput(req.body);
+router.patch("/updateProfile/:userId", (req, res) => {
+  console.log(req.body);
+  // const { errors, isValid } = validateUpdateProfileInput(req.body);
   
   // if (!isValid) {
   //   return res.status(400).json(errors);
