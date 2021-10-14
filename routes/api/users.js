@@ -66,7 +66,6 @@ router.post("/register", (req, res) => {
     });
 });
 
-
 router.post("/login", (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
   
@@ -111,30 +110,30 @@ router.post("/login", (req, res) => {
 });
   
 router.patch("/updateProfile/:userId", (req, res) => {
-  console.log(req.body);
-  // const { errors, isValid } = validateUpdateProfileInput(req.body);
-  
-  // if (!isValid) {
-  //   return res.status(400).json(errors);
-  // }
 
-  // console.log("ALL PASSED")
+  const { errors, isValid } = validateUpdateProfileInput(req.body);
 
-  // User.updateOne(
-  //   { email: req.body.email },
-  //   { $set: {
-  //       firstName: req.body.firstName,
-  //       lastName: req.body.lastName,
-  //       skills: req.body.skills,
-  //       jobHistory: req.body.jobHistory,
-  //       education: req.body.education,
-  //       location: req.body.location,
-  //       canRelocate: req.body.canRelocate,
-  //       completeProfile: true,
-  //     }
-  //   }
-  // ).then(payload => res.json({ success: "sucess"}))
-  // .catch(error => res.json({ error: "error"}))
+  if (!isValid) {
+    console.log(errors);
+    return res.status(400).json(errors);
+  }
+
+  User.findOneAndUpdate(
+    { email: req.body.email },
+    { $set: {
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        skills: req.body.skills,
+        jobHistory: req.body.jobHistory,
+        education: req.body.education,
+        location: req.body.location,
+        canRelocate: req.body.canRelocate,
+        completeProfile: true,
+      }},
+    { returnOriginal: false },
+  ).then( profile => {
+    return res.json({ profile })
+  })
 });
   
   router.post("/findMatches", (req, res) => {

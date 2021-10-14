@@ -44,6 +44,7 @@ class ProfileForm extends React.Component {
   
   filterState = () => (
     {
+      email: this.state.email,
       firstName: this.state.firstName,
       lastName: this.state.lastName,
       education: this.state.education,
@@ -56,7 +57,7 @@ class ProfileForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    console.log("Submitting Form");
+    this.state.email = this.props.currentUser.email;
     this.props.updateProfile( this.props.currentUser.id, this.filterState());
   }
   

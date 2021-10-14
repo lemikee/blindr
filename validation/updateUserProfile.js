@@ -41,7 +41,7 @@ module.exports = function validateUpdateProfileInput(data) {
   if (data.jobHistory.length === 0) {
     errors.jobHistory = "Job history is required.";
   }
-
+  
   return {
     errors,
     isValid: Object.keys(errors).length === 0,
