@@ -43,7 +43,7 @@ class Profile extends React.Component {
     };
     return (  
       <div className='user-profile'>
-        <NavBarContainer />
+        {/* <NavBarContainer /> */}
         <div className='profile-container'>
           <div className='profile-info-container'>
             <h1><span>Profile</span><FaEdit className='edit-btn'/></h1>
