@@ -21,7 +21,7 @@ const SplashPage = (props) => {
         <div className='splash'>
             <ModalContainer />
             <div className='splash-nav'>
-                <div className='test'>Blindr === Tinder 4 Jobs</div>
+                <div className='logo'>Blindr</div>
                 <div className='splash-btns'>
                     <button className={props.modalType === 'login'  ? 'splash-nav-btn-two clicked-two' : 'splash-nav-btn-two'} onClick={() => props.openModal('login')}>Log In</button>
                     <button className={props.modalType === 'signup' ? 'splash-nav-btn clicked' : 'splash-nav-btn '} onClick={() => props.openModal('signup')}>Sign Up</button>
@@ -30,6 +30,13 @@ const SplashPage = (props) => {
                     null}
                 </div>
             </div>
+            <div className="hero-section">
+              <div className="hero-image">
+                <h1 className="hero-text">Swipe to Get Hired!</h1>
+              </div>
+                
+            </div>
+
         </div>
     );
 }
