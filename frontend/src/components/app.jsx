@@ -14,12 +14,14 @@ import ProfileCreatePage from './profile/profile_create_page';
 import ProfileContainer from './profile/profile_container';
 import MatchesContainer from './matches/matches_container';
 
+import UserRecCards from './recs/user_rec_cards';
+
 const App = () => (
     <div>
         
         <Switch>
             <Route exact path="/" component={SplashContainer} />
-            <Route exact path="/recs" component={RecsContainer} />
+            <Route exact path="/recs" component={UserRecCards} />
             <Route exact path="/profile/create" component={ProfileCreatePage} />
             <Route exact path='/profile' component={ProfileContainer} />
             <Redirect to="/recs" />
