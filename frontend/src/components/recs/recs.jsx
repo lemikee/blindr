@@ -1,4 +1,6 @@
 import React from 'react';
+import NavBarContainer from '../nav/navbar_container';
+import UserRecCards from './user_rec_cards';
 
 class Recs extends React.Component {
   constructor(props) {
@@ -7,8 +9,8 @@ class Recs extends React.Component {
   }
   render() { 
     return (  
-      <div>
-        <h1>Recs</h1>
+      <div className="recs">
+        <UserRecCards />
       </div>
     );
   }

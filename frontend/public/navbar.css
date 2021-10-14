@@ -6,6 +6,7 @@
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.15);
     overflow-y: scroll;
     position: absolute;
+    z-index: 4;
 }
 
 .navbar::-webkit-scrollbar { 
