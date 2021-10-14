@@ -96,6 +96,8 @@ function ChatScreen(props) {
           Send
         </button>
       </form>
+
+      {/* <div>{dataParentToChild}</div> */}
     </div>
   );
 }

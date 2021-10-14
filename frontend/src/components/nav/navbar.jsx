@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { FaUser, FaRegAddressCard } from "react-icons/fa";
 import MatchChat from "./match_chat";
+import Chat from "./chat"
 
 export default function NavBar(props) {
   const [chats, setChats] = useState(["Facebook", "Yahoo", "Google", "Test"]);
@@ -15,6 +16,9 @@ export default function NavBar(props) {
         {chats.map((chat) => {
           return <MatchChat company={chat} />;
         })}
+      </div>
+      <div>
+        <Chat dataParentToChild={chats} />
       </div>
     </div>
   );
