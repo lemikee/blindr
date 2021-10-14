@@ -132,7 +132,18 @@ router.patch("/updateProfile/:userId", (req, res) => {
       }},
     { returnOriginal: false },
   ).then( profile => {
-    return res.json({ profile })
+    const payload = {
+      firstName: profile.firstName,
+      lastName: profile.lastName,
+      skills: profile.skills,
+      jobHistory: profile.jobHistory,
+      education: profile.education,
+      location: profile.location,
+      canRelocate: profile.canRelocate,
+      completeProfile: profile.completeProfile,
+    }
+
+    return res.json({ profile: payload })
   })
 });
   
