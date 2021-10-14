@@ -13,10 +13,8 @@ class Profile extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getProfile(
-      this.props.currentUser.id,
-      this.props.currentUser.email
-    )
+    console.log(this.props.currentUser);
+    this.props.getProfile(this.props.currentUser.id)
   }
 
   render() { 

@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getProfile: (userId, userEmail) => dispatch(getProfile(userId, userEmail)),
+  getProfile: (userId) => dispatch(getProfile(userId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

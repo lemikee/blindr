@@ -5,6 +5,7 @@ const Job = require("../../models/Job");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
+const ObjectId = require('mongodb').ObjectId; 
 const validateRegisterInput = require("../../validation/registerUser");
 const validateUpdateProfileInput = require("../../validation/updateUserProfile");
 const validateLoginInput = require("../../validation/login");
@@ -149,7 +150,22 @@ router.patch("/updateProfile/:userId", (req, res) => {
 
 router.get("/getProfile/:userId", (req, res) => {
 
-  User.findOne({email: req.body.email})
+  User.findOne({ _id: req.params.userId })
+    .then( profile => {
+      const payload = {
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        skills: profile.skills,
+        jobHistory: profile.jobHistory,
+        education: profile.education,
+        location: profile.location,
+        canRelocate: profile.canRelocate,
+        completeProfile: profile.completeProfile,
+      }
+  
+      return res.json({ profile: payload })
+    })
+
 });
 
   router.post("/findMatches", (req, res) => {
