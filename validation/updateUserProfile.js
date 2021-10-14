@@ -9,8 +9,8 @@ module.exports = function validateUpdateProfileInput(data) {
   data.lastName = validText(data.lastName) ? data.lastName : "";
   data.location = validText(data.location) ? data.location : "";
   data.skills = validArray(data.skills) ? data.skills : [];
-  data.education = validArray(data.education) ? data.education : {};
-  data.jobHistory = validArray(data.jobHistory) ? data.jobHistory : {};
+  data.education = validArray(data.education) ? data.education : [];
+  data.jobHistory = validArray(data.jobHistory) ? data.jobHistory : [];
 
   // firstName
   if (Validator.isEmpty(data.firstName) || data.firstName === "!@#$%^&*()") {
@@ -18,7 +18,7 @@ module.exports = function validateUpdateProfileInput(data) {
   }
 
   // lastName
-  if (Validator.isEmpty(data.firstName) || data.lastName === "!@#$%^&*()") {
+  if (Validator.isEmpty(data.lastName) || data.lastName === "!@#$%^&*()") {
     errors.lastName = "Last name is required.";
   }
 
@@ -41,7 +41,7 @@ module.exports = function validateUpdateProfileInput(data) {
   if (data.jobHistory.length === 0) {
     errors.jobHistory = "Job history is required.";
   }
-
+  
   return {
     errors,
     isValid: Object.keys(errors).length === 0,

@@ -3,11 +3,11 @@ import ProfileForm from "./profile_form";
 import { updateProfile } from "../../../actions/user_actions"
 
 const mapStateToProps = state => ({
-  userId: state.session.user.id
+  currentUser: state.session.user
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateProfile: data => dispatch(updateProfile(data))
+  updateProfile: (userId, profileData) => dispatch(updateProfile(userId, profileData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfileForm);
