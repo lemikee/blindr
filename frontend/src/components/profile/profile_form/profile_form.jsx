@@ -11,15 +11,16 @@ import ProfileFormJobHistory from './profile_form_job_history';
 class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
+    console.log(this.props.userInfo)
     this.state = {
       email: this.props.currentUser.email,
-      firstName: '',
-      lastName: '',
-      education: [],
-      jobHistory: [],
-      skills: [],
-      location: '',
-      relocate: false,
+      firstName: this.props.userInfo.firstName !== "!@#$%^&*()" ? this.props.userInfo.firstName : '',
+      lastName: this.props.userInfo.lastName !== "!@#$%^&*()" ? this.props.userInfo.lastName : '',
+      education: this.props.userInfo.education ? this.props.userInfo.education : [],
+      jobHistory: this.props.userInfo.jobHistory ? this.props.userInfo.jobHistory : [],
+      skills: this.props.userInfo.skills ? this.props.userInfo.skills : [],
+      location: this.props.userInfo.location !== "!@#$%^&*()" ? this.props.userInfo.location : '',
+      relocate: this.props.userInfo.canRelocate === true,
       // for ui elements
       showEducationForm: false,
       eduFormIdx: -1,
@@ -31,8 +32,10 @@ class ProfileForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLocationChanged = this.handleLocationChanged.bind(this);
   }
-  
 
+  componentDidMount() {
+    this.props.getProfile(this.props.currentUser.id)
+  }
   
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value });
