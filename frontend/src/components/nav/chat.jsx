@@ -7,7 +7,8 @@ function ChatScreen(props) {
   const inputRef = useRef();
   const chatScreenRef = useRef();
 
-  let defaultMessages = [
+  // sets default to localStorage messages or default value
+  let defaultMessages = JSON.parse(localStorage.messages) || [
     {
       name: "Josh", // grab from db
       image:
@@ -31,40 +32,43 @@ function ChatScreen(props) {
         "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
     },
   ];
+
+  // sets messages in localStorage to default messsages on ln 11
   localStorage.messages = JSON.stringify(defaultMessages);
 
   const [messages, setMessages] = useState(
-    JSON.parse(localStorage.messages) ||
-      //each object is a seperate message
-      // messages from recruiters have name, image, message
-      // messages from user just have message, doesn't need name and image
-      [{
-        name: "Josh", // grab from db
-        image:
-          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
-        message: "Hey Joey, loved your MERN project! Let's connect!",
-      },
-      {
-        name: "Josh", // grab from db
-        image:
-          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-        message: "Great styling!",
-      },
-      {
-        name: "Josh", // grab from db
-        image:
-          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-        message: "Would you be free for a phone screening this week?",
-      },
-      {
-        message:
-          "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
-      },
-    ]
+    JSON.parse(localStorage.messages)
+    // ||
+    //   //each object is a seperate message
+    //   // messages from recruiters have name, image, message
+    //   // messages from user just have message, doesn't need name and image
+    //   [{
+    //     name: "Josh", // grab from db
+    //     image:
+    //       "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
+    //     message: "Hey Joey, loved your MERN project! Let's connect!",
+    //   },
+    //   {
+    //     name: "Josh", // grab from db
+    //     image:
+    //       "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
+    //     message: "Great styling!",
+    //   },
+    //   {
+    //     name: "Josh", // grab from db
+    //     image:
+    //       "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
+    //     message: "Would you be free for a phone screening this week?",
+    //   },
+    //   {
+    //     message:
+    //       "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
+    //   },
+    // ]
   );
 
   useEffect(() => {
-    //window.scrollTo(0, document.body.scrollHeight);
+    // uses localStorage for persistant messages upon refresh
     localStorage.messages = JSON.stringify(messages);
     if (props.dropdown) {
       let number =
