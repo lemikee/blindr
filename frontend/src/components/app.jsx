@@ -15,7 +15,7 @@ import ProfileContainer from './profile/profile_container';
 import MatchesContainer from './matches/matches_container';
 
 import RecsContainer from './recs/recs_container';
-import UserRecCards from './recs/user_rec_cards';
+import UserRecCards from './recs/rec_cards';
 
 const App = () => (
     <div className="app">
