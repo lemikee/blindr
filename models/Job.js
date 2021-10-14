@@ -23,8 +23,12 @@ const JobSchema = new Schema({
     default: [],
     required: true,
   },
-  comp: {
-    type: String,
+  minComp: {
+    type: Number,
+    required: true,
+  },
+  maxComp: {
+    type: Number,
     required: true,
   },
   date: {
