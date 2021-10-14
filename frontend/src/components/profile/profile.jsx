@@ -7,13 +7,17 @@ class Profile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { 
-      location: 'San Francisco',
-      relocate: true
+      firstName: this.props.userInfo.firstName,
+      lastName: this.props.userInfo.lastName,
+      skills: this.props.userInfo.skills ? this.props.userInfo.skills : [],
+      education: this.props.userInfo.education ? this.props.userInfo.education : [],
+      jobHistory: this.props.userInfo.jobHistory ? this.props.userInfo.jobHistory : [],
+      location: this.props.userInfo.location,
+      relocate: this.props.userInfo.canRelocate
     }
   }
 
   componentDidMount() {
-    console.log(this.props.currentUser);
     this.props.getProfile(this.props.currentUser.id)
   }
 
@@ -56,13 +60,13 @@ class Profile extends React.Component {
             <div className='profile-info'>
               <div className='info-box'>
                 <header>Name</header>
-                <p>Joseph Fernandez</p>
+                <p>{this.state.firstName} {this.state.lastName}</p>
               </div>
               <div className='info-box'>
                 <header>Skills</header>
                 <div className='skills-container'>
                   
-                  {skills.map(skill => {
+                  {this.state.skills.map(skill => {
                     return <div className='skill'>{skill}</div>
                   })}
                 </div>
@@ -70,7 +74,7 @@ class Profile extends React.Component {
               <div className='info-box'>
                 <header>Job History</header>
                   <div className='sub-box'>
-                  {Object.values(job_history).map(job => {
+                  {this.state.jobHistory.map(job => {
                     return (<div className='job'>
                               <div className='job-history-title'>{job.company}</div>
                               <div className='job-history-role'>{job.role}</div>
@@ -82,9 +86,9 @@ class Profile extends React.Component {
               <div className='info-box'>
                 <header>Education</header>
                   <div className='sub-box'>
-                  {Object.values(edu_history).map(edu => {
+                  {Object.values(this.state.education).map(edu => {
                     return (<div className='job'>
-                      <div className='job-history-title'>{edu.institution}</div>
+                      <div className='job-history-title'>{edu.institute}</div>
                       <div className='job-history-role'>{edu.field}</div>
                       <div className='job-history-dates'><BsCalendarWeekFill className='job-dates-icon' />From {edu.from} to {edu.to} </div>
                     </div>);
