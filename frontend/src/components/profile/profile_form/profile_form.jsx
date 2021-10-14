@@ -33,9 +33,9 @@ class ProfileForm extends React.Component {
     this.handleLocationChanged = this.handleLocationChanged.bind(this);
   }
 
-  componentDidMount() {
-    this.props.getProfile(this.props.currentUser.id)
-  }
+  // componentDidMount() {
+  //   this.props.getProfile(this.props.currentUser.id)
+  // }
   
   update(field) {
     return e => this.setState({ [field]: e.currentTarget.value });

@@ -168,7 +168,7 @@ router.get("/getProfile/:userId", (req, res) => {
 
 });
 
-  router.post("/findMatches", (req, res) => {
+router.post("/findMatches", (req, res) => {
     
     User.findOne({ id: req.body.id })
     .then( (user) => {

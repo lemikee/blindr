@@ -8,32 +8,38 @@ const jwt = require("jsonwebtoken");
 
 router.post("/createMatch", (req, res) => {
 
-  Match.findOne({ user: req.body.userId })
-    .then( match => {
-      match.jobs.push(req.body.jobId)
+  console.log("Creating...")
+  console.log(req.body)
+
+  // Match.findOne({ user: req.body.userId })
+  //   .then( match => {
+  //     match.jobs.push(req.body.jobId)
       
-      Job.findOne({ _id: req.body.jobId})
-        .then( job => {
-          const payload = {
-            [req.body.jobId]: job
-          };
+  //     Job.findOne({ _id: req.body.jobId})
+  //       .then( job => {
+  //         const payload = {
+  //           [req.body.jobId]: job
+  //         };
           
-          return res.json({ match: payload });
-        })
-    })
+  //         return res.json({ match: payload });
+  //       })
+  //   })
 
 });
 
-router.delete("/deleteMatch", (req, res) => {
+router.delete("/deleteMatch/:userId/:jobId", (req, res) => {
 
-  Match.findOne({ user: req.body.userId })
-    .then( match => {
+  console.log("Deleting...");
+  console.log(req.params);
+
+  // Match.findOne({ user: req.body.userId })
+  //   .then( match => {
       
-      const jobIdx = match.jobs.indexOf(req.body.jobId)
-      match.jobs.splice(jobIdx, 1)
+  //     const jobIdx = match.jobs.indexOf(req.body.jobId)
+  //     match.jobs.splice(jobIdx, 1)
 
-      return res.json({ match: "Deleted successfully"});
-    })
+  //     return res.json({ match: "Deleted successfully"});
+  //   })
 })
 
 // Takes userId, returns all matches and their associated job descriptions.

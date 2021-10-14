@@ -52,7 +52,12 @@ class RecCards extends React.Component {
   }
 
   swiped = (direction, nameToDelete) => {
-    console.log(nameToDelete + ' went ' + direction);
+    // console.log(nameToDelete + ' went ' + direction);
+    if (direction === "left") {
+      this.props.deleteMatch({ userId: "userId", jobId: "jobId" })
+    } else {
+      this.props.createMatch({ userId: "userId", jobId: "jobId" })
+    }
   };
   
   outOfFrame = name => {
