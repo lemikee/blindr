@@ -146,7 +146,12 @@ router.patch("/updateProfile/:userId", (req, res) => {
     return res.json({ profile: payload })
   })
 });
-  
+
+router.get("/getProfile/:userId", (req, res) => {
+
+  User.findOne({email: req.body.email})
+});
+
   router.post("/findMatches", (req, res) => {
     
     User.findOne({ id: req.body.id })

@@ -18,3 +18,8 @@ export const updateProfile = (userId, profileData) => dispatch => (
     .then( payload => dispatch(receiveUserProfile( payload.data.profile )))
     .catch( error => dispatch(receiveErrors(error.response.data)))
 )
+
+export const getProfile = (userId, userEmail) => dispatch => (
+  APIUtil.showProfile(userId, userEmail)
+    .then( payload => dispatch(receiveUserProfile( payload.data.profile)))
+)
