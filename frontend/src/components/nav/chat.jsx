@@ -47,8 +47,10 @@ function ChatScreen(props) {
 
     const handleSend = (e) => {
         e.preventDefault();
-        setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
-        setInput(""); // clears input field
+        if (input !== ''){
+            setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
+            setInput(""); // clears input field
+        }
     };
 
     return (
