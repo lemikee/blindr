@@ -47,13 +47,13 @@ function ChatScreen(props) {
     }
   });
 
-  const handleSend = (e) => {
-    e.preventDefault();
-    // localStorage.messages = JSON.stringify(messages);
-    setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
-    // localStorage.messages = JSON.stringify(messages);
-    setInput(""); // clears input field
-  };
+    const handleSend = (e) => {
+        e.preventDefault();
+        if (input !== ''){
+            setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
+            setInput(""); // clears input field
+        }
+    };
 
   return (
     <div className="chat-container">
