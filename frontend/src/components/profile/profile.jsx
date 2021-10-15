@@ -39,7 +39,7 @@ class Profile extends React.Component {
   }
 
   render() { 
-    if (!this.state.loaded) return null;
+    if (!this.state.loaded) return <NavBarContainer />;
     return (  
       <div className='user-profile'>
         <NavBarContainer />

@@ -8,6 +8,7 @@ import ProfileSkillsForm from './profile_skills_form';
 import ProfileFormSkill from './profile_form_skill';
 import ProfileFormEducation from './profile_form_education';
 import ProfileFormJobHistory from './profile_form_job_history';
+import LoadingIcon from '../../loading_icon';
 
 
 class ProfileForm extends React.Component {
