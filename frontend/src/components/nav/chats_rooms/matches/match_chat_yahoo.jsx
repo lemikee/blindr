@@ -1,9 +1,8 @@
 import React from "react";
 import { FaChevronDown, FaChevronUp } from "react-icons/fa";
-import Chat from "./chat";
-import ChatF from "./chats_rooms/chats/chat_facebook";
-import ChatG from "./chats_rooms/chats/chat_google";
-import ChatY from "./chats_rooms/chats/chat_yahoo";
+// import Chat from "./chat";
+
+import ChatYahoo from "../chats/chat_yahoo";
 
 class MatchChat extends React.Component {
   constructor(props) {
@@ -45,7 +44,7 @@ class MatchChat extends React.Component {
             onClick={this.toggleDropdown}
           />
         </div>
-        <Chat dropdown={this.state} />
+        <ChatYahoo dropdown={this.state} />
       </div>
     );
   }

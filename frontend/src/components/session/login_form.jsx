@@ -11,6 +11,7 @@ class LoginForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
+        this.handleDemo = this.handleDemo.bind(this);
     }
 
     componentDidMount(){
@@ -30,17 +31,21 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.login({ 
-            email: this.state.email, 
-            password: this.state.password 
-        });
+        this.props.login({
+            email: this.state.email,
+            password: this.state.password
+        }).then(() => this.props.history.push('/profile'));
+    }
+
+    handleDemo() {
+        this.props.loginDemo().then(() => this.props.history.push('/profile'))
     }
 
     renderErrors() {
         if (!Object.keys(this.props.errors).length){
-            
+
             return null;
-        } 
+        }
         return (
             <ul className='modal-errors'>
                 {Object.keys(this.props.errors).map((error, i) => (
@@ -51,7 +56,7 @@ class LoginForm extends React.Component {
             </ul>
         );
     }
-    
+
 
 
     render() {
@@ -61,7 +66,7 @@ class LoginForm extends React.Component {
             <div className='modal-container'>
                     <div className='modal-title'>{this.props.formType}</div>
                 <form onSubmit={this.handleSubmit}>
-                    
+
                     <div>
                         <br />
                         <input type="text"
@@ -79,13 +84,13 @@ class LoginForm extends React.Component {
                         />
                         <br />
                         <button type='submit' className='modal-input submit'>Login</button>
-                        <button type='button' className='demo-btn' onClick={() => this.props.loginDemo()}>Demo Login</button>
+                        <button type='button' className='demo-btn' onClick={this.handleDemo}>Demo Login</button>
                     </div>
                 </form>
             </div>
-           
-            
-            
+
+
+
             </div>
         );
     }

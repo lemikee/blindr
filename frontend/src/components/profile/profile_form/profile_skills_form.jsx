@@ -33,8 +33,8 @@ class ProfileSkillsForm extends React.Component {
   render() { 
     return (  
       <div className="profile-inner-form">
-        <label>Select Skill 
-          <select value={this.state.skill} onChange={e => this.setState({skill: e.target.value})}>
+        <label>
+          <select className='skills-select'value={this.state.skill} onChange={e => this.setState({skill: e.target.value})}>
             <option selected value="">Select a skill</option>
             {
               this.availableSkills().map(skill => (
@@ -43,8 +43,8 @@ class ProfileSkillsForm extends React.Component {
             }
           </select>
         </label>
-        <button onClick={this.handleDone}>Add!</button>
-        <button onClick={this.props.removeSkillsForm}>Cancel</button>
+        <button className='skills-submit-btn'onClick={this.handleDone}>Add</button>
+        <button className='skills-submit-btn' onClick={this.props.removeSkillsForm}>Cancel</button>
       </div>
     );
   }

@@ -14,10 +14,11 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        signup: (user, history) => dispatch(signup(user, history)),
-        loginDemo: () => dispatch(login({email: 'demo-user@demo.com', password: '123456'})),
-        clearErrors: () => dispatch(clearErrors())
-    }
+      signup: (user, history) => dispatch(signup(user, history)),
+      loginDemo: () =>
+        dispatch(login({ email: "demo-user@gmail.com", password: "123456" })),
+      clearErrors: () => dispatch(clearErrors()),
+    };
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

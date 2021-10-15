@@ -4,7 +4,8 @@ import { getUserMatches } from '../../actions/match_actions'
 
 import NavBar from './navbar';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+    
     return {
         loggedIn: state.session.isAuthenticated,
         currentUser: state.session.user
