@@ -266,4 +266,18 @@ table {
   font-family: 'proxima-nova', sans-serif;
   font-size: 120px;
   font-weight: 700;
+  position: relative;
+  animation-name: swipe-left-right;
+  animation-duration: 4s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+  
+}
+
+@keyframes swipe-left-right {
+  0%  {left: 0; color: white;}
+  12.5% {left: -100px; color: rgb(241, 119, 119); transform: rotate(-3deg)}
+  25% {left: 0; color: white; transform: rotate(0deg)}
+  37.5% {left: 100px; color: rgb(46, 48, 170); transform: rotate(3deg)}
+  50% {left: 0; color: white; transform: rotate(0deg)}
 }
