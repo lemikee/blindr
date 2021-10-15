@@ -42,7 +42,7 @@ class NavBar extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getUserMatches(this.props.currentUser.id)
+    this.props.getUserMatches(this.props.currentUser.id);
   }
 
   render() {
@@ -55,13 +55,14 @@ class NavBar extends React.Component {
   
         <div className="match-chats">
           <MatchChatFacebook company={"Facebook"} />
-          <MatchChatYahoo company={"Yahoo"} />
+          {/* <MatchChatYahoo company={"Yahoo"} /> */}
           <MatchChatGoogle company={"Google"} />
           <MatchChatApple company={"Apple"} />
-          <MatchChatCoin company={"Coinbase"} />
+          {/* <MatchChatCoin company={"Coinbase"} />
           <MatchChatGitlab company={"Gitlab"} />
           <MatchChatInsta company={"Instacart"} />
-          <MatchChatRemix company={"Remix"} />
+          <MatchChatRemix company={"Remix"} /> */}
+          {Object.values(this.props.matches).map(match => <MatchChat company={match.company}/>)}
         </div>
       </div>
     );

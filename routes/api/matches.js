@@ -50,17 +50,29 @@ router.get("/getMatches/:userId", (req, res) => {
   Match.findOne({ userId: req.params.userId })
     .then( match => {
 
-      Job.find({ _id: { $in: match.jobs } })
-        .then( jobs => {
-          const payload = {};
+      if (match) {
+        Job.find({ _id: { $in: match.jobs } })
+          .then( jobs => {
+            const payload = {};
 
-          jobs.forEach( job => {
-            payload[job.id] = job;
-          })
+            jobs.forEach( job => {
+              payload[job.id] = job;
+            })
 
-          return res.json({ matches: payload });
+            return res.json({ matches: payload });
 
-        });
+          });
+      } else {
+        const newMatch = new Match({
+          userId: ObjectId(req.params.userId),
+          jobs: []
+        })
+
+        newMatch.save().then( newmatch => { 
+          return res.json({ matches: {}})
+        })
+      }
+
     })
 
 })
