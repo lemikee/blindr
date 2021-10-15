@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
     
     return {
         loggedIn: state.session.isAuthenticated,
-        currentUser: state.session.user
+        currentUser: state.session.user,
+        matches: state.entities.matches
     };
 };
 
