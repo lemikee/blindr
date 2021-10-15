@@ -12,8 +12,8 @@ const mapStateToProps = (state, ownProps) => {
     };
 };
 
-const mapDispatchtoProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
     getUserMatches: (userId) => dispatch(getUserMatches(userId))
 })
 
-export default connect(mapStateToProps, mapDispatchtoProps)(NavBar);
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
