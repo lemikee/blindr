@@ -4,42 +4,44 @@ const Match = require("../../models/Match");
 const Job = require("../../models/Job");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
+const ObjectId = require('mongodb').ObjectId; 
 const jwt = require("jsonwebtoken");
 
 router.post("/createMatch", (req, res) => {
 
-  console.log("Creating...")
-  console.log(req.body)
+  Match.findOne({ userId: ObjectId(req.body.userId) })
+    .then( match => {
+      if (!match) {
+        Job.findOne({ _id: req.body.jobId })
+          .then( job => {
+            const newMatch = new Match({
+              userId: ObjectId(req.body.userId),
+              jobs: [job]
+            })
+            newMatch.save().then( match => {
+              return res.json({ match: job})
+            });
+          })
+      } else {
+        console.log("Saving to existing document...")
 
-  // Match.findOne({ user: req.body.userId })
-  //   .then( match => {
-  //     match.jobs.push(req.body.jobId)
-      
-  //     Job.findOne({ _id: req.body.jobId})
-  //       .then( job => {
-  //         const payload = {
-  //           [req.body.jobId]: job
-  //         };
-          
-  //         return res.json({ match: payload });
-  //       })
-  //   })
-
+        Job.findOne({ _id: req.body.jobId })
+          .then( job => {
+            Match.findOneAndUpdate(
+              { userId: ObjectId(req.body.userId) },
+              { $set: {
+                jobs: match.jobs.concat([job]) }
+              },
+              { returnOriginal: false },
+            ).then( match => {
+              return res.json({ match: job })
+            })
+          })
+      }
+    })
 });
 
 router.delete("/deleteMatch/:userId/:jobId", (req, res) => {
-
-  console.log("Deleting...");
-  console.log(req.params);
-
-  // Match.findOne({ user: req.body.userId })
-  //   .then( match => {
-      
-  //     const jobIdx = match.jobs.indexOf(req.body.jobId)
-  //     match.jobs.splice(jobIdx, 1)
-
-  //     return res.json({ match: "Deleted successfully"});
-  //   })
 })
 
 // Takes userId, returns all matches and their associated job descriptions.
@@ -47,6 +49,7 @@ router.get("/getMatches/:userId", (req, res) => {
 
   Match.findOne({ userId: req.params.userId })
     .then( match => {
+
       Job.find({ _id: { $in: match.jobs } })
         .then( jobs => {
           const payload = {};
@@ -55,7 +58,7 @@ router.get("/getMatches/:userId", (req, res) => {
             payload[job.id] = job;
           })
 
-          return res.json({ match: payload });
+          return res.json({ matches: payload });
 
         });
     })
