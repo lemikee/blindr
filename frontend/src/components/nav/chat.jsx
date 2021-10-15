@@ -68,13 +68,13 @@ function ChatScreen(props) {
         {/* iterates through all messages above ie ln 29, and displays them */}
         {/* ln 43, checks if there is name (recruiter), if not we will know its a message from the user */}
         <div className="chat-messages">
-          {messages.map((message) =>
+          {messages.map((message, i) =>
             message.name ? (
-              <div className="chat-screen-message recruiter">
+              <div key={i} className="chat-screen-message recruiter">
                 <p className="chat-screen-recruiter">{message.message}</p>
               </div>
             ) : (
-              <div className="chat-screen-message user">
+                <div key={i} className="chat-screen-message user">
                 <p className="chat-screen-user">{message.message}</p>
               </div>
             )
@@ -86,7 +86,7 @@ function ChatScreen(props) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="chat-screen-input"
-          placeHolder="type a message..."
+          placeholder="type a message..."
           typetype="text"
           ref={inputRef}
         />

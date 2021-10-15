@@ -11,6 +11,7 @@ class SignupForm extends React.Component {
             errors: {}
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDemo = this.handleDemo.bind(this);
         this.clearedErrors = false;
     }
 
@@ -36,6 +37,10 @@ class SignupForm extends React.Component {
             password: this.state.password,
             password2: this.state.password2,
         }, this.props.history)
+    }
+
+    handleDemo() {
+        this.props.loginDemo().then(() => this.props.history.push('/profile'))
     }
     
     renderErrors() {
@@ -84,7 +89,7 @@ class SignupForm extends React.Component {
                         <br />
                         <button type='submit' className='modal-input submit'>Sign Up</button>
                         <br/>
-                        <button type='button' className='demo-btn' onClick={() => this.props.loginDemo()}>Demo Login</button>
+                        <button type='button' className='demo-btn' onClick={this.handleDemo}>Demo Login</button>
                     </div>
                 </form>
             </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom';
 // sub forms
 import ProfileEducationForm from './profile_education_form';
 import ProfileJobHistoryForm from './profile_job_history_form';
@@ -8,19 +9,21 @@ import ProfileFormSkill from './profile_form_skill';
 import ProfileFormEducation from './profile_form_education';
 import ProfileFormJobHistory from './profile_form_job_history';
 
+
 class ProfileForm extends React.Component {
   constructor(props) {
     super(props);
     console.log(this.props.userInfo)
     this.state = {
       email: this.props.currentUser.email,
-      firstName: this.props.userInfo.firstName !== "!@#$%^&*()" ? this.props.userInfo.firstName : '',
-      lastName: this.props.userInfo.lastName !== "!@#$%^&*()" ? this.props.userInfo.lastName : '',
+      firstName: this.props.userInfo.firstName ? this.props.userInfo.firstName : '',
+      lastName: this.props.userInfo.lastName ? this.props.userInfo.lastName : '',
       education: this.props.userInfo.education ? this.props.userInfo.education : [],
       jobHistory: this.props.userInfo.jobHistory ? this.props.userInfo.jobHistory : [],
       skills: this.props.userInfo.skills ? this.props.userInfo.skills : [],
-      location: this.props.userInfo.location !== "!@#$%^&*()" ? this.props.userInfo.location : '',
+      location: this.props.userInfo.location !== "!@#$%^&*()" ? this.props.userInfo.location : 'San Francisco',
       relocate: this.props.userInfo.canRelocate === true,
+      loaded: false,
       // for ui elements
       showEducationForm: false,
       eduFormIdx: -1,
@@ -34,7 +37,29 @@ class ProfileForm extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getProfile(this.props.currentUser.id)
+    if (this.props.formType === 'Edit your profile'){
+    this.props.getProfile(this.props.currentUser.id).then(() => this.setState({
+      email: this.props.currentUser.email,
+      firstName: this.props.userInfo.firstName,
+      lastName: this.props.userInfo.lastName,
+      education: this.props.userInfo.education,
+      jobHistory: this.props.userInfo.jobHistory,
+      skills: this.props.userInfo.skills,
+      location: this.props.userInfo.location,
+      relocate: this.props.userInfo.canRelocate,
+      loaded: true
+    }))
+    } else {
+      this.setState({
+        loaded: true, 
+        location: 'San Francisco', 
+        firstName: '', 
+        lastName: '',
+        education: [],
+        jobHistory: [],
+        skills: [], 
+        relocate: false})
+    }
   }
   
   update(field) {
@@ -61,7 +86,8 @@ class ProfileForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.state.email = this.props.currentUser.email;
-    this.props.updateProfile( this.props.currentUser.id, this.filterState());
+    this.props.updateProfile( this.props.currentUser.id, this.filterState())
+    .then(() => this.props.history.push('/profile'));
   }
   
   // HANDLE EDUCATION
@@ -228,71 +254,86 @@ class ProfileForm extends React.Component {
   }
   
   render() { 
-
+    if (!this.state.loaded) return null;
     return (  
         
-      <div className="profile-create-container">
-        <h1>Create your profile!</h1>
+      <div className="profile-info">
+        <h1>{this.props.formType}</h1>
         <div onSubmit={this.handleSubmit}>
-          <div className="create-form-section">
-            <h2>Basic Information</h2>
-            <label>First Name:
+          <div className="info-box update">
+            <header>Basic Information</header>
+            <label><span className='info-name'>First Name</span>
               <input type="text"
                 value={this.state.firstName}
                 onChange={this.update('firstName')}
-                placeholder="First Name"
+                
+                className='info-name-input'
               />
             </label>
-            <label>Last Name:
+            <br/>
+            <label><span className='info-name'>Last Name</span>
               <input type="text"
                 value={this.state.lastName}
                 onChange={this.update('lastName')}
-                placeholder="Last Name"
+                
+                className='info-name-input'
               />
             </label>
           </div>
-          <div className="create-form-section">
-            <h2>Education</h2>
+          <div className="info-box update">
+            <header>Education</header>
             { this.displayEducation()}
             { this.educationForm()}
-            <button onClick={() => this.setState({showEducationForm: true})}>Add Education</button>
+            <button className='skills-btn add-btn' style={this.state.showEducationForm ? { display: 'none' } : { display: 'block' }}onClick={() => this.setState({showEducationForm: true})}>Add</button>
           </div>
-          <div className="create-form-section">
-            <h2>Work History</h2>
+          <div className="info-box update">
+            <header>Work History</header>
             { this.displayJobHistory()}
             { this.jobHistoryForm()}
-            <button onClick={() => this.setState({showJobHistoryForm: true})}>Add Work Experience</button>
+            <button className='skills-btn add-btn' style={this.state.showJobHistoryForm ? { display: 'none' } : { display: 'block' }}onClick={() => this.setState({showJobHistoryForm: true})}>Add</button>
           </div>
-          <div className="create-form-section">
-            <h2>Skills</h2>
+          <div className="info-box update">
+            <header>Skills</header>
+            <div className='skills-container' style={this.state.showSkillsForm ? {marginTop: '20px'}: {}}>
             { this.displaySkills()}
+            </div>
             { this.skillsForm()}
-            <button onClick={() => this.setState({showSkillsForm: true})}>Add Skill</button>
+            <button className='skills-btn add-btn' style={this.state.showSkillsForm ? {display: 'none'} : {display: 'block'}}onClick={() => this.setState({showSkillsForm: true})}>Add</button>
+
           </div>
-          <div className="create-form-section">
-            <h2>Location</h2>
-            <label>Which location is closest to you?
+          <div className="info-box flex-column">
+            <div>
+            <header>Location</header>
+            <label><span className='info-name'
+                        style={{display: 'block', marginTop: '15px'}}>Which location is closest to you?</span>
+              <br />
               <select 
                 value={this.state.location} 
                 onChange={this.handleLocationChanged}
-                value="Select a location">
-                {/* <option selected value="">Select a location</option> */}
-                <option value="San Francisco">San Francisco</option>
+                className='location-dropdown'
+                >
+                  
+                <option selected value="San Francisco">San Francisco</option>
                 <option value="Los Angeles">Los Angeles</option>
                 <option value="Austin">Austin</option>
                 <option value="New York">New York</option>
               </select>
             </label>
-            <label>Willing to relocate?
+            </div>
+            <div style={{display: 'flex'}}>
+            <p className='info-name'>Willing to relocate?</p>
+            <label style={{height: '20px'}}>
               <input type="checkbox"
                 checked={this.state.relocate}
                 onChange={() => this.setState({relocate: !this.state.relocate})}
+                style={{marginRight: '40px', marginTop: '32px'}}
                 />
-            </label>
+              </label>
+            </div>
           </div>
         
 
-          <button onClick={this.handleSubmit}>Submit!</button>
+          <button className='profile-submit-btn' onClick={this.handleSubmit}>Submit</button>
         </div>
       </div>
         

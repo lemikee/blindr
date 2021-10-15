@@ -1,4 +1,6 @@
 import React from 'react';
+import { MdModeEdit } from 'react-icons/md'
+import { BsTrashFill } from 'react-icons/bs'
 
 class ProfileFormJobHistory extends React.Component {
   constructor(props) {
@@ -8,17 +10,16 @@ class ProfileFormJobHistory extends React.Component {
   render() { 
     const { job, idx, deleteJob, showEditJobHistoryForm} = this.props;
     return (  
-      <div className="completed-display">
-        <div className="display-section">
-          <li>Company: {job.company}</li>
-          <li>From: {job.from}</li>
-          <li>To: {job.to}</li>
-          <li>Role: {job.role}</li>
+      <div className="job-history-item">
+        <div className="sub-box">
+          <div className='job-history-title'>{job.company}</div>
+          <div className='job-history-role'>{job.role}</div>
+          <div className='job-history-dates'>From {job.from} to {job.to}</div>
         </div>
         
-        <div className="edit-delete-section">
-          <button onClick={() => showEditJobHistoryForm(idx)}>Edit</button>
-          <button onClick={() => deleteJob(idx)}>Delete</button>
+        <div className="job-history-btns">
+          <MdModeEdit className='update-btn' onClick={() => showEditJobHistoryForm(idx)} />
+          <BsTrashFill className='update-btn' onClick={() => deleteJob(idx)} />
         </div>
       </div>
     );

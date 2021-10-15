@@ -55,29 +55,38 @@ class ProfileEducationForm extends React.Component {
 
   render() { 
     return (  
-      <div className="profile-inner-form">
-        <label>Institute 
+      <div className="profile-inner-form-jobs">
+        <label>Institution
           <input type="text"
+            className='job-history-text'
             value={this.state.institute}
             onChange={this.update('institute')}
+            style={{ marginLeft: '35px' }}
           />
         </label>
-        <div>
-          <label>From:
+       
+          <label>From
             <input type="date"
+              className='update-date'
               value={this.state.from}
               onChange={e => this.setState({from: e.currentTarget.value})}
+              style={{ marginLeft: '62px' }}
             />
           </label>
-          <label>To:
+          <label>To
             <input type="date"
+              className='update-date'
               value={this.state.to}
               onChange={e => this.setState({to: e.currentTarget.value})}
+              style={{ marginLeft: '80px' }}
             />
           </label>
-        </div>
-        <label>Field of Study:
-          <select value={this.state.field} onChange={e => this.setState({field: e.target.value})}>
+      
+        <label>Field of Study
+          <select className='skills-select' 
+                value={this.state.field} 
+                onChange={e => this.setState({field: e.target.value})}
+                style={{marginLeft: '9px', width: '280px', marginTop: '5px'}}>
             <option selected value="">Select a field</option>
             <option value="Computer Science">Computer Science</option>
             <option value="Software Engineering">Software Engineering</option>
@@ -87,8 +96,8 @@ class ProfileEducationForm extends React.Component {
           </select>
         </label>
         
-        <button onClick={this.handleDone}>Save</button>
-        <button onClick={this.props.removeEducationForm}>Cancel</button>
+        <button className='job-submit-btn extra-room' onClick={this.handleDone}>Save</button>
+        <button className='job-submit-btn extra-room' onClick={this.props.removeEducationForm}>Cancel</button>
       </div>
     );
   }
