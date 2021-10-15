@@ -8,13 +8,10 @@ function ChatScreen(props) {
   const chatScreenRef = useRef();
   let defaultMessages;
 
-
-    let companyName = props.dropdown.company;
-    console.log(companyName);
   // console.log(props.dropdown.company);
 
   // if localStorage does not have key messages, set it to a default value
-  if (!localStorage.messages) {
+  if (!localStorage.messagesFacebook) {
     defaultMessages = [
       {
         name: "Josh", // grab from db
@@ -26,28 +23,28 @@ function ChatScreen(props) {
         name: "Josh", // grab from db
         image:
           "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-        message: "Great styling!",
+        message: "Would you be free for an interview next week?",
+      },
+      {
+        message:
+        "Yes! I'm free next Tuesday!",
       },
       {
         name: "Josh", // grab from db
         image:
           "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-        message: "Would you be free for a phone screening this week?",
-      },
-      {
-        message:
-          "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
+        message: "Uhhh, our entire system crashed again. Might be awhile.",
       },
     ];
-    localStorage.messages = JSON.stringify(defaultMessages);
+    localStorage.messagesFacebook = JSON.stringify(defaultMessages);
     // console.log("DNE")
   }
 
-  const [messages, setMessages] = useState(JSON.parse(localStorage.messages));
+  const [messagesFacebook, setMessages] = useState(JSON.parse(localStorage.messagesFacebook));
 
   useEffect(() => {
     // uses localStorage for persistant messages upon refresh
-    localStorage.messages = JSON.stringify(messages);
+    localStorage.messagesFacebook = JSON.stringify(messagesFacebook);
     if (props.dropdown) {
       let number =
         chatScreenRef.current.scrollHeight - inputRef.current.scrollHeight;
@@ -59,7 +56,7 @@ function ChatScreen(props) {
   const handleSend = (e) => {
     e.preventDefault();
     if (input !== "") {
-      setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
+      setMessages([...messagesFacebook, { message: input }]); // adds message from input to messages array on ln 10
       setInput(""); // clears input field
     }
   };
@@ -73,13 +70,13 @@ function ChatScreen(props) {
         {/* iterates through all messages above ie ln 29, and displays them */}
         {/* ln 43, checks if there is name (recruiter), if not we will know its a message from the user */}
         <div className="chat-messages">
-          {messages.map((message, i) =>
+          {messagesFacebook.map((message) =>
             message.name ? (
-              <div key={i} className="chat-screen-message recruiter">
+              <div className="chat-screen-message recruiter">
                 <p className="chat-screen-recruiter">{message.message}</p>
               </div>
             ) : (
-                <div key={i} className="chat-screen-message user">
+              <div className="chat-screen-message user">
                 <p className="chat-screen-user">{message.message}</p>
               </div>
             )
@@ -91,7 +88,7 @@ function ChatScreen(props) {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className="chat-screen-input"
-          placeholder="type a message..."
+          placeHolder="type a message..."
           typetype="text"
           ref={inputRef}
         />

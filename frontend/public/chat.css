@@ -18,7 +18,7 @@
     overflow-wrap: break-word;
 }
 
-.chat-screen::-webkit-scrollbar { 
+.chat-screen::-webkit-scrollbar {
     width: 0 !important;
 }
 
@@ -79,6 +79,7 @@
   border-radius: 20px;
   margin-bottom: 10px;
   max-width: 240px;
+  line-height: 1.35;
 }
 
 /* for user - makes nice chat bubbles */
