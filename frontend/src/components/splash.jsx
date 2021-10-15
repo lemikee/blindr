@@ -34,7 +34,6 @@ const SplashPage = (props) => {
               <div className="hero-image">
                 <h1 className="hero-text">Swipe to Get Hired!</h1>
               </div>
-                
             </div>
 
         </div>
