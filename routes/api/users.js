@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const User = require("../../models/User");
 const Job = require("../../models/Job");
+const Match = require("../../models/Match");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
@@ -168,29 +169,27 @@ router.get("/getProfile/:userId", (req, res) => {
 
 });
 
-  router.post("/findMatches", (req, res) => {
-    
-    User.findOne({ id: req.body.id })
-    .then( (user) => {
-      if (!user) {
-        return res.status(404).json({ user: "This user does not exist" });
-      } else {
-        let matches = {};
-        let userSkillsArr = user.skills;
+router.get("/findRecs/:userId", (req, res) => {
 
-        let jobs = Job.find({})
+    User.findOne({ _id: req.params.userId })
+      .then( user => {
+        Match.findOne({ userId: ObjectId(req.params.userId) })
+          .then( match  => {
+            const matchedJobIds = match.jobs.map( matchedJob => matchedJob._id.toString() )
+            Job.find({ skills: { $elemMatch: { $in: user.skills }}})
+              .then( jobs => {
+                const payload = {};
+                jobs.forEach( job => {
+                  if (!matchedJobIds.includes(job.id)) {
+                    payload[job.id] = job
+                  }
+                })
+                return res.json({ jobs: payload })
+              })
 
-        jobs.forEach( job => {
-          let jobData = tojson(job);
-          if (skillsOverlap(userSkillsArr, jobData.skills)) {
-            matches[jobData.id] = jobData
-          }
-        })
+          })
 
-        return res.json(matches);
-      }
-    })
-
+      })
 });
 
 module.exports = router;

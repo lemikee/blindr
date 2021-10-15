@@ -11,7 +11,13 @@ class Recs extends React.Component {
     return (  
       <div className="recs">
         <NavBarContainer />
-        <UserRecCards />
+        <UserRecCards
+          currentUser={this.props.currentUser}
+          createMatch={this.props.createMatch}
+          deleteMatch={this.props.deleteMatch}
+          fetchRecommendations={this.props.fetchRecommendations}
+          jobs={this.props.jobs}
+        />
       </div>
     );
   }

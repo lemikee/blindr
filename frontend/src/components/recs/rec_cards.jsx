@@ -51,8 +51,17 @@ class RecCards extends React.Component {
     };
   }
 
-  swiped = (direction, nameToDelete) => {
-    console.log(nameToDelete + " went " + direction);
+  componentDidMount() {
+    this.props.fetchRecommendations(this.props.currentUser.id)
+  }
+
+  swiped = (direction, jobId) => {
+    // console.log(nameToDelete + ' went ' + direction);
+    if (direction === "left") {
+      this.props.deleteMatch({ userId: "userId", jobId: "jobId" })
+    } else {
+      this.props.createMatch({ userId: this.props.currentUser.id, jobId: jobId })
+    }
   };
 
   outOfFrame = (name) => {
@@ -63,22 +72,15 @@ class RecCards extends React.Component {
     return (
       <div className="rec-cards">
         <div className="rec-cards-container">
-          {this.state.recs.map((rec) => (
+          {Object.values(this.props.jobs).map( job => (
             <TinderCard
               className="swipe"
-              key={rec.id}
-              preventSwipe={["up", "down"]}
-              onSwipe={(dir) => this.swiped(dir, rec.id)}
-              onCardLeftScreen={() => this.outOfFrame(rec.id)}
+              key={job._id}
+              preventSwipe={["up, down"]}
+              onSwipe={(dir) => this.swiped(dir, job._id)}
+              onCardLeftScreen={() => this.outOfFrame(job._id)}
             >
-              {/* <div
-                  className="card"
-                  style={{backgroundColor: 'gray'}}
-                >
-                  <h3>{rec.name}</h3>
-                  <h2>{rec.topSkill}</h2>
-                </div> */}
-              <JobPostingCard rec={rec} />
+              <JobPostingCard rec={job} />
             </TinderCard>
           ))}
         </div>

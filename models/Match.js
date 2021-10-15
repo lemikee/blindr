@@ -2,13 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const MatchSchema = new Schema({
-  user: {
+  userId: {
     type: Schema.Types.ObjectId,
-    ref: 'users'
+    ref: 'users',
+    required: true,
   },
-  job: {
-    type: Schema.Types.ObjectId,
-    ref: 'jobs'
+  jobs: {
+    type: Array,
+    default: []
   },
   date: {
     type: Date,
