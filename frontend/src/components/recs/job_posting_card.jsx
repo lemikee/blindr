@@ -10,20 +10,20 @@ class JobPostingCard extends React.Component {
     
     
     return (  
-      <div className="card">
-        <div className="card-info-container">
-          <h1>{company}</h1>
-          <h2>{title}</h2>
-          <h2>{location}</h2>
-          <h2>Description: {description}</h2>
-          <h2>Preferred Skills:</h2>
+      <div className="card-info-container">
+        <div className="card">
+          <div className='card-company'>{company}</div>
+          <div className='card-title'>{title}</div>
+          <div className='card-location'>{location}</div>
+          <div className='card-description'>{description}</div>
+          <div className='card-skills-title'>Preferred Skills</div>
           {
             skills.map((skill, idx) => (
-              <li key={idx}>{skill}</li>
+              <div className='card-skill' key={idx}>{skill}</div>
             ))
           }
-          <h2>Compensation: </h2>
-          <h3>${minComp}~${maxComp}</h3>
+          <div className='card-skills-title'>Compensation: </div>
+          <div className='card-compensation'><span style={{ color: 'green' }}>$</span>{minComp}~<span style={{ color: 'green' }}>$</span>{maxComp}</div>
         </div>
         
       </div>
