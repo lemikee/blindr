@@ -14,23 +14,14 @@ import MatchChatRemix from "./chats_rooms/matches/match_chat_remix";
 export default function NavBar(props) {
   // const [chats, setChats] = useState(["Facebook", "Yahoo", "Google"]);
 
+  
   return (
     <div className="navbar">
       <div className="navbar-header">
-        <Link to="/profile">
-          <FaUser className="profile-btn" />
-        </Link>
-
-        <Link to="/recs">
-          <FaRegAddressCard className="profile-btn matches" />
-        </Link>
+        <Link to="/profile"><FaUser className="profile-btn" /></Link>
+        <Link to="/recs"><FaRegAddressCard className="profile-btn matches" /></Link>  
       </div>
 
-      {/* <div className="match-chats">
-        {chats.map((chat) => {
-          return <MatchChat company={chat} />;
-        })}
-      </div> */}
       <div className="match-chats">
         <MatchChatFacebook company={"Facebook"} />
         <MatchChatYahoo company={"Yahoo"} />

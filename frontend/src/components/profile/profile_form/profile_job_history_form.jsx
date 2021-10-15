@@ -54,35 +54,43 @@ class ProfileJobHistoryForm extends React.Component {
   render() { 
 
     return (  
-      <div className="profile-inner-form">
+      <div className="profile-inner-form-jobs">
         <label>Company
           <input type="text"
+            className='job-history-text'
             value={this.state.company}
             onChange={this.update('company')}
+            style={{ marginLeft: '10px'}}
           />
         </label>
-        <div>
-          <label>From:
-            <input type="date"
+        
+          <label>From
+            <input className='update-date' 
+              type="date"
               value={this.state.from}
               onChange={e => this.setState({from: e.currentTarget.value})}
+              style={{marginLeft: '37px'}}
             />
           </label>
-          <label>To:
-            <input type="date"
+          <label>To
+            <input className='update-date'
+              type="date"
               value={this.state.to}
               onChange={e => this.setState({to: e.currentTarget.value})}
+              style={{marginLeft: '55px'}}
             />
           </label>
-        </div>
-        <label>Role:
+       
+        <label>Role
           <input type="text"
+            className='job-history-text'
             value={this.state.role}
             onChange={this.update('role')}
+            style={{ marginLeft: '41px'}}
           />
         </label>
-        <button onClick={this.handleDone}>Done</button>
-        <button onClick={this.props.removeJobHistoryForm}>Cancel</button>
+        <button className='job-submit-btn' onClick={this.handleDone}>Done</button>
+        <button className='job-submit-btn' onClick={this.props.removeJobHistoryForm}>Cancel</button>
       </div>
     );
   }

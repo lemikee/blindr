@@ -2,6 +2,7 @@ import React from 'react';
 import NavBarContainer from '../nav/navbar_container';
 import { FaEdit } from 'react-icons/fa';
 import { BsCalendarWeekFill } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 class Profile extends React.Component {
   constructor(props) {
@@ -13,50 +14,38 @@ class Profile extends React.Component {
       education: this.props.userInfo.education ? this.props.userInfo.education : [],
       jobHistory: this.props.userInfo.jobHistory ? this.props.userInfo.jobHistory : [],
       location: this.props.userInfo.location,
-      relocate: this.props.userInfo.canRelocate
+      relocate: this.props.userInfo.canRelocate,
+      loaded: false
     }
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount() {
-    this.props.getProfile(this.props.currentUser.id)
+    this.props.getProfile(this.props.currentUser.id).then(() => this.setState({
+      firstName: this.props.userInfo.firstName,
+      lastName: this.props.userInfo.lastName,
+      skills: this.props.userInfo.skills,
+      education: this.props.userInfo.education,
+      jobHistory: this.props.userInfo.jobHistory,
+      location: this.props.userInfo.location,
+      relocate: this.props.userInfo.canRelocate,
+      loaded: true
+    }))
+  }
+
+  handleLogout() {
+    this.props.logout();
+    this.props.history.push('/');
   }
 
   render() { 
-    let skills = ['Archery', 'Flute', 'Ballet', 'Cooking', 'Jumping', 'Talking', 'Moving'];
-    let job_history = {
-      1: {
-        company: 'Facebook',
-        role: 'Systems Engineer',
-        from: '08/18',
-        to: '06/21'
-      },
-      2: {
-        company: 'Google',
-        role: 'Maps Engineer',
-        from: '01/16',
-        to: '08/18'
-      }
-    };
-    let edu_history = {
-      1: {
-        institution: 'University of Florida',
-        field: 'Biology',
-        from: '08/18',
-        to: '06/21'
-      },
-      2: {
-        institution: 'Harvard University',
-        field: 'Mathematics & Statistics',
-        from: '01/16',
-        to: '08/18'
-      }
-    };
+    if (!this.state.loaded) return null;
     return (  
       <div className='user-profile'>
         <NavBarContainer />
         <div className='profile-container'>
           <div className='profile-info-container'>
-            <h1><span>Profile</span><FaEdit className='edit-btn'/></h1>
+            <h1><span>Profile</span><Link to='/profile/edit'><FaEdit className='edit-btn'/></Link></h1>
             <div className='profile-info'>
               <div className='info-box'>
                 <header>Name</header>
@@ -67,7 +56,7 @@ class Profile extends React.Component {
                 <div className='skills-container'>
                   
                   {this.state.skills.map(skill => {
-                    return <div className='skill'>{skill}</div>
+                    return <div className='skill' style={{paddingLeft: '10px'}}>{skill}</div>
                   })}
                 </div>
               </div>
@@ -86,7 +75,7 @@ class Profile extends React.Component {
               <div className='info-box'>
                 <header>Education</header>
                   <div className='sub-box'>
-                  {Object.values(this.state.education).map(edu => {
+                  {this.state.education.map(edu => {
                     return (<div className='job'>
                       <div className='job-history-title'>{edu.institute}</div>
                       <div className='job-history-role'>{edu.field}</div>
@@ -101,9 +90,13 @@ class Profile extends React.Component {
                   Willing to relocate?
                   <p>{this.state.relocate ? 'Yes' : 'No'}</p>
                 </div>
+                
               </div>
+              <div className='logout-btn' onClick={this.handleLogout}>Logout</div>
             </div>
+            <div className='footer'></div>
           </div>
+          
         </div>
       </div>
     );
@@ -112,4 +105,3 @@ class Profile extends React.Component {
  
 export default Profile;
 
-//<button className='close' type='button'>✕</button>

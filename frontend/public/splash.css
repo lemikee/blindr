@@ -208,8 +208,6 @@ table {
     background-color: white;
     color: rgb(155, 155, 155);
     border: none;
-    border-bottom: 3px solid rgb(155, 155, 155);
-    border-radius: 3px;
 }
 
 .splash-nav-btn:hover {
@@ -219,7 +217,6 @@ table {
 
 .splash-nav-btn-two:hover {
     color: rgb(1, 1, 171);
-    border-color: rgb(0, 0, 255);
     cursor: pointer;
 }
 

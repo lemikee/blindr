@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     height: 100vh;
-    
 }
 
 .profile-container {
@@ -11,10 +10,16 @@
     padding-bottom: 300px;
     display: flex;
     justify-content: center;
-    min-width: 700px;
+    min-width: 850px;
     overflow-y: scroll;
     position: relative;
     margin-left: 350px;
+    height: 100vh;
+}
+
+.overall {
+    display: flex;
+    flex-direction: column;
 }
 
 .profile-container::-webkit-scrollbar { 
@@ -23,18 +28,20 @@
 
 .profile-info-container {
     width: 100%;
-    position: relative;
-    min-height: 1200px;
+    position: absolute;
+    min-height: 1000px;
     max-width: 700px;
-    background-color: rgb(220, 220, 220);
+    background-color: rgb(225, 225, 225, 0.36);
     border-radius: 5px;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.13);
     padding: 60px 60px;
+    margin-bottom: 100px;
 }
 
 .profile-info {
     display: flex;
     flex-direction: column;
+    
 }
 
 .info-box {
@@ -46,6 +53,14 @@
     padding-top: 20px;
     padding-left: 30px;
     border-left: 5px solid rgb(0, 0, 255);
+}
+
+.footer {
+    margin-top: 80px;
+    width: 100%;
+    height: 80px;
+    position: absolute;
+    
 }
 
 .flex-column {
@@ -116,7 +131,8 @@
     position: relative;
     margin-right: 20px;
     margin-bottom: 10px;
-    padding: 0 10px;
+    padding-left: 5px;
+    padding-right: 10px;
     border-radius: 15px;
     font-family: sans-serif;
     font-size: 14px;
@@ -184,4 +200,49 @@
     color: rgb(167, 167, 167);
     margin-top: 10px;
     padding-right: 20px;
+}
+
+.add-btn {
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
+.update {
+   padding-bottom: 20px;
+}
+
+.job-history-btns{
+    display: flex;
+    width: 55px;
+    height: 20px;
+    justify-content: space-between;   
+}
+
+.job-history-text {
+    color: gray;
+    font-family: sans-serif;
+    border: 1px solid rgb(201, 201, 201);
+    border-radius: 3px;
+    font-size: 12px;
+    width: 280px; 
+    padding: 7px 0; 
+    padding-left: 5px;
+}
+
+.logout-btn {
+    width: 100%;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: crimson;
+    font-family: sans-serif;
+    font-size: 16px;
+    color: white;
+    border-radius: 3px;
+}
+
+.logout-btn:hover {
+    background-color: rgb(121, 12, 34);
+    cursor: pointer;
 }

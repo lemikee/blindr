@@ -23,11 +23,12 @@ const SplashPage = (props) => {
             <div className='splash-nav'>
                 <div className='logo'>Blindr</div>
                 <div className='splash-btns'>
-                    <button className={props.modalType === 'login'  ? 'splash-nav-btn-two clicked-two' : 'splash-nav-btn-two'} onClick={() => props.openModal('login')}>Log In</button>
-                    <button className={props.modalType === 'signup' ? 'splash-nav-btn clicked' : 'splash-nav-btn '} onClick={() => props.openModal('signup')}>Sign Up</button>
+                    
                 {props.signedIn ?
-                    <button onClick={props.logout}>Logout</button> :
-                    null}
+                    <button className='splash-nav-btn' onClick={props.logout}>Logout</button> :
+                    <div>
+                    <button className={props.modalType === 'login'  ? 'splash-nav-btn-two clicked-two' : 'splash-nav-btn-two'} onClick={() => props.openModal('login')}>Log In</button>
+                            <button className={props.modalType === 'signup' ? 'splash-nav-btn clicked' : 'splash-nav-btn '} onClick={() => props.openModal('signup')}>Sign Up</button></div>}
                 </div>
             </div>
             <div className="hero-section">
