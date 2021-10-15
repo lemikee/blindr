@@ -8,46 +8,46 @@ function ChatScreen(props) {
   const chatScreenRef = useRef();
   let defaultMessages;
 
-
-    let companyName = props.dropdown.company;
-    console.log(companyName);
   // console.log(props.dropdown.company);
 
   // if localStorage does not have key messages, set it to a default value
-  if (!localStorage.messages) {
+  if (!localStorage.messagesGoogle) {
     defaultMessages = [
       {
         name: "Josh", // grab from db
         image:
           "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
-        message: "Hey Joey, loved your MERN project! Let's connect!",
+        message: "Loved your Yelp clone, Bytes!",
       },
       {
         name: "Josh", // grab from db
         image:
-          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-        message: "Great styling!",
+          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
+        message: "We'd love to do an onsite with you",
       },
       {
         name: "Josh", // grab from db
         image:
-          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-        message: "Would you be free for a phone screening this week?",
+          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
+        message: "Did I mention we have a SLIDE!",
       },
       {
         message:
-          "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
+          "I would love to!",
       },
+       { message:
+          "Here's my email: hire@us.com",
+      }
     ];
-    localStorage.messages = JSON.stringify(defaultMessages);
+    localStorage.messagesGoogle = JSON.stringify(defaultMessages);
     // console.log("DNE")
   }
 
-  const [messages, setMessages] = useState(JSON.parse(localStorage.messages));
+  const [messagesGoogle, setMessages] = useState(JSON.parse(localStorage.messagesGoogle));
 
   useEffect(() => {
     // uses localStorage for persistant messages upon refresh
-    localStorage.messages = JSON.stringify(messages);
+    localStorage.messagesGoogle = JSON.stringify(messagesGoogle);
     if (props.dropdown) {
       let number =
         chatScreenRef.current.scrollHeight - inputRef.current.scrollHeight;
@@ -59,7 +59,7 @@ function ChatScreen(props) {
   const handleSend = (e) => {
     e.preventDefault();
     if (input !== "") {
-      setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
+      setMessages([...messagesGoogle, { message: input }]); // adds message from input to messages array on ln 10
       setInput(""); // clears input field
     }
   };
@@ -73,7 +73,7 @@ function ChatScreen(props) {
         {/* iterates through all messages above ie ln 29, and displays them */}
         {/* ln 43, checks if there is name (recruiter), if not we will know its a message from the user */}
         <div className="chat-messages">
-          {messages.map((message) =>
+          {messagesGoogle.map((message) =>
             message.name ? (
               <div className="chat-screen-message recruiter">
                 <p className="chat-screen-recruiter">{message.message}</p>
