@@ -30,17 +30,17 @@ class LoginForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.login({ 
-            email: this.state.email, 
-            password: this.state.password 
+        this.props.login({
+            email: this.state.email,
+            password: this.state.password
         });
     }
 
     renderErrors() {
         if (!Object.keys(this.props.errors).length){
-            
+
             return null;
-        } 
+        }
         return (
             <ul className='modal-errors'>
                 {Object.keys(this.props.errors).map((error, i) => (
@@ -51,7 +51,7 @@ class LoginForm extends React.Component {
             </ul>
         );
     }
-    
+
 
 
     render() {
@@ -61,7 +61,7 @@ class LoginForm extends React.Component {
             <div className='modal-container'>
                     <div className='modal-title'>{this.props.formType}</div>
                 <form onSubmit={this.handleSubmit}>
-                    
+
                     <div>
                         <br />
                         <input type="text"
@@ -83,9 +83,9 @@ class LoginForm extends React.Component {
                     </div>
                 </form>
             </div>
-           
-            
-            
+
+
+
             </div>
         );
     }
