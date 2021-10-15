@@ -16,28 +16,28 @@ function ChatScreen(props) {
   // if localStorage does not have key messages, set it to a default value
   if (!localStorage.messages) {
     defaultMessages = [
-      {
-        name: "Josh", // grab from db
-        image:
-          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
-        message: "Hey Joey, loved your MERN project! Let's connect!",
-      },
-      {
-        name: "Josh", // grab from db
-        image:
-          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-        message: "Great styling!",
-      },
-      {
-        name: "Josh", // grab from db
-        image:
-          "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
-        message: "Would you be free for a phone screening this week?",
-      },
-      {
-        message:
-          "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
-      },
+      // {
+      //   name: "Josh", // grab from db
+      //   image:
+      //     "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300", // URL or pull from DB?
+      //   message: "Hey Joey, loved your MERN project! Let's connect!",
+      // },
+      // {
+      //   name: "Josh", // grab from db
+      //   image:
+      //     "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
+      //   message: "Great styling!",
+      // },
+      // {
+      //   name: "Josh", // grab from db
+      //   image:
+      //     "https://secure.gravatar.com/avatar/18c54a45742040321ecb5c5af574b1e4?secure=true&size=300",
+      //   message: "Would you be free for a phone screening this week?",
+      // },
+      // {
+      //   message:
+      //     "Hey Josh, a little swamped with the MERN project but I should be available Thursday!",
+      // },
     ];
     localStorage.messages = JSON.stringify(defaultMessages);
     // console.log("DNE")
