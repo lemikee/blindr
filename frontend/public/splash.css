@@ -252,6 +252,19 @@ table {
   overflow: hidden;
 }
 
+.splash-nav-left {
+  display: flex;
+  align-items: center;
+}
+
+.about-link {
+  font-family: 'proxima-nova', sans-serif;
+  text-decoration: none;
+  color: rgb(155, 155, 155);
+  margin-left: 15px;
+  font-size: 15px;
+}
+
 .logo {
   margin-left: 40px;
   padding: 5px;

@@ -1,5 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import ModalContainer from "./modal/modal_container";
 import { openModal } from "../actions/modal_actions";
 import { logout } from "../actions/session_actions";
@@ -20,7 +21,11 @@ const SplashPage = (props) => {
       <div className="splash">
         <ModalContainer />
         <div className="splash-nav">
-          <div className="logo">Blindr</div>
+          <div className="splash-nav-left">
+            <div className="logo">Blindr</div>
+            <Link className="about-link" to="/about">About Us</Link>
+          </div>
+          
           <div className="splash-btns">
             {props.signedIn ? (
               <button className="splash-nav-btn" onClick={props.logout}>
