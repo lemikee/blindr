@@ -1,49 +1,126 @@
- * {
-     box-sizing: border-box;
- }
- html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
+article,
+aside,
+details,
+figcaption,
+figure,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
 }
 body {
-	line-height: 1;
-    
+  line-height: 1;
 }
-ol, ul {
-	list-style: none;
+ol,
+ul {
+  list-style: none;
 }
-blockquote, q {
-	quotes: none;
+blockquote,
+q {
+  quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
 }
 table {
-	border-collapse: collapse;
-	border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 .modal-container {
@@ -66,117 +143,113 @@ table {
 }
 
 .modal-back {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    background-color: gray;
-    opacity: 40%;
-    z-index: 1;
-    border: 1px solid gray;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  background-color: gray;
+  opacity: 40%;
+  z-index: 1;
+  border: 1px solid gray;
 }
 
 .modal-input {
-    width: 200px;
-    height: 40px;
-    margin: 5px 0;
-    border: 1px solid rgb(176, 176, 176);
-    border-radius: 3px;
-    box-shadow: inset 0 2px 4px 0 rgb(0, 0, 0, 0.08);
-    padding-left: 8px;
+  width: 200px;
+  height: 40px;
+  margin: 5px 0;
+  border: 1px solid rgb(176, 176, 176);
+  border-radius: 3px;
+  box-shadow: inset 0 2px 4px 0 rgb(0, 0, 0, 0.08);
+  padding-left: 8px;
 }
 
 .submit {
-    background-color: rgb(0, 0, 255);
-    color: white;
-    border: none;
-    margin-top: 20px;
-    box-shadow: none;
-    padding-left: none;
+  background-color: rgb(0, 0, 255);
+  color: white;
+  border: none;
+  margin-top: 20px;
+  box-shadow: none;
+  padding-left: none;
 }
 
 .submit:hover {
-    background-color: rgb(1, 1, 171);
-    cursor: pointer;
+  background-color: rgb(1, 1, 171);
+  cursor: pointer;
 }
 
 .demo-btn {
-    height: 40px;
-    width: 200px;
-    margin-top: 5px;
-    border-radius: 3px;
-    background-color: white;
-    border: 1px solid rgb(0, 0, 255);
-    border-color: rgb(0, 0, 255);
-    color: rgb(0, 0, 255);
+  height: 40px;
+  width: 200px;
+  margin-top: 5px;
+  border-radius: 3px;
+  background-color: white;
+  border: 1px solid rgb(0, 0, 255);
+  border-color: rgb(0, 0, 255);
+  color: rgb(0, 0, 255);
 }
 
 .demo-btn:hover {
-    background-color: rgb(0, 0, 171);
-    border: none;
-    color: white;
-    cursor: pointer;
+  background-color: rgb(0, 0, 171);
+  border: none;
+  color: white;
+  cursor: pointer;
 }
 
 .modal-title {
-    color: rgb(92, 92, 92);
-    font-family: sans-serif;
-    font-size: 25px;
-    text-align: left;
-    margin-bottom: 20px;
-    width: 200px;
+  color: rgb(92, 92, 92);
+  font-family: sans-serif;
+  font-size: 25px;
+  text-align: left;
+  margin-bottom: 20px;
+  width: 200px;
 }
 
 .login-title {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .login-btn {
-    margin-bottom: 40px;
+  margin-bottom: 40px;
 }
 
 .input-btm {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .modal-errors {
-    z-index: 2;
-    color: gray;
-    position: absolute;
-    width: 300px;
-    min-height: 40px;
-    left: 50%;
-    margin-left: -150px;
-    border-left: 3px solid red;
-    border-radius: 5px;
-    top: 100px;
-    background-color: white;
-    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 0;
-    font-family: sans-serif;
-    font-size: 13px;
-    line-height: 18px;
-}
-
-.splash {
+  z-index: 2;
+  color: gray;
+  position: absolute;
+  width: 300px;
+  min-height: 40px;
+  left: 50%;
+  margin-left: -150px;
+  border-left: 3px solid red;
+  border-radius: 5px;
+  top: 100px;
+  background-color: white;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 0;
+  font-family: sans-serif;
+  font-size: 13px;
+  line-height: 18px;
 }
 
 .splash-nav {
-    width: 100%;
-    height: 60px;
-    background-color: white;
-    border-bottom: 1px solid rgba(128, 128, 128, 0.338);
-    box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.10);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 15px;
+  width: 100%;
+  height: 60px;
+  background-color: white;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.338);
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15px;
+  overflow: hidden;
 }
 
 .logo {
@@ -184,54 +257,59 @@ table {
   padding: 5px;
   padding-bottom: 0;
   text-transform: uppercase;
-  font-family: 'proxima-nova', sans-serif;
+  font-family: "proxima-nova", sans-serif;
   font-size: 30px;
   font-weight: 800;
-  color:rgb(0, 0, 255);
+  color: rgb(0, 0, 255);
   border: 3px solid rgb(0, 0, 255);
 }
 
 .splash-nav-btn {
-    margin: 0 3px;
-    width: 65px;
-    height: 30px;
-    background-color: rgb(0, 0, 255);
-    color: white;
-    border: none;
-    border-radius: 3px;
+  margin: 0 3px;
+  width: 65px;
+  height: 30px;
+  background-color: rgb(0, 0, 255);
+  color: white;
+  border: none;
+  border-radius: 3px;
 }
 
 .splash-nav-btn-two {
-    margin: 0 3px;
-    width: 65px;
-    height: 30px;
-    background-color: white;
-    color: rgb(155, 155, 155);
-    border: none;
+  margin: 0 3px;
+  width: 65px;
+  height: 30px;
+  background-color: white;
+  color: rgb(155, 155, 155);
+  border: none;
 }
 
 .splash-nav-btn:hover {
-    background-color: rgb(1, 1, 171);
-    cursor: pointer;
+  background-color: rgb(1, 1, 171);
+  cursor: pointer;
 }
 
 .splash-nav-btn-two:hover {
-    color: rgb(1, 1, 171);
-    cursor: pointer;
+  color: rgb(1, 1, 171);
+  cursor: pointer;
 }
 
 .clicked {
-    background-color: rgb(1, 1, 171);
+  background-color: rgb(1, 1, 171);
 }
 
 .clicked-two {
-    color: rgb(1, 1, 171);
-    border-color: rgb(1, 1, 171);
+  color: rgb(1, 1, 171);
+  border-color: rgb(1, 1, 171);
 }
 
 .splash {
-    height: 1200px;
-    background-color: rgba(201, 201, 201, 0.201);
+  height: 400px;
+  background-color: rgba(201, 201, 201, 0.201);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 50px;
+  position: relative;
+  height: 800px;
 }
 
 .hero-section {
@@ -243,11 +321,11 @@ table {
   display: flex;
   justify-content: center;
   align-items: center;
-  
 }
 
 .hero-image {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("./hero.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url("./hero.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -260,7 +338,7 @@ table {
 
 .hero-text {
   color: white;
-  font-family: 'proxima-nova', sans-serif;
+  font-family: "proxima-nova", sans-serif;
   font-size: 120px;
   font-weight: 700;
   position: relative;
@@ -268,13 +346,106 @@ table {
   animation-duration: 4s;
   animation-timing-function: ease;
   animation-iteration-count: infinite;
-  
 }
 
 @keyframes swipe-left-right {
-  0%  {left: 0; color: white;}
-  12.5% {left: -100px; color: rgb(241, 119, 119); transform: rotate(-3deg)}
-  25% {left: 0; color: white; transform: rotate(0deg)}
-  37.5% {left: 100px; color: rgb(46, 48, 170); transform: rotate(3deg)}
-  50% {left: 0; color: white; transform: rotate(0deg)}
+  0% {
+    left: 0;
+    color: white;
+  }
+  12.5% {
+    left: -100px;
+    color: rgb(241, 119, 119);
+    transform: rotate(-3deg);
+  }
+  25% {
+    left: 0;
+    color: white;
+    transform: rotate(0deg);
+  }
+  37.5% {
+    left: 100px;
+    color: rgb(46, 48, 170);
+    transform: rotate(3deg);
+  }
+  50% {
+    left: 0;
+    color: white;
+    transform: rotate(0deg);
+  }
+}
+.splash-container {
+  /* padding-bottom: 10px; */
+}
+.mission-container {
+  /* position: absolute; */
+  /* top: 400px; */
+  /* height: 00px; */
+  /* overflow: scroll; */
+  padding-top: 25px;
+  /* background-color: blue; */
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("mountains.jpg");
+  background-size: cover; /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-family: "proxima-nova", sans-serif;
+  color: #fff;
+}
+
+.mission-title-container {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+}
+
+.mission-title {
+  font-size: 50px;
+  display: inline-block;
+  border-bottom: 4px solid #fff;
+  padding-bottom: 3px;
+}
+
+.mission-statement {
+  padding: 60px 80px;
+  font-size: 21px;
+  text-align: left;
+  line-height: 1.3;
+}
+
+.product-container {
+  text-align: center;
+  font-family: "proxima-nova", sans-serif;
+  color: #fff;
+  height: 350px;
+
+  padding-top: 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("skyline.jpg");
+  background-size: cover; /* <------ */
+  background-repeat: no-repeat;
+  background-position: center center;
+  font-family: "proxima-nova", sans-serif;
+  color: #fff;
+  overflow: hidden;
+}
+
+.product-title-container {
+  padding-top: 50px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.product-title {
+  font-size: 50px;
+  display: inline-block;
+  border-bottom: 4px solid #fff;
+  padding-bottom: 3px;
+}
+
+.product-statement {
+  padding: 60px 80px;
+  font-size: 21px;
+  text-align: left;
+  line-height: 1.3;
 }
