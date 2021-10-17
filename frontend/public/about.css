@@ -30,6 +30,7 @@
   width: 250px;
   height: 250px;
   border-radius: 50%;
+  border: 2px black solid;
 }
 
 .about-item-right {
@@ -46,7 +47,7 @@
 .about-item-right > h2 {
   font-size: 20px;
   font-weight: 600;
-  margin-bottom: 30px;
+  margin-bottom: 5px;
 }
 
 .about-item-right > a {

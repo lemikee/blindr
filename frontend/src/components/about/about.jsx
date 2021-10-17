@@ -1,6 +1,9 @@
 import React from 'react';
 import AboutItem from './about_item';
-import josh_zhao from './img/josh_zhao.jpg'
+import mike_le from './img/mike_le.jpeg';
+import joey_fernandez from './img/joey_fernandez.jpg';
+import josh_kb from './img/josh_kb.png';
+import josh_zhao from './img/josh_zhao.jpg';
 
 
 const About = () => {
@@ -11,21 +14,21 @@ const About = () => {
       role: 'Team Lead',
       github: 'https://github.com/lemikee',
       linkedin: 'https://www.linkedin.com/in/mike-le/',
-      image: josh_zhao
+      image: mike_le
     },
     {
       name: 'Joey Fernandez',
       role: 'Frontend Lead',
-      github: '',
-      linkedin: '',
-      image: josh_zhao
+      github: 'https://github.com/josephafern',
+      linkedin: 'https://www.linkedin.com/in/joseph-fernandez-5936716a/',
+      image: joey_fernandez
     },
     {
       name: 'Josh Kim-Biggs',
       role: 'Frontend Lead',
-      github: '',
-      linkedin: '',
-      image: josh_zhao
+      github: 'https://github.com/joshgykim',
+      linkedin: 'https://www.linkedin.com/in/josh-kimbiggs/',
+      image: josh_kb
     },
     {
       name: 'Josh Zhao',
