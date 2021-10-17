@@ -15,11 +15,13 @@ import ProfileContainer from './profile/profile_container';
 import MatchesContainer from './matches/matches_container';
 import RecsContainer from './recs/recs_container';
 import UserRecCards from './recs/rec_cards';
+import About from './about/about';
 
 const App = () => (
     <div className="app">
         <Switch>
             <Route exact path="/" component={SplashContainer} />
+            <Route exact path="/about" component={About} />
             <Route exact path="/recs" component={RecsContainer} />
             <Route exact path="/profile/create" component={ProfileCreatePage} />
             <Route exact path='/profile' component={ProfileContainer} />
