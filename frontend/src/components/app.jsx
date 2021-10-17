@@ -2,6 +2,7 @@ import React from 'react';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import { Switch, Route, Redirect } from 'react-router-dom';
 import NavBarContainer from './nav/navbar_container';
+import Footer from './footer/footer';
 
 
 import SplashContainer from './splash';
@@ -26,6 +27,7 @@ const App = () => (
             <Route exact path='/profile/edit' component={ProfileEditPage} />
             <Redirect to="/recs" />
         </Switch>
+    <Footer />
     </div>
 );
 
