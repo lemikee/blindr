@@ -96,3 +96,19 @@
     display: flex;
     flex-direction: column;
 }
+
+.matchchat-photo {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.rotate {
+    transition: all 3s ease-in-out;
+  }
+
+.match-chat p {
+    font-size: 12px;
+    padding-left: 32px;
+    color: rgb(180, 180, 180);
+}
