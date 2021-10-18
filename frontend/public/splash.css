@@ -389,6 +389,7 @@ table {
 }
 .splash-container {
   /* padding-bottom: 10px; */
+  background-color: #f8f8ff
 }
 .mission-container {
   /* position: absolute; */
@@ -461,4 +462,69 @@ table {
   font-size: 21px;
   text-align: left;
   line-height: 1.3;
+}
+
+.splash-footer {
+    display: table;
+    width: 98%; /*Optional*/
+    table-layout: fixed; /*Optional*/
+    border-spacing: 10px; /*Optional*/
+    /* background-color: #26272b; */
+    background-color: #f8f8ff;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-top: 20px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.splash-footer a {
+      text-decoration: none;
+    color: inherit;
+}
+
+.splash-footer h2 {
+      color: rgba(43,39,60,1);
+  font-size: 30px;
+}
+.title {
+  padding: 20px;
+  /* line-height: 1.25; */
+  color: #757280;
+  font-family: "proxima-nova", sans-serif;
+  line-height: 1.4;
+}
+
+.about-col {
+    display: table-cell;
+    /* background-color: red;  */
+    width: 50%;
+}
+
+
+.tech-col {
+  display: table-cell;
+  /* background-color: red; */
+  width: 25%;
+}
+
+.quick-col {
+    display: table-cell;
+    /* background-color: red; */
+    width: 25%;
+}
+.quick-col  a{
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+.splash-footer h2 {
+  font-family: "proxima-nova", sans-serif;
+}
+
+
+.white-space {
+  background-color: #f8f8ff;
+  height: 40px;
 }
