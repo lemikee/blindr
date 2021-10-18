@@ -62,7 +62,7 @@ class NavBar extends React.Component {
           <MatchChatGitlab company={"Gitlab"} />
           <MatchChatInsta company={"Instacart"} />
           <MatchChatRemix company={"Remix"} /> */}
-          {Object.values(this.props.matches).map(match => <MatchChat company={match.company}/>)}
+          {Object.values(this.props.matches).map(match => <MatchChat match={match}/>)}
         </div>
       </div>
     );
