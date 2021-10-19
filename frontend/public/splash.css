@@ -250,6 +250,9 @@ table {
   align-items: center;
   padding: 0 15px;
   overflow: hidden;
+  position: sticky;
+  top: 0;
+  z-index: 3;
 }
 
 .splash-nav-left {
@@ -266,7 +269,7 @@ table {
 }
 
 .logo {
-  margin-left: 40px;
+  
   padding: 5px;
   padding-bottom: 0;
   text-transform: uppercase;
@@ -320,20 +323,18 @@ table {
   background-color: rgba(201, 201, 201, 0.201);
   display: flex;
   flex-direction: column;
-  padding-bottom: 50px;
+  
   position: relative;
   height: 800px;
 }
 
 .hero-section {
-  position: absolute;
-  top: 60px;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  
+  height: 800px;
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .hero-image {
@@ -431,7 +432,7 @@ table {
   text-align: center;
   font-family: "proxima-nova", sans-serif;
   color: #fff;
-  height: 350px;
+ 
 
   padding-top: 20px;
   background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
@@ -526,5 +527,5 @@ table {
 
 .white-space {
   background-color: #f8f8ff;
-  height: 40px;
+  height: 100px;
 }

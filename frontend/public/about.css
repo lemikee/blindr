@@ -1,6 +1,4 @@
 .about-page-container {
-  width: 100vw;
-  height: 100vh;
   background-color: rgb(119, 176, 230);
   background-image: linear-gradient(90deg, rgb(220, 248, 243), rgb(152, 196, 238));
   display: flex;
@@ -11,13 +9,15 @@
 .about-section {
   display: flex;
   flex-direction: column;
+  margin: 20px 0;
+
 }
 
 .about-section > h1 {
   font-family: 'proxima-nova', sans-serif;
   font-size: 40px;
   font-weight: 800;
-  margin-bottom: 30px;
+  
 }
 
 .about-item {
