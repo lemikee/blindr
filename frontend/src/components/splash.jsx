@@ -18,8 +18,7 @@ const mapDispatchToProps = (dispatch) => ({
 const SplashPage = (props) => {
   return (
     <div className="splash-container">
-      <div className="splash">
-        <ModalContainer />
+      <ModalContainer />
         <div className="splash-nav">
           <div className="splash-nav-left">
             <div className="logo">Blindr</div>
@@ -57,6 +56,8 @@ const SplashPage = (props) => {
             )}
           </div>
         </div>
+      <div className="splash">
+        
         <div className="hero-section">
           <div className="hero-image">
             <h1 className="hero-text">Swipe to Get Hired!</h1>

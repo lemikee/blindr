@@ -25,7 +25,7 @@ const About = () => {
     },
     {
       name: 'Josh Kim-Biggs',
-      role: 'Frontend Lead',
+      role: 'Backend Lead',
       github: 'https://github.com/joshgykim',
       linkedin: 'https://www.linkedin.com/in/josh-kimbiggs/',
       image: josh_kb
