@@ -9,12 +9,12 @@ class ProfileCreatePage extends React.Component {
   render() { 
     return (  
       <div className='profile-create-page'>
-      <div className='profile-container' style={{marginLeft: '0px'}}>
+        <div className='profile-container' style={{marginLeft: '0px'}}>
           <div className='profile-info-container' style={{ backgroundColor: 'rgb(237, 237, 237, 0.98)'}}>
-        <ProfileFormContainer history={this.props.history}/>
-        <div className='footer'></div>
+            <ProfileFormContainer history={this.props.history}/>
+            <div className='footer'></div>
+          </div>
         </div>
-      </div>
       </div>
     );
   }
