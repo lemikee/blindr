@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Employer = require("../../models/Employer");
+const Job = require("../../models/Job");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
@@ -80,35 +81,31 @@ router.patch("/updateProfile/:employerId", (req, res) => {
 })
 
 router.post("/login", (req, res) => {
-  const email = req.body.email; // extract email and password
-  const password = req.body.password;
-
   const { errors, isValid } = validateLoginInput(req.body);
-
+  
   if (!isValid) {
     return res.status(400).json(errors);
   }
+  
+  const email = req.body.email;
+  const password = req.body.password;
 
   Employer.findOne({ email }) // findOne returns a single object, find returns an array
-    .then((Employer) => {
-      if (!Employer) {
+    .then((employer) => {
+      if (!employer) {
         // if Employer doesn't exist, give status of 404 and json saying Employer DNE
         return res.status(404).json({ email: "This Employer does not exist." });
       }
 
       // beyond the if statement, we do have a Employer, so let's check if pwd is the same
-      bcrypt.compare(password, Employer.password).then((isMatch) => {
+      bcrypt.compare(password, employer.password).then((isMatch) => {
         if (isMatch) {
           const payload = {
             // payload we send back upon successful login
-            id: Employer.id, // id will be from mongodb
-            firstName: req.body.firstName,
-            lastName: req.body.lastName,
-            email: req.body.email,
-            company: req.body.skills,
-            industry: req.body.jobHistory,
-            size: req.body.education,
+            id: employer.id, // id will be from mongodb
+            email: employer.email,
           };
+
           jwt.sign(
             payload,
             keys.secretOrKey,
@@ -125,6 +122,31 @@ router.post("/login", (req, res) => {
         }
       });
     });
+});
+
+router.get("/getProfile/:employerId", (req, res) => {
+
+  Employer.findOne({ _id: req.params.employerId })
+    .then( profile => {
+      const employerProfile = {
+        firstName: profile.firstName,
+        lastName: profile.lastName,
+        company: profile.company
+      };
+
+      const jobIds = profile.jobIds;
+      const allJobs = {}
+
+      Job.find({ _id: { $in: jobIds } })
+        .then( jobs => {
+          jobs.forEach( job => {
+            allJobs[job.id] = job
+          })
+
+          return res.json({ profile: employerProfile, jobs: allJobs })
+        })
+    })
+
 });
 
 module.exports = router;

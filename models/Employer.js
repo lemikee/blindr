@@ -35,6 +35,11 @@ const EmployerSchema = new Schema({
     default: "!@#$%^&*()",
     required: true,
   },
+  jobIds: {
+    type: Array,
+    default: [],
+    required: true,
+  },
   date: {
     type: Date,
     default: Date.now,

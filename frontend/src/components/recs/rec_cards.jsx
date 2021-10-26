@@ -65,7 +65,6 @@ class RecCards extends React.Component {
   };
 
   outOfFrame = (name) => {
-    console.log(name + " left the screen");
   };
 
   render() {

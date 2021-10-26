@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const Employer = require("../../models/Employer");
 const Job = require("../../models/Job");
 const validateJobInput = require("../../validation/postJob");
 
@@ -10,6 +11,8 @@ router.post("/postJob", (req, res) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
+
+  const employerId = req.body.employerId;
 
   const newJob = new Job({
     company: req.body.company,
@@ -22,7 +25,14 @@ router.post("/postJob", (req, res) => {
   })
 
   newJob.save()
-    .then( job => res.json(job) )
+    .then( job => {
+      Employer.findOne({ _id: employerId })
+        .then( employer => {
+          employer.jobIds.push(job.id)
+          // PLACEHOLDER FOR TESTING
+        })
+      return res.json(job)
+    } )
     .catch( err => console.log(err) );
 
 })
