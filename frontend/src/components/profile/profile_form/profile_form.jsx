@@ -9,6 +9,7 @@ import ProfileFormSkill from './profile_form_skill';
 import ProfileFormEducation from './profile_form_education';
 import ProfileFormJobHistory from './profile_form_job_history';
 import LoadingIcon from '../../loading_icon';
+import ProfileError from '../profile_error';
 
 
 class ProfileForm extends React.Component {
@@ -35,9 +36,11 @@ class ProfileForm extends React.Component {
     
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLocationChanged = this.handleLocationChanged.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentDidMount() {
+    this.props.clearErrors();
     if (this.props.formType === 'Edit your profile'){
     this.props.getProfile(this.props.currentUser.id).then(() => this.setState({
       email: this.props.currentUser.email,
@@ -87,8 +90,7 @@ class ProfileForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.state.email = this.props.currentUser.email;
-    this.props.updateProfile( this.props.currentUser.id, this.filterState())
-    .then(() => this.props.history.push('/profile'));
+    this.props.updateProfile( this.props.currentUser.id, this.filterState(), this.props.history)
   }
   
   // HANDLE EDUCATION
@@ -253,16 +255,37 @@ class ProfileForm extends React.Component {
   removeSkillsForm = () => {
     this.setState({showSkillsForm : false});
   }
+
+  renderErrors() {
+    if (!Object.keys(this.props.errors).length){
+
+        return null;
+    }
+    return (
+        <ul className='modal-errors'>
+            {Object.keys(this.props.errors).map((error, i) => (
+                <li key={`error-${i}`}>
+                    {this.props.errors[error]}
+                </li>
+            ))}
+        </ul>
+    );
+}
+  renderNameErrors() {
+
+  }
   
   render() { 
     if (!this.state.loaded) return null;
     return (  
         
       <div className="profile-info">
+        
         <h1>{this.props.formType}</h1>
         <div onSubmit={this.handleSubmit}>
           <div className="info-box update">
-            <header>Basic Information</header>
+            <header style={{marginBottom: '20px'}}>Basic Information</header>
+            <div className='info-and-errors'>
             <label><span className='info-name'>First Name</span>
               <input type="text"
                 value={this.state.firstName}
@@ -270,8 +293,12 @@ class ProfileForm extends React.Component {
                 
                 className='info-name-input'
               />
+              
             </label>
+            {this.props.errors.firstName ? <ProfileError message={this.props.errors.firstName}/> : null}
+            </div>
             <br/>
+            <div className='info-and-errors'>
             <label><span className='info-name'>Last Name</span>
               <input type="text"
                 value={this.state.lastName}
@@ -280,21 +307,26 @@ class ProfileForm extends React.Component {
                 className='info-name-input'
               />
             </label>
+            {this.props.errors.lastName ? <ProfileError message={this.props.errors.lastName}/> : null}
+            </div>
           </div>
           <div className="info-box update">
             <header>Education</header>
+            {this.props.errors.education ? <ProfileError message={this.props.errors.education} nonBasic={true}/> : null}
             { this.displayEducation()}
             { this.educationForm()}
             <button className='skills-btn add-btn' style={this.state.showEducationForm ? { display: 'none' } : { display: 'block' }}onClick={() => this.setState({showEducationForm: true})}>Add</button>
           </div>
           <div className="info-box update">
             <header>Work History</header>
+            {this.props.errors.jobHistory ? <ProfileError message={this.props.errors.jobHistory} nonBasic={true}/> : null}
             { this.displayJobHistory()}
             { this.jobHistoryForm()}
             <button className='skills-btn add-btn' style={this.state.showJobHistoryForm ? { display: 'none' } : { display: 'block' }}onClick={() => this.setState({showJobHistoryForm: true})}>Add</button>
           </div>
           <div className="info-box update">
             <header>Skills</header>
+            {this.props.errors.skills ? <ProfileError message={this.props.errors.skills} nonBasic={true}/> : null}
             <div className='skills-container' style={this.state.showSkillsForm ? {marginTop: '20px'}: {}}>
             { this.displaySkills()}
             </div>

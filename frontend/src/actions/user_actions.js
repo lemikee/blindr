@@ -19,10 +19,15 @@ const receiveJobs = jobs => ({
   jobs
 })
 
-export const updateProfile = (userId, profileData) => dispatch => (
+export const updateProfile = (userId, profileData, history) => dispatch => (
   APIUtil.patchProfile(userId, profileData)
-    .then( payload => dispatch(receiveUserProfile( payload.data.profile )))
-    .catch( error => dispatch(receiveErrors(error.response.data)))
+    .then( payload => {
+      dispatch(receiveUserProfile( payload.data.profile ))
+    })
+    .then( () => history.push('/profile'))
+    .catch( error => {
+      dispatch(receiveErrors(error.response.data))
+    })
 )
 
 export const getProfile = (userId) => dispatch => (

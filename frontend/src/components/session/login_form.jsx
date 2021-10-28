@@ -12,6 +12,7 @@ class LoginForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
+        this.employerDemo = this.employerDemo.bind(this);
     }
 
     componentDidMount(){
@@ -34,11 +35,19 @@ class LoginForm extends React.Component {
         this.props.login({
             email: this.state.email,
             password: this.state.password
-        }).then(() => this.props.history.push('/profile'));
+        }, this.props.history)
     }
 
     handleDemo() {
-        this.props.loginDemo().then(() => this.props.history.push('/profile'))
+        this.props.login({
+            email: 'demo-user@gmail.com',
+            password: '123456'
+        }, this.props.history);
+    }
+
+    employerDemo() {
+        // this.props.getEmployer(this.props.currentUser.id)
+        //     .then(this.props.history.push('/employer'))
     }
 
     renderErrors() {
@@ -84,7 +93,8 @@ class LoginForm extends React.Component {
                         />
                         <br />
                         <button type='submit' className='modal-input submit'>Login</button>
-                        <button type='button' className='demo-btn' onClick={this.handleDemo}>Demo Login</button>
+                        <button type='button' className='demo-btn' onClick={this.handleDemo}>User Demo</button>
+                        <button type='button' className='demo-btn' onClick={this.employerDemo}>Employer Demo</button>
                     </div>
                 </form>
             </div>
