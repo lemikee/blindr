@@ -14,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-    getUserMatches: (userId) => dispatch(getUserMatches(userId))
+    getUserMatches: (userId) => dispatch(getUserMatches(userId)),
+    logout: () => dispatch(logout())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
