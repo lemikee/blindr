@@ -19,13 +19,34 @@
     background-color: white;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     padding-right: 10px;
     border-bottom: 1px solid rgba(206, 206, 206, 0.468);
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.10);
     position: sticky;
     top: 0;
     z-index: 1;
+}
+
+.navbar-header > button {
+  border: none;
+  background: none;
+  margin-left: 10px;
+}
+
+.navbar-header-logout {
+  color: rgb(199, 199, 199);
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.navbar-header-logout:hover {
+  color: rgb(0, 0, 255);
+}
+
+.navbar-header-right {
+  display: flex;
+  align-items: center;
 }
 
 .profile-btn {
