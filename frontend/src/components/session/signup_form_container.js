@@ -8,6 +8,7 @@ const mapStateToProps = (state) => {
     return {
         signedIn: state.session.isSignedIn,
         errors: state.errors.session,
+        currentUser: state.session.user,
         formType: 'Sign Up'
     };
 };

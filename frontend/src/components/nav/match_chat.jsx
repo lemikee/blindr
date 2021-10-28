@@ -1,5 +1,5 @@
 import React from "react";
-import { FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaChevronDown } from "react-icons/fa";
 import Chat from "./chat";
 import ChatF from "./chats_rooms/chats/chat_facebook";
 import ChatG from "./chats_rooms/chats/chat_google";

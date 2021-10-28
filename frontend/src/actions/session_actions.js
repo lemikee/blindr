@@ -47,8 +47,22 @@ export const signup = (user, history) => dispatch => (
         })
 );
 
-export const login = user => dispatch => (
+export const login = (user, history) => dispatch => (
     APIUtil.login(user)
+        .then(res => {
+            const { token } = res.data;
+            localStorage.setItem('jwtToken', token);
+            APIUtil.setAuthToken(token);
+            const decoded = jwt_decode(token);
+            dispatch(receiveCurrentUser(decoded))
+        }).then(() => history.push('/profile'))
+        .catch( err => {
+            dispatch(receiveErrors(err.response.data));
+        })
+);
+
+export const loginEmployer = employer => dispatch => (
+    APIUtil.loginEmployer(employer)
         .then(res => {
             const { token } = res.data;
             localStorage.setItem('jwtToken', token);

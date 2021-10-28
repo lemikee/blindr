@@ -12,6 +12,7 @@ class SignupForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
+        this.employerDemo = this.employerDemo.bind(this);
         this.clearedErrors = false;
     }
 
@@ -41,6 +42,11 @@ class SignupForm extends React.Component {
 
     handleDemo() {
         this.props.loginDemo().then(() => this.props.history.push('/profile'))
+    }
+
+    employerDemo() {
+        // this.props.getEmployer(this.props.currentUser.id)
+        //     .then(this.props.history.push('/employer'))
     }
     
     renderErrors() {
@@ -90,6 +96,7 @@ class SignupForm extends React.Component {
                         <button type='submit' className='modal-input submit'>Sign Up</button>
                         <br/>
                         <button type='button' className='demo-btn' onClick={this.handleDemo}>Demo Login</button>
+                        <button type='button' className='demo-btn' onClick={this.employerDemo}>Employer Demo</button>
                     </div>
                 </form>
             </div>

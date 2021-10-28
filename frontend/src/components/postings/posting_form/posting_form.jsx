@@ -79,39 +79,44 @@ class PostingForm extends React.Component {
   
 
   render() { 
-    console.log(this.state);
     return (  
       <div className="profile-info">
         <h1>Create Posting</h1>
         <div className="info-box update">
-          <header>Basic Info</header>
+          <header style={{marginBottom: '20px'}}>Basic Info</header>
+          <div className='posting-basic'>
           <label><span className='info-name'>Company</span>
             <input 
               type="text"
               value={this.state.company}
               onChange={this.update('company')}  
               className='info-name-input'
+              style={{marginLeft: '30px', width: '260px'}}
             />
           </label>
-          <br />
+          <br /><br />
           <label><span className='info-name'>Title</span>
             <input 
               type="text"
               value={this.state.title}
               onChange={this.update('title')}  
               className='info-name-input'
+              style={{marginLeft: '65px', width: '260px'}}
             />
           </label>
-          <br />
-          
-          <label><span className='info-name'>Description</span>
+          <br /><br />
+          <div style={{display: 'flex'}}>
+          <span className='info-name'>Description</span>
+          <label>
             <textarea  value={this.state.description}
               onChange={this.update('description')} 
               className='info-name-input'
+              style={{marginLeft: '20px', width: '260px', height: '150px'}}
             />
           </label>
+          </div>
           <br />
-          
+          </div>
         </div>
         
         <div className="info-box update">
@@ -127,12 +132,13 @@ class PostingForm extends React.Component {
           <div>
             <header>Location</header>
             <label><span className='info-name'
-                        style={{display: 'block', marginTop: '15px'}}>Which location is closest to you?</span>
-              <br />
+                        style={{display: 'inline-block', marginTop: '15px'}}>Which location is closest to you?</span>
+              
               <select 
                 value={this.state.location} 
                 onChange={this.handleLocationChanged}
                 className='location-dropdown'
+                style={{marginLeft: '120px'}}
                 >
                   
                 <option selected value="San Francisco">San Francisco</option>
@@ -145,7 +151,7 @@ class PostingForm extends React.Component {
         </div>
       
         <div className="info-box update">
-          <header>Compensation</header>
+          <header style={{marginBottom: '20px'}}>Compensation</header>
           <label><span className='info-name'>Minimum</span>
             <input 
               type="number"
