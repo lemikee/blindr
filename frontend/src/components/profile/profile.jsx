@@ -2,7 +2,9 @@ import React from 'react';
 import NavBarContainer from '../nav/navbar_container';
 import { FaEdit } from 'react-icons/fa';
 import { BsCalendarWeekFill } from 'react-icons/bs';
+import {AiOutlineTeam} from 'react-icons/ai'
 import { Link } from 'react-router-dom';
+
 
 class Profile extends React.Component {
   constructor(props) {
@@ -98,6 +100,7 @@ class Profile extends React.Component {
           </div>
           
         </div>
+        <Link className="about-us-link" to="/about"><AiOutlineTeam className="about-us-icon"/> About Us </Link>
       </div>
     );
   }
