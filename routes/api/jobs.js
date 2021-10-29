@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Job = require("../../models/Job");
+const Employer = require("../../models/Employer");
 const validateJobInput = require("../../validation/postJob");
 
 router.post("/postJob", (req, res) => {
@@ -47,18 +48,29 @@ router.patch("/updateJob/:jobId", (req, res) => {
         maxComp: parseInt(req.body.maxComp),
       }},
     { returnOriginal: false },
-  ).then( job => {
-    const payload = {
-      company: job.company,
-      title: job.title,
-      location: job.location,
-      description: job.description,
-      skills: job.skills,
-      minComp: parseInt(job.minComp),
-      maxComp: parseInt(job.maxComp),
-    }
-
-    return res.json({ job: payload })
-  })
+  ).then( job => res.json(job))
 
 });
+
+router.delete("/deleteJob/:jobId", (req, res) => {
+
+  Employer.find({ jobIds: req.params.jobId })
+    .then( cursor => {
+      cursor.forEach( employer => {
+        let i = employer.jobIds.indexOf( req.params.jobId );
+        let newJobIds = employer.jobId.slice(0, i).concat(employer.jobId.slice(i+1));
+
+        Employer.findOneAndUpdate(
+          { _id: employer._id },
+          { $set: {
+            jobIds: newJobIds,
+          }}
+        )
+      })
+    })
+
+  Job.deleteOne({ _id: req.params.jobId })
+    .then( job => {
+      return res.json(job);
+    })
+})

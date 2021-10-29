@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Employer = require("../../models/Employer");
+const Job = require("../../models/Job");
 const bcrypt = require("bcryptjs");
 const keys = require("../../config/keys");
 const jwt = require("jsonwebtoken");
@@ -126,5 +127,24 @@ router.post("/login", (req, res) => {
       });
     });
 });
+
+router,get("/employerProfile/:employerId", (req, res) => {
+
+  Employer.findOne({ _id: req.params.employerId })
+    .then( profile => {
+      Job.find({ _id: { $in: profile.jobIds }})
+        .then( jobs => {
+          const profilePayload = {
+            firstName: profile.firstName,
+            lastName: profile.lastName,
+            email: profile.email,
+            company: profile.company,
+            industry: profile.industry,
+            size: profile.size,
+          }
+          return res.json({ profile: profilePayload, jobs: jobs })
+        })
+    })
+})
 
 module.exports = router;
