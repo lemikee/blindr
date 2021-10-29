@@ -14,10 +14,7 @@
 .rec-cards {
   width: 100%;
   margin-left: 350px;
- 
   display: flex;
-  
-
   overflow-y: scroll;
   position: relative;
 
