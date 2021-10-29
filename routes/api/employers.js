@@ -128,7 +128,7 @@ router.post("/login", (req, res) => {
     });
 });
 
-router,get("/employerProfile/:employerId", (req, res) => {
+router.get("/employerProfile/:employerId", (req, res) => {
 
   Employer.findOne({ _id: req.params.employerId })
     .then( profile => {
