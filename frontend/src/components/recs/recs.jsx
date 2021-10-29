@@ -11,7 +11,7 @@ class Recs extends React.Component {
   }
   render() { 
     return (  
-      <div className="recs">
+      <div className="user-profile">
         <NavBarContainer />
         <UserRecCards
           currentUser={this.props.currentUser}

@@ -24,8 +24,8 @@ export const updateProfile = (userId, profileData, history) => dispatch => (
     .then( payload => {
       dispatch(receiveUserProfile( payload.data.profile ))
     })
-    .then( () => history.push('/profile'))
     .catch( error => {
+      console.log(error);
       dispatch(receiveErrors(error.response.data))
     })
 )

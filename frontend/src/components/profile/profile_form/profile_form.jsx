@@ -90,7 +90,7 @@ class ProfileForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.state.email = this.props.currentUser.email;
-    this.props.updateProfile( this.props.currentUser.id, this.filterState(), this.props.history)
+    this.props.updateProfile( this.props.currentUser.id, this.filterState()).then(() => this.props.history.push('/profile'))
   }
   
   // HANDLE EDUCATION
@@ -270,9 +270,6 @@ class ProfileForm extends React.Component {
             ))}
         </ul>
     );
-}
-  renderNameErrors() {
-
   }
   
   render() { 
