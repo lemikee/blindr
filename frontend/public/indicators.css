@@ -1,0 +1,110 @@
+.demo-swipe-animation-container {
+  position: absolute;
+  bottom: 150px;
+  left: calc(50vw + 100px);
+  display: flex;
+  align-items: center;
+  animation-name: demo-swipe-container;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.demo-swipe-arrow {
+  font-size: 25px;
+}
+
+.left {
+  animation-name: left;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.right {
+  animation-name: right;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+.demo-swipe {
+  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 25px;
+  background-color: rgb(209, 209, 209);
+  padding: 7px;
+  border: 2px solid black;
+  border-radius: 10px;
+  animation-name: demo-swipe;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+@keyframes demo-swipe-container {
+  0% {
+    left: calc(50vw + 100px);
+  }
+  12.5% {
+    left: calc(50vw);
+    transform: rotate(-10deg);
+  }
+  25% {
+    left: calc(50vw + 100px);
+    transform: rotate(0deg);
+  }
+  37.5% {
+    left: calc(50vw + 200px);
+    transform: rotate(10deg);
+  }
+  50% {
+    left: calc(50vw + 100px);
+    transform: rotate(0deg);
+  }
+  
+}
+
+@keyframes demo-swipe {
+  0% {
+    background-color: rgb(209, 209, 209);
+  }
+  12.5% {
+    background-color: red;
+  }
+  25% {
+    background-color: rgb(209, 209, 209);;
+  }
+  37.5% {
+    background-color: rgb(59, 59, 248);
+  }
+  50% {
+    background-color: rgb(209, 209, 209);;
+  }
+}
+
+@keyframes left {
+  0% {
+    color: black;
+  }
+  12.5% {
+    color: red;
+  }
+  25% {
+    color: black;;
+  }
+  
+}
+
+@keyframes right {
+  
+  25% {
+    color: black;;
+  }
+  37.5% {
+    color: blue;
+  }
+  50% {
+    color: black;;
+  }
+}

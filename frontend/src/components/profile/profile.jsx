@@ -100,7 +100,7 @@ class Profile extends React.Component {
           </div>
           
         </div>
-        <Link className="about-us-link" to="/about"><AiOutlineTeam className="about-us-icon"/> About Us </Link>
+
       </div>
     );
   }
