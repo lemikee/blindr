@@ -7,11 +7,7 @@ function ChatScreen(props) {
   const inputRef = useRef();
   const chatScreenRef = useRef();
   let defaultMessages;
-
-
-    let companyName = props.dropdown.company;
-    console.log(companyName);
-  // console.log(props.dropdown.company);
+  // console.log(props.messages)
 
   // if localStorage does not have key messages, set it to a default value
   if (!localStorage.messages) {
@@ -47,7 +43,7 @@ function ChatScreen(props) {
 
   useEffect(() => {
     // uses localStorage for persistant messages upon refresh
-    localStorage.messages = JSON.stringify(messages);
+    // localStorage.messages = JSON.stringify(messages);
     if (props.dropdown) {
       let number =
         chatScreenRef.current.scrollHeight - inputRef.current.scrollHeight;
@@ -59,7 +55,13 @@ function ChatScreen(props) {
   const handleSend = (e) => {
     e.preventDefault();
     if (input !== "") {
-      setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
+      let data = {
+        userId: props.currentUser.id,
+        jobId: props.match._id,
+        message: input
+      }
+      props.sendMessage(data)
+      // setMessages([...messages, { message: input }]); // adds message from input to messages array on ln 10
       setInput(""); // clears input field
     }
   };
@@ -73,14 +75,14 @@ function ChatScreen(props) {
         {/* iterates through all messages above ie ln 29, and displays them */}
         {/* ln 43, checks if there is name (recruiter), if not we will know its a message from the user */}
         <div className="chat-messages">
-          {messages.map((message, i) =>
-            message.name ? (
+          {props.messages.map((message, i) =>
+            Object.keys(message)[0] === "Employer" ? (
               <div key={i} className="chat-screen-message recruiter">
-                <p className="chat-screen-recruiter">{message.message}</p>
+                <p className="chat-screen-recruiter">{Object.values(message)[0]}</p>
               </div>
             ) : (
                 <div key={i} className="chat-screen-message user">
-                <p className="chat-screen-user">{message.message}</p>
+                <p className="chat-screen-user">{Object.values(message)[0]}</p>
               </div>
             )
           )}
