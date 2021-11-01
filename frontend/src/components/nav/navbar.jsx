@@ -1,6 +1,7 @@
 import React from "react";
 import { FaUser, FaRegAddressCard } from "react-icons/fa";
 import {BiLogOut} from 'react-icons/bi';
+import MatchChatContainer from "./match_chat_container";
 import MatchChat from "./match_chat";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
@@ -47,11 +48,7 @@ class NavBar extends React.Component {
           {/* <MatchChatYahoo company={"Yahoo"} /> */}
           <MatchChatGoogle company={"Google"} />
           <MatchChatApple company={"Apple"} />
-          {/* <MatchChatCoin company={"Coinbase"} />
-          <MatchChatGitlab company={"Gitlab"} />
-          <MatchChatInsta company={"Instacart"} />
-          <MatchChatRemix company={"Remix"} /> */}
-          {Object.values(this.props.matches).map(match => <MatchChat match={match}/>)}
+          {Object.values(this.props.matches).map(match => <MatchChatContainer match={match}/>)}
         </div>
       </div>
     );

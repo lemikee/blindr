@@ -15,6 +15,7 @@ import ProfileCreatePage from './profile/profile_create_page';
 import ProfileContainer from './profile/profile_container';
 import PostingCreatePage from './postings/posting_create_page';
 import MatchesContainer from './matches/matches_container';
+import EmployerProfileContainer from './employer/employer_profile_container';
 import RecsContainer from './recs/recs_container';
 import UserRecCards from './recs/rec_cards';
 import About from './about/about';
@@ -29,6 +30,7 @@ const App = () => (
             <Route exact path="/profile/create" component={ProfileCreatePage} />
             <Route exact path='/profile' component={ProfileContainer} />
             <Route exact path='/profile/edit' component={ProfileEditPage} />
+            <Route exact path='/employer' component={EmployerProfileContainer} />
             <Redirect to="/recs" />
         </Switch>
     <Footer />

@@ -18,6 +18,9 @@ class MatchChat extends React.Component {
 
   toggleDropdown() {
     this.setState({ dropdown: !this.state.dropdown });
+    if (!this.state.dropdown) {
+      this.props.getChatMessages(this.props.currentUser.id, this.props.match._id)
+    }
   }
 
   render() {
@@ -54,7 +57,13 @@ class MatchChat extends React.Component {
             
           /> */}
         </div>
-        <Chat dropdown={this.state} />
+        <Chat
+          dropdown={this.state}
+          messages={this.props.chat}
+          sendMessage={this.props.sendMessage}
+          currentUser={this.props.currentUser}
+          match={this.props.match}
+        />
       </div>
     );
   }

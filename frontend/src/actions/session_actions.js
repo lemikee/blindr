@@ -61,9 +61,10 @@ export const login = (user, history) => dispatch => (
         })
 );
 
-export const loginEmployer = employer => dispatch => (
+export const loginEmployer = (employer) => dispatch => (
     APIUtil.loginEmployer(employer)
         .then(res => {
+            debugger
             const { token } = res.data;
             localStorage.setItem('jwtToken', token);
             APIUtil.setAuthToken(token);
