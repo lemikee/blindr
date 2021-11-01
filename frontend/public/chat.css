@@ -18,9 +18,7 @@
     overflow-wrap: break-word;
 }
 
-.chat-screen::-webkit-scrollbar {
-    width: 0 !important;
-}
+
 
 .chat-screen-input {
     margin-left: 22px;

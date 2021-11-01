@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { clearErrors, signup } from '../../actions/session_actions';
+import { clearErrors, loginEmployer, signup } from '../../actions/session_actions';
 import { login } from '../../actions/session_actions';
 
 import SignupForm from './signup_form';
@@ -19,6 +19,7 @@ const mapDispatchToProps = (dispatch) => {
       loginDemo: () =>
         dispatch(login({ email: "demo-user@gmail.com", password: "123456" })),
       clearErrors: () => dispatch(clearErrors()),
+      loginEmployer: () => dispatch(loginEmployer({ email: "hire@us.com", password: "password"}))
     };
 }
 
