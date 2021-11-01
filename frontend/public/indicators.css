@@ -1,13 +1,20 @@
 .demo-swipe-animation-container {
   position: absolute;
-  bottom: 150px;
-  left: calc(50vw + 100px);
+  left: calc(50% - 80px);
+  top: calc(50% + 100px);
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   animation-name: demo-swipe-container;
   animation-duration: 5s;
   animation-timing-function: ease;
   animation-iteration-count: infinite;
+}
+
+.demo-swipe-animation-top {
+  display: flex;
+  align-items: center;
 }
 
 .demo-swipe-arrow {
@@ -42,24 +49,60 @@
   animation-iteration-count: infinite;
 }
 
-@keyframes demo-swipe-container {
+.demo-swipe-label {
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+.demo-swipe-label::before {
+  content: '';
+  animation-name: demo-swipe-label;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-iteration-count: infinite;
+}
+
+@keyframes demo-swipe-label {
   0% {
-    left: calc(50vw + 100px);
+    content: 'nah';
+    color: white;
   }
   12.5% {
-    left: calc(50vw);
+    content: 'nah';
+    color: red;
+  }
+  25% {
+    content: '';
+    color: white;
+  }
+  37.5% {
+    content: 'yes!';
+    color: rgb(59, 59, 248)
+  }
+  50% {
+    content: '';
+    color: white;
+  }
+}
+
+@keyframes demo-swipe-container {
+  0% {
+    left: calc(50% - 80px);
+  }
+  12.5% {
+    left: calc(50% - 180px);
     transform: rotate(-10deg);
   }
   25% {
-    left: calc(50vw + 100px);
+    left: calc(50% - 80px);
     transform: rotate(0deg);
   }
   37.5% {
-    left: calc(50vw + 200px);
+    left: calc(50% + 20px);
     transform: rotate(10deg);
   }
   50% {
-    left: calc(50vw + 100px);
+    left: calc(50% - 80px);
     transform: rotate(0deg);
   }
   
