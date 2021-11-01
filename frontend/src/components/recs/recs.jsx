@@ -22,7 +22,7 @@ class Recs extends React.Component {
           fetchRecommendations={this.props.fetchRecommendations}
           jobs={this.props.jobs}
         />
-        <DemoInstructions />
+        
         <Link className="about-us-link" to="/about"><AiOutlineTeam className="about-us-icon"/> About Us </Link>
       </div>
     );

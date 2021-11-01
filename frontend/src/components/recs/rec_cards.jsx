@@ -1,6 +1,7 @@
 import React from "react";
 import TinderCard from "react-tinder-card";
 import JobPostingCard from "./job_posting_card";
+import DemoInstructions from "./demo_instructions/demo_instructions";
 
 class RecCards extends React.Component {
   constructor(props) {
@@ -83,7 +84,9 @@ class RecCards extends React.Component {
               <JobPostingCard rec={job} />
             </TinderCard>
           ))}
+          
         </div>
+        <DemoInstructions />
       </div>
     );
   }
