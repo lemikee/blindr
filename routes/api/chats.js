@@ -39,7 +39,6 @@ router.patch("/patchChat/:userId", (req, res) => {
         return res.json({ chat: { [updatedChat.jobId]: updatedChat.messages } })
       })
     } )
-
 })
 
 module.exports = router;
