@@ -25,7 +25,6 @@ export const updateProfile = (userId, profileData, history) => dispatch => (
       dispatch(receiveUserProfile( payload.data.profile ))
     })
     .catch( error => {
-      console.log(error);
       dispatch(receiveErrors(error.response.data))
     })
 )

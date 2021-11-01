@@ -5,6 +5,7 @@ const db = require("./config/keys").mongoURI; // returns object in config/keys, 
 const users = require("./routes/api/users");
 const employers = require("./routes/api/employers");
 const matches = require("./routes/api/matches");
+const chats = require("./routes/api/chats");
 const User = require("./models/User");
 const Employer = require("./models/Employer");
 const bodyParser = require("body-parser"); // tells our app what sorts of requests it should respond to
@@ -37,6 +38,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", users); // app.use, if we get a request that starts with api/users, we will pass in users (above) //, ie route is /api/users/test, where test is defined in users.js
 app.use("/api/employers", employers);
 app.use("/api/matches", matches);
+app.use("/api/chats", chats);
 
 // we want to tell app object that we want it to listen an a given port
 const port = process.env.PORT || 5000; // use port given or use 5000

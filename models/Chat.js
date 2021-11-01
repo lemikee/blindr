@@ -2,27 +2,19 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const ChatSchema = new Schema({
-  firstName: {
-    type: String,
+  userId: {
+    type: Schema.Types.ObjectId,
+    ref: 'users',
     required: true,
   },
-  lastName: {
-    type: String,
+  jobId: {
+    type: Schema.Types.ObjectId,
+    ref: 'jobs',
     required: true,
   },
-  company: {
-    type: String,
-    required: true,
-  },
-  recruiterMessages: {
+  messages: {
     type: Array,
-    default: [],
-    required: true,
-  },
-  userMessages: {
-    type: Array,
-    default: [],
-    required: true,
+    default: []
   },
   date: {
     type: Date,

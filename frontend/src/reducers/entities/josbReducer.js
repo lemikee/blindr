@@ -3,7 +3,6 @@ import { RECEIVE_MATCH } from "../../actions/match_actions";
 
 const jobsReducer = (state = {}, action) => {
   Object.freeze(state);
-  console.log(action)
   switch (action.type) {
     case RECEIVE_JOBS:
       return action.jobs;
