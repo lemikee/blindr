@@ -8,7 +8,6 @@ const jobsReducer = (state = {}, action) => {
       return action.jobs;
     case RECEIVE_MATCH:
       let nextState = Object.assign({}, state);
-      console.log(action.match)
       delete nextState[action.match._id];
       return nextState;
     default:
