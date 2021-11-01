@@ -22,9 +22,7 @@
     flex-direction: column;
 }
 
-.profile-container::-webkit-scrollbar { 
-    width: 0 !important 
-}
+
 
 .profile-info-container {
     width: 100%;

@@ -36,7 +36,7 @@ class ProfileForm extends React.Component {
     
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleLocationChanged = this.handleLocationChanged.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
+    
   }
 
   componentDidMount() {
@@ -90,7 +90,7 @@ class ProfileForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.state.email = this.props.currentUser.email;
-    this.props.updateProfile( this.props.currentUser.id, this.filterState()).then(() => this.props.history.push('/profile'))
+    this.props.updateProfile(this.props.currentUser.id, this.filterState(), this.props.history)
   }
   
   // HANDLE EDUCATION
@@ -255,22 +255,6 @@ class ProfileForm extends React.Component {
   removeSkillsForm = () => {
     this.setState({showSkillsForm : false});
   }
-
-  renderErrors() {
-    if (!Object.keys(this.props.errors).length){
-
-        return null;
-    }
-    return (
-        <ul className='modal-errors'>
-            {Object.keys(this.props.errors).map((error, i) => (
-                <li key={`error-${i}`}>
-                    {this.props.errors[error]}
-                </li>
-            ))}
-        </ul>
-    );
-  }
   
   render() { 
     if (!this.state.loaded) return null;
@@ -364,6 +348,7 @@ class ProfileForm extends React.Component {
         
           
           <button className='profile-submit-btn' onClick={this.handleSubmit}>Submit</button>
+          {Object.keys(this.props.errors).length > 0 ? <ProfileError message='Error! Could not submit. Check fields above.' nonBasic={true}/>:null}
         </div>
       </div>
         
