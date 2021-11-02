@@ -332,7 +332,7 @@ table {
 }
 
 .hero-section {
-  
+  text-align: center;
   height: 800px;
   display: flex;
   justify-content: center;

@@ -41,7 +41,10 @@ class SignupForm extends React.Component {
     }
 
     handleDemo() {
-        this.props.loginDemo().then(() => this.props.history.push('/profile'))
+        this.props.login({
+            email: 'demo-user@gmail.com',
+            password: '123456'
+        }, this.props.history)
     }
 
     employerDemo() {
@@ -94,7 +97,7 @@ class SignupForm extends React.Component {
                         <br />
                         <button type='submit' className='modal-input submit'>Sign Up</button>
                         <br/>
-                        <button type='button' className='demo-btn' onClick={this.handleDemo}>Demo Login</button>
+                        <button type='button' className='demo-btn' onClick={this.handleDemo}>User Demo</button>
                         <button type='button' className='demo-btn' onClick={this.employerDemo}>Employer Demo</button>
                     </div>
                 </form>
