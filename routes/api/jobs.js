@@ -5,7 +5,7 @@ const Employer = require("../../models/Employer");
 const validateJobInput = require("../../validation/postJob");
 
 router.post("/postJob", (req, res) => {
-  console.log('here')
+
   const { errors, isValid } = validateJobInput(req.body);
 
   if (!isValid) {
@@ -22,8 +22,25 @@ router.post("/postJob", (req, res) => {
     maxComp: req.body.maxComp
   })
 
+  console.log(newJob);
+
   newJob.save()
-    .then( job => res.json(job) )
+    .then( job => {
+      Employer.findOne({ id: req.body.employerId })
+        .then( employer => {
+          let employerJobs = employer.jobIds;
+
+          Employer.findOneAndUpdate(
+            { id: req.body.employerId },
+            { $set: {
+              jobIds: employerJobs.concat([job.id])
+            }},
+            { returnOriginal: false}
+          ).then( updatedEmployer => {
+            return res.json("successfully saved")
+          })        
+        })
+    })
     .catch( err => console.log(err) );
 
 })
@@ -75,3 +92,6 @@ router.delete("/deleteJob/:jobId", (req, res) => {
     })
     
 })
+
+
+module.exports = router;

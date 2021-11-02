@@ -24,6 +24,7 @@ class PostingForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     postJob({
+      employerId: this.props.currentEmployer.id,
       company: this.state.company,
       title: this.state.title,
       location: this.state.location,

@@ -133,7 +133,7 @@ router.get("/employerProfile/:employerId", (req, res) => {
   
   Employer.findOne({ _id: req.params.employerId })
     .then( profile => {
-      Job.find({ _id: { $in: profile.jobIds }})
+      Job.find({ id: { $in: profile.jobIds }})
         .then( jobs => {
           const profilePayload = {
             firstName: profile.firstName,

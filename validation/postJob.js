@@ -1,6 +1,7 @@
 const Validator = require("validator");
 const validText = require("./valid-text");
 const validArray = require("./valid-array");
+const validNumber = require("./valid-number");
 
 module.exports = function validateJobInput(data) {
   let errors = {};
