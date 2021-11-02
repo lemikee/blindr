@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileSkillsForm from '../../profile/profile_form/profile_skills_form';
 import ProfileFormSkill from '../../profile/profile_form/profile_form_skill';
+import {postJob} from '../../../util/employers_util'
 
 class PostingForm extends React.Component {
   constructor(props) {
@@ -22,7 +23,16 @@ class PostingForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    postJob({
+      company: this.state.company,
+      title: this.state.title,
+      location: this.state.location,
+      description: this.state.description,
+      skills: this.state.skills,
+      minComp: this.state.minComp,
+      maxComp: this.state.maxComp
+    })
+    .then(() => this.props.history.push('/employer'));
   }
 
   handleLocationChanged(e) {

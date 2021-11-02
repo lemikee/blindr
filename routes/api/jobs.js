@@ -5,7 +5,7 @@ const Employer = require("../../models/Employer");
 const validateJobInput = require("../../validation/postJob");
 
 router.post("/postJob", (req, res) => {
-
+  console.log('here')
   const { errors, isValid } = validateJobInput(req.body);
 
   if (!isValid) {
