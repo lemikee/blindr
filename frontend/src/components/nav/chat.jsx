@@ -76,16 +76,10 @@ function ChatScreen(props) {
         {/* ln 43, checks if there is name (recruiter), if not we will know its a message from the user */}
         <div className="chat-messages">
           {props.messages.map((message, i) =>
-            Object.keys(message)[0] === "Employer" ? (
-              <div key={i} className="chat-screen-message recruiter">
-                <p className="chat-screen-recruiter">{Object.values(message)[0]}</p>
+            (<div key={i} className={Object.keys(message)[0] === "Employer" ? "chat-screen-message recruiter" : "chat-screen-message user"}>
+                <p className={Object.keys(message)[0] === "Employer" ? "chat-screen-recruiter" : "chat-screen-user"}>{Object.values(message)[0]}</p>
               </div>
-            ) : (
-                <div key={i} className="chat-screen-message user">
-                <p className="chat-screen-user">{Object.values(message)[0]}</p>
-              </div>
-            )
-          )}
+            ))}
         </div>
       </div>
       <form className="chat-form">
@@ -94,7 +88,7 @@ function ChatScreen(props) {
           onChange={(e) => setInput(e.target.value)}
           className="chat-screen-input"
           placeholder="type a message..."
-          typetype="text"
+          type="text"
           ref={inputRef}
         />
         <button className="chat-send-btn" onClick={handleSend}>

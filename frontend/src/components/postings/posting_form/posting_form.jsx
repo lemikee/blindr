@@ -9,7 +9,7 @@ class PostingForm extends React.Component {
     this.state = {  
       company: "",
       title: "",
-      location: "",
+      location: "San Francisco",
       description: "",
       skills: [],
       showSkillsForm: false,

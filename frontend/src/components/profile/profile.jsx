@@ -56,16 +56,16 @@ class Profile extends React.Component {
                 <header>Skills</header>
                 <div className='skills-container'>
                   
-                  {this.state.skills.map(skill => {
-                    return <div className='skill' style={{paddingLeft: '10px'}}>{skill}</div>
+                  {this.state.skills.map((skill, i) => {
+                    return <div key={i} className='skill' style={{paddingLeft: '10px'}}>{skill}</div>
                   })}
                 </div>
               </div>
               <div className='info-box'>
                 <header>Job History</header>
                   <div className='sub-box'>
-                  {this.state.jobHistory.map(job => {
-                    return (<div className='job'>
+                  {this.state.jobHistory.map((job, i) => {
+                    return (<div className='job' key={i}>
                               <div className='job-history-title'>{job.company}</div>
                               <div className='job-history-role'>{job.role}</div>
                               <div className='job-history-dates'><BsCalendarWeekFill className='job-dates-icon'/>From {job.from} to {job.to} </div>
@@ -76,8 +76,8 @@ class Profile extends React.Component {
               <div className='info-box'>
                 <header>Education</header>
                   <div className='sub-box'>
-                  {this.state.education.map(edu => {
-                    return (<div className='job'>
+                  {this.state.education.map((edu, i) => {
+                    return (<div className='job' key={i}>
                       <div className='job-history-title'>{edu.institute}</div>
                       <div className='job-history-role'>{edu.field}</div>
                       <div className='job-history-dates'><BsCalendarWeekFill className='job-dates-icon' />From {edu.from} to {edu.to} </div>

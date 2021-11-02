@@ -13,8 +13,12 @@ class JobItem extends React.Component {
                     <div className='job-item-title'>{this.props.job.title}</div>
                     <div className='job-item-desc'>{this.props.job.description}</div>
                 </div>
-                <div>{this.props.job.skills}</div>
-                <div>{this.props.job.minComp} - {this.props.job.maxComp}</div>
+                <div className='job-item-skills'>{this.props.job.skills.map((skill, i) => {
+                    return (<div key={i} className='job-item-skill'>
+                                {skill}
+                            </div>);
+                })}</div>
+                <div className='job-item-comp'><div>${this.props.job.minComp}</div> ~ <div>${this.props.job.maxComp}</div></div>
             </div>
         );
     }

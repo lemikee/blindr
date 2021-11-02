@@ -270,22 +270,51 @@
 
 .job-item {
     display: flex;
-    align-items: center;
-    height: 60px;
+    align-items: flex-start;
+    justify-content: space-between;
+    height: 110px;
     box-shadow: 0px 0px 3px rgb(0, 0, 0, 0.15);
     border-radius: 3px;
     margin: 20px 0px;
-    padding: 0px 10px;
+    padding-left: 10px;
+    padding-right: 60px;
+    
 }
 
 .job-item-title {
     color: rgb(91, 91, 91);
     font-family: sans-serif;
     font-size: 18px;
+    margin-top: 10px;
 }
 
 .job-item-desc {
     color: rgb(162, 162, 162);
     font-family: sans-serif;
     font-size: 14px;
+}
+
+.job-item-skills {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: auto 0;
+    width: 100px;
+    font-family: sans-serif;
+    font-size: 12px;
+    color: rgb(176, 176, 176);
+}
+
+.job-item-skill {
+    margin: 3px 0px;
+}
+
+.job-item-comp {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: sans-serif;
+    font-size: 14px;
+    color: green;
+    margin: auto 0;
 }
