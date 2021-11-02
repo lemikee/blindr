@@ -23,6 +23,7 @@ class PostingForm extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
+    console.log(this.state)
     postJob({
       employerId: this.props.currentEmployer.id,
       company: this.state.company,
@@ -171,7 +172,7 @@ class PostingForm extends React.Component {
               className='info-name-input'
             />
           </label>
-          <label><span className='info-name'>Minimum</span>
+          <label><span className='info-name'>Maximum</span>
             <input 
               type="number"
               value={this.state.maxComp} 

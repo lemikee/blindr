@@ -261,3 +261,31 @@
     margin-left: 145px;
     z-index: 3;
 }
+
+.interior {
+    display: flex;
+    flex-direction: column;
+    width: 250px;
+}
+
+.job-item {
+    display: flex;
+    align-items: center;
+    height: 60px;
+    box-shadow: 0px 0px 3px rgb(0, 0, 0, 0.15);
+    border-radius: 3px;
+    margin: 20px 0px;
+    padding: 0px 10px;
+}
+
+.job-item-title {
+    color: rgb(91, 91, 91);
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
+.job-item-desc {
+    color: rgb(162, 162, 162);
+    font-family: sans-serif;
+    font-size: 14px;
+}

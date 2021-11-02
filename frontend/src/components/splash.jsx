@@ -82,7 +82,7 @@ const SplashPage = (props) => {
             </p>
             <br />
             <p>
-              Our mission at blindr is to match you with the best software
+              Our mission at Blindr is to match you with the best software
               engineering jobs based off of what really matters - your skills.
               Our employer partners are blind to everything but your skills and
               credenitals. Nothing else is taken into consideration when you're
