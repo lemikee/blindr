@@ -80,6 +80,7 @@ router.post("/login", (req, res) => {
   
   User.findOne({ email })
     .then((user) => {
+      console.log(user);
       if (!user) {
         return res.status(404).json({ email: "This user does not exist." });
       }

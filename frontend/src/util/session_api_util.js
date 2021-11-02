@@ -21,6 +21,5 @@ export const loginEmployer = (empData) => {
 };
 
 export const updateProfile = (userData) => {
-    console.log(userData);
     return axios.patch(`/api/users/updateProfile/${userData.id}`, userData);
 }
