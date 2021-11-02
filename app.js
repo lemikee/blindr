@@ -6,6 +6,7 @@ const users = require("./routes/api/users");
 const employers = require("./routes/api/employers");
 const matches = require("./routes/api/matches");
 const chats = require("./routes/api/chats");
+const jobs = require("./routes/api/jobs");
 const User = require("./models/User");
 const Employer = require("./models/Employer");
 const bodyParser = require("body-parser"); // tells our app what sorts of requests it should respond to
@@ -39,9 +40,10 @@ app.use("/api/users", users); // app.use, if we get a request that starts with a
 app.use("/api/employers", employers);
 app.use("/api/matches", matches);
 app.use("/api/chats", chats);
+app.use("/api/jobs", jobs);
 
 // we want to tell app object that we want it to listen an a given port
-const port = process.env.PORT || 5001; // use port given or use 5000
+const port = process.env.PORT || 5000; // use port given or use 5000
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);

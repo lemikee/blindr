@@ -1,5 +1,5 @@
 import React from 'react';
-import PostingForm from './posting_form/posting_form';
+import PostingFormContainer from './posting_form/posting_form_container';
 
 class PostingCreatePage extends React.Component {
   constructor(props) {
@@ -14,7 +14,7 @@ class PostingCreatePage extends React.Component {
             { 
               backgroundColor: 'rgb(237, 237, 237, 0.98)',
             }}>
-            <PostingForm history={this.props.history}/>
+            <PostingFormContainer history={this.props.history}/>
           </div >
           <br />
         </div>
