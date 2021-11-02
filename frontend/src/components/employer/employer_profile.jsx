@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import JobItem from './job_item';
 
 class EmployerProfile extends React.Component {
   constructor(props){
@@ -57,15 +58,11 @@ class EmployerProfile extends React.Component {
                 <header>Size</header>
                 <p>{this.state.size}</p>
               </div>
-              <div className='info-box'>
+              <div className='info-box' style={{paddingRight: '30px'}}>
                 <header>Job Postings</header>
                 <div className='sub-box'>
-                  {this.state.jobs.map(job => {
-                    return (
-                      <div>
-                        {job.title}{job.location}{job.description}{job.skills}{job.minComp}{job.maxComp}
-                      </div>
-                    );
+                  {this.state.jobs.map((job, i) => {
+                    return <JobItem key={i} job={job} />;
                   })}
                 </div>
                 <Link to='/posting/create'><button className='profile-submit-btn' style={{marginBottom: '20px'}}>Create</button></Link>

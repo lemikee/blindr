@@ -43,7 +43,7 @@ app.use("/api/chats", chats);
 app.use("/api/jobs", jobs);
 
 // we want to tell app object that we want it to listen an a given port
-const port = process.env.PORT || 5000; // use port given or use 5000
+const port = process.env.PORT || 5001; // use port given or use 5000
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
