@@ -65,7 +65,7 @@ const SplashPage = (props) => {
         </div>
       </div>
 
-      <div className="white-space"></div>
+      <div className="white-space" style={{backgroundColor: 'blue'}}></div>
 
       <div className="mission-container">
         <div className="mission-title-container">
@@ -91,7 +91,7 @@ const SplashPage = (props) => {
           </div>
         </div>
       </div>
-      <div className="white-space"></div>
+      <div className="white-space" style={{ backgroundColor: 'blue' }}></div>
 
       <div className="product-container">
         <div className="product-title-container">

@@ -114,7 +114,7 @@ router.post("/login", (req, res) => {
 router.patch("/updateProfile/:userId", (req, res) => {
 
   const { errors, isValid } = validateUpdateProfileInput(req.body);
-
+  
   if (!isValid) {
     console.log(errors);
     return res.status(400).json(errors);

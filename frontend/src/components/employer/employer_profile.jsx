@@ -13,6 +13,8 @@ class EmployerProfile extends React.Component {
       size: this.props.info.profile ? this.props.info.profile.size : 0,
       jobs: this.props.info.jobs ? this.props.info.jobs : []
     }
+
+    this.handleLogout = this.handleLogout.bind(this);
   }
 
   componentDidMount(){
@@ -26,12 +28,17 @@ class EmployerProfile extends React.Component {
     }));
   }
 
+  handleLogout() {
+    this.props.logout();
+    this.props.history.push('/');
+  }
+
   render(){
     if (!this.props.info) return null;
     return (
       <div className='user-profile'>
-        <div className='profile-container'>
-          <div className='profile-info-container' style={{marginLeft: '0px'}}>
+        <div className='profile-container' style={{ marginLeft: '0px' }}>
+          <div className='profile-info-container' style={{minHeight: '600px', marginBottom: '40px'}}>
             <h1><span>Profile</span></h1>
             <div className='profile-info'>
               <div className='info-box'>
@@ -61,9 +68,11 @@ class EmployerProfile extends React.Component {
                     );
                   })}
                 </div>
-                <Link to='/posting/create'><button>Create</button></Link>
+                <Link to='/posting/create'><button className='profile-submit-btn' style={{marginBottom: '20px'}}>Create</button></Link>
               </div>
+              <div className='logout-btn' onClick={this.handleLogout}>Logout</div>
             </div>
+            <div className='footer'></div>
           </div>
         </div>
       </div>
