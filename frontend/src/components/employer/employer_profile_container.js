@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { getEmployer } from '../../actions/employer_actions';
 import EmployerProfile from './employer_profile';
+import { logout } from "../../actions/session_actions";
 
 const mapStateToProps = state => {
     return {
@@ -11,7 +12,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getEmployer: (employerId) => dispatch(getEmployer(employerId))
+        getEmployer: (employerId) => dispatch(getEmployer(employerId)),
+        logout: () => dispatch(logout())
     }
 }
 

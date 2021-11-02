@@ -46,8 +46,7 @@ class LoginForm extends React.Component {
     }
 
     employerDemo() {
-        // this.props.getEmployer(this.props.currentUser.id)
-        //     .then(this.props.history.push('/employer'))
+        this.props.loginEmployer().then(() => this.props.history.push('/employer'))
     }
 
     renderErrors() {

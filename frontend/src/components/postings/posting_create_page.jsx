@@ -2,10 +2,11 @@ import React from 'react';
 import PostingFormContainer from './posting_form/posting_form_container';
 
 class PostingCreatePage extends React.Component {
+  
   constructor(props) {
     super(props);
-    this.state = {  }
   }
+
   render() { 
     return (  
       <div className="profile-create-page" >
@@ -15,6 +16,7 @@ class PostingCreatePage extends React.Component {
               backgroundColor: 'rgb(237, 237, 237, 0.98)',
             }}>
             <PostingFormContainer history={this.props.history}/>
+            <div className='footer'></div>
           </div >
           <br />
         </div>
