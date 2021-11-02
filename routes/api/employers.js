@@ -72,7 +72,8 @@ router.patch("/updateProfile/:employerId", (req, res) => {
       lastName: req.body.lastName,
       company: req.body.company,
       industry: req.body.industry,
-      size: req.body.size
+      size: req.body.size,
+      jobIds: req.body.jobIds
       }
     })
     .then(payload => console.log(payload))
@@ -129,7 +130,7 @@ router.post("/login", (req, res) => {
 });
 
 router.get("/employerProfile/:employerId", (req, res) => {
-
+  
   Employer.findOne({ _id: req.params.employerId })
     .then( profile => {
       Job.find({ _id: { $in: profile.jobIds }})

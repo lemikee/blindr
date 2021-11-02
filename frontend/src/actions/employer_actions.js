@@ -10,5 +10,9 @@ const receivedEmployer = (employer) => {
 }
 
 export const getEmployer = (employerId) => (dispatch) => {
-  return APIUtil.getEmployer(employerId).then(payload => dispatch(receivedEmployer(payload.data.profile)));
+  return APIUtil.getEmployer(employerId).then(payload => dispatch(receivedEmployer(payload.data)));
+}
+
+export const registerEmployer = (user) => dispatch => {
+  return APIUtil.registerEmployer(user)
 }
