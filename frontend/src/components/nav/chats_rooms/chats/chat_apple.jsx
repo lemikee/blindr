@@ -7,7 +7,7 @@ function ChatScreen(props) {
   const inputRef = useRef();
   const chatScreenRef = useRef();
   let defaultMessages;
-
+  
   // console.log(props.dropdown.company);
 
   // if localStorage does not have key messages, set it to a default value
